@@ -8,3 +8,5 @@ function addNewVendor(req, res, next) {
     })
     .catch(next);
 }
+
+// remove this comment

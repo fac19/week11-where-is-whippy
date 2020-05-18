@@ -15,6 +15,7 @@ BEGIN;
         age VARCHAR(50) NOT NULL,
         gender VARCHAR(50) NOT NULL,
         icecream_flavour (50) NOT NULL,
+        -- /remove this line
     )
 
     CREATE TABLE vendors
