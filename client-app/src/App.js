@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import "./App.css"
+import Landing from "./components/shared/Landing.js"
+import Header from "./components/shared/Header.js"
+// For react router
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 function App() {
+  const [logInStatus, setLogInStatus] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="App">
+        <Header logInStatus={logInStatus} />
+        {/* <Landing /> */}
+        <Route path="/landing" component={Landing} />
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
