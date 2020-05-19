@@ -29,3 +29,17 @@
 // get vendor routes
 
 // post customer location
+
+const express = require("express");
+const PORT = process.env.PORT || 3000;
+
+const server = express();
+
+server.use(express.json());
+server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
+
+//server.method("route-name", handlerFunction)
+
+// CUSTOMER ROUTES
+
+// LOCATION ROUTES
