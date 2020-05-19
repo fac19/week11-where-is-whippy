@@ -1,4 +1,4 @@
-const cutomerLocationModel = require("../model/customer-location-m");
+const customerLocationModel = require("../model/customer-location-m");
 const geo = navigator.geolocation
 
 function addNewCustomerLocation(req, res, next) {
@@ -6,11 +6,16 @@ function addNewCustomerLocation(req, res, next) {
     const position = geo.getCurrentPosition;
     const lat = position.coords.latitude;
     const lng = position.coords.lng;
-    customerLocationModel(customerId, lat, lng)    
+    customerLocationModel.addCustomerLocation(customerId, lat, lng);    
 };
 
 function allCustomerLocations(req, res, next) {
-    
+    customerLocationModel
+    .getAllCustomerLocations()
+    .then((allLocations) => {
+        res.send(allLocations)
+    })
+    .catch(next);
 }
 
-module.export = addNewCustomerLocation;
+module.export = {addNewCustomerLocation, allCustomerLocations};
