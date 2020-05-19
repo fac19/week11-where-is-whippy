@@ -2,8 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const db = require("./connection");
 
-const initSql = fs.readFileSync(path, join(__dirname, "init.sql"), "utf-8");
-
+const initSql = fs.readFileSync(path.join(__dirname, "init.sql"), "utf-8");
 function build() {
   return db.query(initSql);
 }
