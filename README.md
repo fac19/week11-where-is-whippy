@@ -4,9 +4,12 @@ An ice cream truck finder for all you choc-chip nuts out there
 
 ## Dependencies Installed
 
+- pg - Non-blocking postgres client for Node (API)
+- dotenv - Allows private variables to be added (API)
+
 ### Dev Dependencies Installed
 
-- Jest - Testing library
+- Jest - Testing library (API)
 
 ## To install a new local database
 
