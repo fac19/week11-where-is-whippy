@@ -9,4 +9,8 @@ function addNewCustomerLocation(req, res, next) {
     customerLocationModel(customerId, lat, lng)    
 };
 
+function allCustomerLocations(req, res, next) {
+    
+}
+
 module.export = addNewCustomerLocation;
