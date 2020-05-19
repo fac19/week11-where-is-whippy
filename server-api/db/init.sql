@@ -37,7 +37,7 @@ BEGIN;
         latitude VARCHAR(20) NOT NULL,
         longitude VARCHAR(20) NOT NULL,
         temperature VARCHAR(20) NOT NULL,
-        time TIMESTAMP
+        time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 
     CREATE TABLE vendor_location
