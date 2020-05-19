@@ -7,4 +7,10 @@ function addCustomerLocation(customer_id, latitude, longitude, temperature) {
   );
 }
 
-module.exports = { addCustomerLocation };
+function getAllCustomerLocations() {
+  return db
+    .query(`SELECT * FROM customer_location`)
+    .then((results) => results.rows);
+}
+
+module.exports = { addCustomerLocation, getAllCustomerLocations };

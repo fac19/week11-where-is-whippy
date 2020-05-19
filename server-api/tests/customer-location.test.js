@@ -6,3 +6,7 @@ test("Tests are working", () => {
   var actual = 2 + 2;
   expect(expected).toBe(actual);
 });
+
+test("Customer location database updates with new entry", () => {
+  var expected = 
+})
