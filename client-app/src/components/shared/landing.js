@@ -1,7 +1,9 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
-export default function Landing({ setIsVendor }) {
+export default function Landing({ setIsVendor, isVendor }) {
   console.log("Landing -> setIsVendor", setIsVendor)
+  console.log(isVendor)
   return (
     <section>
       <h2 className="landing-subtitle">Tired of waiting for the jingle?</h2>
@@ -9,20 +11,21 @@ export default function Landing({ setIsVendor }) {
         className="landing-img"
         src="https://media.giphy.com/media/3orieXuD6SY02z1VtK/giphy.gif"
       />
-      <a
+      <Link
+        to="/login"
         onClick={() => handleLoginLinkVendor()}
-        href="/login"
         className="landing-btn-vendors"
       >
         Vendors
-      </a>
-      <a
+      </Link>
+
+      <Link
+        to="/login"
         onClick={() => handleLoginLinkCustomer()}
-        href="/login"
         className="landing-btn-customers"
       >
         Customers
-      </a>
+      </Link>
     </section>
   )
 
@@ -31,9 +34,10 @@ export default function Landing({ setIsVendor }) {
     setIsVendor(true)
   }
 
-  function handleLoginLinkCustomer(isVendor) {
-    alert("Customer login button clicked")
+  function handleLoginLinkCustomer() {
+    console.log(isVendor)
     setIsVendor(false)
     console.log(isVendor)
+    // alert("Customer login button clicked")
   }
 }
