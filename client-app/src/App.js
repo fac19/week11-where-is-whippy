@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import "./App.css"
 import Landing from "./components/shared/landing.js"
 import Header from "./components/shared/header.js"
+import User from "./components/shared/user.js"
+import Signup from "./components/shared/signup.js"
 import Login from "./components/shared/login.js"
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
@@ -23,11 +25,14 @@ function App() {
               <Landing setIsVendor={setIsVendor} isVendor={isVendor} />
             )}
           />
+          <Route path="/user" component={() => <User isVendor={isVendor} />} />
+          <Route
+            path="/signup"
+            component={() => <Signup isVendor={isVendor} />}
+          />
           <Route
             path="/login"
-            component={() => (
-              <Login setIsVendor={setIsVendor} isVendor={isVendor} />
-            )}
+            component={() => <Login isVendor={isVendor} />}
           />
         </Switch>
       </div>
