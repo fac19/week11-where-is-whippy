@@ -1,5 +1,14 @@
 const customerLocationModel = require("../model/customer-location-m")
-const geo = navigator.geolocation
+// const geo = navigator.geolocation  maybe need to add window.navigator.geolocation?
+
+function allCustomerLocations(req, res, next) {
+  customerLocationModel
+    .getAllCustomerLocations()
+    .then((allLocations) => {
+      res.send(allLocations)
+    })
+    .catch(next)
+}
 
 function addNewCustomerLocation(customer, req, res, next) {
   // Has the customer already entered a request in the last half an hour?
@@ -16,13 +25,4 @@ function addNewCustomerLocation(customer, req, res, next) {
   }
 }
 
-function allCustomerLocations(req, res, next) {
-  customerLocationModel
-    .getAllCustomerLocations()
-    .then((allLocations) => {
-      res.send(allLocations)
-    })
-    .catch(next)
-}
-
-module.export = { addNewCustomerLocation, allCustomerLocations }
+module.exports = { addNewCustomerLocation, allCustomerLocations }
