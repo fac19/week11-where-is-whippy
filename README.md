@@ -18,7 +18,7 @@ CREATE DATABASE (database_name);
 \c (database_name);
 CREATE USER (user_name) WITH PASSWORD (password);
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO (user_name);
-\include db/init.sql;
+\include server-api/db/init.sql;
 
 ## Set up .env file
 

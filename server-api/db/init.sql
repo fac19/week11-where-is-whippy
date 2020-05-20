@@ -60,22 +60,22 @@ BEGIN;
     );
 
     INSERT INTO customers
-    (email, password, username, age, gender, icecream_flavour) 
-    VALUES 
-    ('hettie@test.com', 'password', 'HettieMcC', 24, 'F', 'Caramel'),
-    ('jack@test.com', 'password', 'JackAT', 20, 'M', 'Chocolate'),
-    ('sarah@test.com', 'password', 'SarahJBB', 29, 'F', 'Strawberry'),
-    ('bill@test.com', 'password', 'CrazyEastender', 27, 'm', 'Vanilla'),
-    ('louise@test.com', 'password', 'Louise', 19, 'F', 'Vanilla');
+        (email, password, username, age, gender, icecream_flavour)
+    VALUES
+        ('hettie@test.com', 'password', 'HettieMcC', 24, 'F', 'Caramel'),
+        ('jack@test.com', 'password', 'JackAT', 20, 'M', 'Chocolate'),
+        ('sarah@test.com', 'password', 'SarahJBB', 29, 'F', 'Strawberry'),
+        ('bill@test.com', 'password', 'CrazyEastender', 27, 'm', 'Vanilla'),
+        ('louise@test.com', 'password', 'Louise', 19, 'F', 'Vanilla');
 
 
-    INSERT INTO customer_location 
-    (customer_id, latitude, longitude, temperature)
-    VALUES 
-    (1, 51.392460, -0.113350, 31),
-    (2, 51.5029429882, -0.08798631472, 26),
-    (3, 51.500729, -0.124625, 28),
-    (4, 51.565060, -0.097630, 27),
-    (5, 51.551720, -0.085610, 26.5);
+    INSERT INTO customer_location
+        (customer_id, latitude, longitude, temperature, time)
+    VALUES
+        (1, 51.392460, -0.113350, 31, '2019-07-14 15:30:00.000'),
+        (2, 51.5029429882, -0.08798631472, 26, '2019-06-19 13:15:27.000'),
+        (3, 51.500729, -0.124625, 28, '2019-06-18 12:48:16.000'),
+        (4, 51.565060, -0.097630, 27, '2019-07-14 15:24:09.000'),
+        (5, 51.551720, -0.085610, 26.5);
 
     COMMIT;
