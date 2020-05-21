@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import "./App.css"
-import Landing from "./components/shared/Landing.js"
-import Header from "./components/shared/Header.js"
-import Login from "./components/shared/Login.js"
+import Landing from "./components/shared/landing.js"
+import Header from "./components/shared/header.js"
+import Login from "./components/shared/login.js"
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
@@ -19,11 +19,15 @@ function App() {
           <Route
             path="/"
             exact
-            component={() => <Landing setIsVendor={setIsVendor} />}
+            render={() => (
+              <Landing setIsVendor={setIsVendor} isVendor={isVendor} />
+            )}
           />
           <Route
             path="/login"
-            component={() => <Login isVendor={isVendor} />}
+            component={() => (
+              <Login setIsVendor={setIsVendor} isVendor={isVendor} />
+            )}
           />
         </Switch>
       </div>

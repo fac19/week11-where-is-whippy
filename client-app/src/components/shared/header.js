@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function header({ logInStatus }) {
+export default function Header({ logInStatus }) {
   return (
     <header>
       <h1>Where's Whippy</h1>

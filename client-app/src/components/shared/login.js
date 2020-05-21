@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function login(isVendor) {
+export default function Login({ isVendor }) {
   return (
     <section>
       {isVendor ? (
