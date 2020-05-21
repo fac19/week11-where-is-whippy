@@ -1,6 +1,7 @@
 const db = require("../db/connection")
 
 function createVendor(vendor) {
+  console.log("createVendor -> vendor", vendor)
   return db.query(
     `INSERT INTO vendors(name, email, password, mobile, company_name, alcohol, vegan_option) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING name, email, password, mobile, company_name, alcohol, vegan_option`,
     [

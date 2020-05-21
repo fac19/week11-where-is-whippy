@@ -14,12 +14,29 @@ function createVendor(req, res, next) {
     alcohol: true,
     vegan_option: true,
   }
-  //   bcrypt.genSalt(10).then((salt) => bcrypt.hash(reqBody.password, salt))
-  vendors
-    .createVendor(reqBody)
+  //   vendors
+  //     .createVendor(reqBody)
+  //     .then((newUser) => {
+  //       res.send(newUser.rows[0])
+  //     })
+
+  const password = reqBody.password
+  bcrypt
+    .genSalt(10)
+    .then((salt) => bcrypt.hash(reqBody.password, salt))
+    .then((hash) => {
+      //   console.log({ ...reqBody, password: hash })
+      //   res.send({ ...reqBody, password: hash })
+      vendors.createVendor({ ...reqBody, password: hash })
+      //   vendors.createVendor(reqBody)
+    })
     .then((newUser) => {
+      console.log("createVendor -> newUser", newUser)
       res.send(newUser.rows[0])
     })
+    //   vendors
+    //     .createVendor(reqBody)
+
     .catch(next)
 }
 
