@@ -6,6 +6,7 @@ An ice cream truck finder for all you choc-chip nuts out there
 
 - pg - Non-blocking postgres client for Node (API)
 - dotenv - Allows private variables to be added (API)
+- nodemon - Restarts the server automatically when you make a change to the code
 
 ### Dev Dependencies Installed
 
