@@ -5,6 +5,7 @@ import Header from "./components/shared/header.js"
 import User from "./components/shared/user.js"
 import Signup from "./components/shared/signup.js"
 import Login from "./components/shared/login.js"
+import Home from "./components/vendor/home.js"
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
@@ -34,6 +35,7 @@ function App() {
             path="/login"
             component={() => <Login isVendor={isVendor} />}
           />
+          <Route path="/home" component={() => <Home />} />
         </Switch>
       </div>
     </Router>
