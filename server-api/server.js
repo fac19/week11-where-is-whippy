@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 8080
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
 const vendorLocationsHandler = require("./handlers/vendor-location-h")
+const vendors = require("./handlers/vendors-h")
 
 // Middleware
 const handleError = require("./middleware/handleError")
@@ -26,15 +27,23 @@ server.post(
   "/customers/coords/",
   customerLocationsHandler.addNewCustomerLocation
 )
+server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
+
+// SIGNUP/LOGIN
+server.post("/vendors/signup", vendors.createVendor)
+// server.post('/login vendor endpoint', callback)
+// server.post('/customer endpoint', callback)
+// server.post('/login customer endpoint', callback)
+
+// PUT
+// server.put('/vendor endpoint', callback) // For vendors to update info
+
+// DELETE
+// server.delete('/vendor endpoint', callback) // For vendors to delete account
+// server.delete('/customer endpoint', callback) // For customer to delete account
 
 server.use(handleError)
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
-
-//server.method("route-name", handlerFunction)
-
-// CUSTOMER ROUTES
-
-// LOCATION ROUTES
 
 // Tables
 // Customers Info (done)
@@ -45,25 +54,9 @@ server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 
 // routes
 // Vendors need:
-// Get login information
-// Post login information
-
-// Get customer locations
-
-// Post routes
-// Get routes
-// Update routes
-// Delete routes
-
 // post live location
 // update live location
 // get live location
 
-// customer needs:
-// post login
-// get login
-
 // get vendor live location
 // get vendor routes
-
-// post customer location
