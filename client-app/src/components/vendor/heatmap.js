@@ -1,29 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import LondonMap from "../../utils/london-map.js"
 
 export default function Heatmap() {
-    //fetch API - retrieve all lat/lng coordinates from
-    //then(data => data.forEach(create new array heatmapData))
-
-    
-
-
-    let heatmapData = [
-        new.google.maps.LatLng(lat, lng)
-        new.google.maps.LatLng(lat, lng)
-    ]
-
-    let london = new google.maps.LatLng(lat, lng)
-
-    map = new google.maps.Map(document.querySelector('.map'), {
-        center: london,
-        zoom: 13,
-        mapTypeId: 'satellite'
-    })
+  //fetch API - retrieve all lat/lng coordinates from
+  //then(data => data.forEach(create new array heatmapData))
 
   return (
     <section>
-      <section className="map"></section>
+      <section className="map">
+        <LondonMap />
+        <p>hello</p>
+      </section>
       <Link
         to={{
           pathname: "/schedule",

@@ -1,10 +1,12 @@
 import React from "react"
-import { Map, GoogleApiWrapper } from "google-maps-react"
+// import { Map, GoogleApiWrapper } from "google-maps-react"
+import { GoogleMap, LoadScript } from "@react-google-maps/api"
+require("dotenv").config()
 
-export default function Map() {
+export default function LondonMap() {
   const mapStyles = {
-    height: "75%",
-    width: "75%",
+    height: 500,
+    width: 500,
   }
 
   const defaultCenter = {
@@ -13,13 +15,16 @@ export default function Map() {
   }
 
   return (
-    <LoadScript googleMapsApiKey="we need a key here">
-      <googleMap
-        mapContainerStyle={mapStyles}
-        zoom={10}
-        center={defaultCenter}
-      />
-    </LoadScript>
+    <section>
+      <p> London Map Function </p>
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={10}
+          center={defaultCenter}
+        />
+      </LoadScript>
+    </section>
   )
 }
 
@@ -55,4 +60,4 @@ export default function Map() {
 
 // https://janosh.io/blog/google-maps+react-hooks (!!!)
 
-// * https://medium.com/@allynak/how-to-use-google-map-api-in-react-app-edb59f64ac9d
+// * https://medium.com/@allynak/how-to-use-google-map-api-in-react-app-edb59f64ac9d// * https://medium.com/@allynak/how-to-use-google-map-api-in-react-app-edb59f64ac9d
