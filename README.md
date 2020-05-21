@@ -2,6 +2,8 @@
 
 An ice cream truck finder for all you choc-chip nuts out there
 
+https://where-is-whippy.herokuapp.com/
+
 ## Dependencies Installed
 
 - pg - Non-blocking postgres client for Node (API)
