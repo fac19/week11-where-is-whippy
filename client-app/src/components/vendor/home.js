@@ -87,7 +87,7 @@ export default function Home() {
           }}
           className="home-link__schedule"
         >
-          Update schedule
+          Add new schedule
         </Link>
 
         <Link to="/heatmap" className="home-link__heatmap">

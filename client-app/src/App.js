@@ -6,6 +6,7 @@ import User from "./components/shared/user.js"
 import Signup from "./components/shared/signup.js"
 import Login from "./components/shared/login.js"
 import Home from "./components/vendor/home.js"
+import Heatmap from "./components/vendor/heatmap.js"
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
@@ -36,6 +37,7 @@ function App() {
             component={() => <Login isVendor={isVendor} />}
           />
           <Route path="/home" component={() => <Home />} />
+          <Route path="/heatmap" component={() => <Heatmap />} />
         </Switch>
       </div>
     </Router>
