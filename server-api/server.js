@@ -1,6 +1,9 @@
 const express = require("express")
 const PORT = process.env.PORT || 8080
+
+// Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
+const vendorLocationsHandler = require("./handlers/vendor-location-h")
 
 // Middleware
 const handleError = require("./middleware/handleError")
@@ -12,8 +15,11 @@ server.use(logger)
 
 // Request Handling
 //GET
-server.get("/", () => console.log("you're at the home route"))
+server.get("/", (req, res, next) =>
+  res.send("Home: Please refer to Readme for specific endpoints")
+)
 server.get("/customers/all", customerLocationsHandler.allCustomerLocations)
+server.get("/vendors/all", vendorLocationsHandler.allVendorLocations)
 
 // POST
 server.post(

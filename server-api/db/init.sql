@@ -1,10 +1,6 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS customers;
-    DROP TABLE IF EXISTS vendors;
-    DROP TABLE IF EXISTS customer_location;
-    DROP TABLE IF EXISTS vendor_location;
-    DROP TABLE IF EXISTS vendor_routes;
+    DROP TABLE IF EXISTS customers, vendors, customer_location, vendor_location, vendor_routes CASCADE;
 
     CREATE TABLE customers
     (
@@ -77,5 +73,25 @@ BEGIN;
         (3, 51.500729, -0.124625, 28, '2019-06-18 12:48:16.000'),
         (4, 51.565060, -0.097630, 27, '2019-07-14 15:24:09.000'),
         (5, 51.551720, -0.085610, 26.5, '2019-07-18 15:24:09.000');
+
+    INSERT INTO vendors
+        (email, password, name, mobile, company_name, alcohol, vegan_option)
+    VALUES
+        ('hettie@test.com', 'password', 'HettieMcC', 07466785553, 'Mr.Whippy', true, false),
+        ('jack@test.com', 'password', 'JackAT', 07539468823, 'Licky', false, false),
+        ('sarah@test.com', 'password', 'SarahJBB', 08799921043, 'Berties', true, true),
+        ('bill@test.com', 'password', 'CrazyEastender', 04328364859, 'Softy', false, true),
+        ('louise@test.com', 'password', 'Louise', 07455683049, '99 problems', true, false);
+
+
+    INSERT INTO vendor_location
+        (vendor_id, latitude, longitude, time)
+    VALUES
+        (1, 51.392460, -0.113350, '2019-07-14 15:30:00.000'),
+        (2, 51.5029429882, -0.08798631472, '2019-06-19 13:15:27.000'),
+        (3, 51.500729, -0.124625, '2019-06-18 12:48:16.000'),
+        (4, 51.565060, -0.097630, '2019-07-14 15:24:09.000'),
+        (5, 51.551720, -0.085610, '2019-07-18 15:24:09.000');
+
 
     COMMIT;
