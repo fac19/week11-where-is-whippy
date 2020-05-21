@@ -7,7 +7,7 @@ export default function User({ isVendor }) {
     <section>
       {isVendor ? (
         <section>
-          <h2 className="login-subtitle">Find ice cream lovers today</h2>
+          <h2 className="user-subtitle">Find ice cream lovers today</h2>
           <img src="#" />
           <Link to="/signup" className="signup-btn-vendors">
             SIGNUP HERE
@@ -19,7 +19,7 @@ export default function User({ isVendor }) {
         </section>
       ) : (
         <section>
-          <h2 className="login-subtitle">Find ice cream today</h2>
+          <h2 className="user-subtitle">Find ice cream today</h2>
           <img src="#" />
           <Link to="/signup" className="signup-btn-customers">
             Signup Here
