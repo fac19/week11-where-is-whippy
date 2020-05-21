@@ -1,16 +1,16 @@
 const db = require("../db/connection")
 
-function getAllCustomerLocations(conditionals) {
+function getAllCustomerLocations() {
   return db
-    .query(`SELECT * FROM customer_location VALUES($1);`, [conditionals])
-    .then((results) => results.rows)}
+    .query(`SELECT * FROM customer_location;`)
+    .then((results) => results.rows)
+}
 
-
-function addCustomerLocation(customer_id, latitude, longitude, temperature) {
+function addNewCustomerLocation(customer_id, latitude, longitude, temperature) {
   return db.query(
-    `INSERT INTO customer_location (customer_id, latitude, longitude, temperature) VALUES ($1, $2, $3, $4);`,
+    `INSERT INTO customer_location (customer_id, latitude, longitude, temperature) VALUES ($1, $2, $3, $4) RETURNING customer_id, latitude, longitude, temperature;`,
     [customer_id, latitude, longitude, temperature]
   )
 }
 
-module.exports = { addCustomerLocation, getAllCustomerLocations }
+module.exports = { getAllCustomerLocations, addNewCustomerLocation }

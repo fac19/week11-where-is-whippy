@@ -1,22 +1,28 @@
-const express = require("express");
-const PORT = process.env.PORT || 3000;
-const customerLocations = require("./handlers/customer-location-h");
+const express = require("express")
+const PORT = process.env.PORT || 8080
+const customerLocationsHandler = require("./handlers/customer-location-h")
 
-const server = express();
+// Middleware
+const handleError = require("./middleware/handleError")
+const logger = require("./middleware/logger")
 
-server.use(express.json());
-
-
-
-
-
-// Put our handle error handler here
-server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
+const server = express()
+server.use(express.json())
+server.use(logger)
 
 // Request Handling
 //GET
 server.get("/", () => console.log("you're at the home route"))
-server.get("/customers/all", customerLocations.allCustomerLocations)
+server.get("/customers/all", customerLocationsHandler.allCustomerLocations)
+
+// POST
+server.post(
+  "/customers/coords/",
+  customerLocationsHandler.addNewCustomerLocation
+)
+
+server.use(handleError)
+server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 
 //server.method("route-name", handlerFunction)
 
@@ -33,7 +39,7 @@ server.get("/customers/all", customerLocations.allCustomerLocations)
 
 // routes
 // Vendors need:
-// Get login information 
+// Get login information
 // Post login information
 
 // Get customer locations
