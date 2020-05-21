@@ -7,6 +7,7 @@ import Signup from "./components/shared/signup.js"
 import Login from "./components/shared/login.js"
 import Home from "./components/vendor/home.js"
 import Heatmap from "./components/vendor/heatmap.js"
+import Timetable from "./components/vendor/timetable.js"
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
@@ -38,6 +39,8 @@ function App() {
           />
           <Route path="/home" component={() => <Home />} />
           <Route path="/heatmap" component={() => <Heatmap />} />
+
+          <Route path="/timetable" component={() => <Timetable />} />
         </Switch>
       </div>
     </Router>

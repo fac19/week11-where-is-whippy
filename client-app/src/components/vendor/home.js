@@ -68,7 +68,7 @@ export default function Home() {
 
         <Link
           to={{
-            pathname: "/schedule",
+            pathname: "/timetable",
             state: {
               editSchedule: true,
             },
@@ -80,7 +80,7 @@ export default function Home() {
 
         <Link
           to={{
-            pathname: "/schedule",
+            pathname: "/timetable",
             state: {
               editSchedule: false,
             },
