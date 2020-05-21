@@ -16,8 +16,8 @@ function allVendors(req, res, next) {
 
 function createVendor(req, res, next) {
   const reqBody = {
-    name: "A AM A TEST USER",
-    email: "jimmyface123@stinky.com",
+    name: "A LIKE SAUSAGES",
+    email: "jimmyface123@sausages.com",
     password: "password",
     mobile: 07868315123,
     company_name: "Jimmy's Ice",
@@ -31,24 +31,21 @@ function createVendor(req, res, next) {
   //     })
 
   // const password = reqBody.passwords
+  const SECRET = process.env.JWT_SECRET
+
   bcrypt
     .genSalt(10)
     .then((salt) => bcrypt.hash(reqBody.password, salt))
     .then((hash) => {
-      // console.log({ ...reqBody, password: hash })
-      // console.log(reqBody)
-      // res.send({ ...reqBody, password: hash })
-      vendors.createVendor({ ...reqBody, password: hash }) // We send { ...reqBody, password: hash } to db query
-      //   vendors.createVendor(reqBody)
+      vendors.createVendor({ ...reqBody, password: hash })
     })
-
+    .then((user) => {
+      const token = jwt.sign({ user: user.name }, SECRET, { expiresIn: "60m" })
+      res.status(201).send({ access_token: token })
+    })
     .then((newUser) => {
-      // console.log("createVendor -> newUser", newUser)
       res.send(newUser)
     })
-    //   vendors
-    //     .createVendor(reqBody)
-
     .catch(next)
 }
 
