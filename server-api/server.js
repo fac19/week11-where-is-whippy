@@ -53,8 +53,9 @@ server.get("/static/*", (req, res) => {
 //   res.send(fs.readFileSync(mainPath, "utf8"))
 // })
 
-server.get("/customers/all", customerLocationsHandler.allCustomerLocations)
-server.get("/vendors/all", vendorLocationsHandler.allVendorLocations)
+server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
+server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
+server.get("/vendors", vendors.allVendors)
 
 // POST
 server.post(
