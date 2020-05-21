@@ -1,3 +1,4 @@
+//First page - choice between customer + vendor options
 import React from "react"
 import { Link } from "react-router-dom"
 
@@ -12,16 +13,16 @@ export default function Landing({ setIsVendor, isVendor }) {
         src="https://media.giphy.com/media/3orieXuD6SY02z1VtK/giphy.gif"
       />
       <Link
-        to="/login"
-        onClick={() => handleLoginLinkVendor()}
+        to="/user"
+        onClick={() => setIsVendor(true)}
         className="landing-btn-vendors"
       >
         Vendors
       </Link>
 
       <Link
-        to="/login"
-        onClick={() => handleLoginLinkCustomer()}
+        to="/user"
+        onClick={() => setIsVendor(false)}
         className="landing-btn-customers"
       >
         Customers
@@ -29,15 +30,15 @@ export default function Landing({ setIsVendor, isVendor }) {
     </section>
   )
 
-  function handleLoginLinkVendor() {
-    alert("Vendor login button clicked")
-    setIsVendor(true)
-  }
+  // function handleLoginLinkVendor() {
+  //   alert("Vendor login button clicked")
+  //   setIsVendor(true)
+  // }
 
-  function handleLoginLinkCustomer() {
-    console.log(isVendor)
-    setIsVendor(false)
-    console.log(isVendor)
-    // alert("Customer login button clicked")
-  }
+  // function handleLoginLinkCustomer() {
+  //   console.log(isVendor)
+  //   setIsVendor(false)
+  //   console.log(isVendor)
+  //   // alert("Customer login button clicked")
+  // }
 }
