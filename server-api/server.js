@@ -16,9 +16,43 @@ server.use(logger)
 
 // Request Handling
 //GET
-server.get("/", (req, res, next) =>
-  res.send("Home: Please refer to Readme for specific endpoints")
-)
+
+server.get("/", (req, res, next) => {
+  const fs = require("fs")
+  const path = require("path")
+  const mainPath = path.resolve(__dirname, "../client-app/build/index.html")
+  const mainHtml = fs.readFileSync(mainPath, "utf8")
+  // console.log(mainHtml)
+  res.send(mainHtml)
+})
+
+server.get("/static/*", (req, res) => {
+  const fs = require("fs")
+  const path = require("path")
+  const mainPath = path.resolve(__dirname, "../client-app/build/" + req.path)
+  console.log("req.path", req.path)
+  res.send(fs.readFileSync(mainPath, "utf8"))
+})
+
+// server.get("/static/js/2.0731317b.chunk.js", (req, res) => {
+//   const fs = require("fs")
+//   const path = require("path")
+//   const mainPath = path.resolve(
+//     __dirname,
+//     "../client-app/build/static/js/2.0731317b.chunk.js"
+//   )
+//   res.send(fs.readFileSync(mainPath, "utf8"))
+// })
+// server.get("/static/js/main.708b57a2.chunk.js", (req, res) => {
+//   const fs = require("fs")
+//   const path = require("path")
+//   const mainPath = path.resolve(
+//     __dirname,
+//     "../client-app/build/static/js/main.708b57a2.chunk.js"
+//   )
+//   res.send(fs.readFileSync(mainPath, "utf8"))
+// })
+
 server.get("/customers/all", customerLocationsHandler.allCustomerLocations)
 server.get("/vendors/all", vendorLocationsHandler.allVendorLocations)
 
