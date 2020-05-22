@@ -52,15 +52,15 @@ Spicy side note: If you hit the home `'/'` route on the BE server it will serve 
 ### REST API Endpoints
 Can check these locally with Postman
 ### GET
-GET all vendors: `http://localhost:8080/vendors/`
-GET all customer coordinates:`http://localhost:8080/customers/coords`
-GET all vendor coordinates: `http://localhost:8080/vendors/coords`
+- GET all vendors: `http://localhost:8080/vendors/`
+- GET all customer coordinates:`http://localhost:8080/customers/coords`
+- GET all vendor coordinates: `http://localhost:8080/vendors/coords`
 
 ### POST
-POST new customer coordinates: `http://localhost:8080/customers/coords`
-POST new vendor coordinates: `http://localhost:8080/vendors/coords`
-POST signup new vendor `http://localhost:8080/vendors/signup`
-POST login vendor `http://localhost:8080/vendors/login`
+- POST new customer coordinates: `http://localhost:8080/customers/coords`
+- POST new vendor coordinates: `http://localhost:8080/vendors/coords`
+- POST signup new vendor `http://localhost:8080/vendors/signup`
+- POST login vendor `http://localhost:8080/vendors/login`
 
 ## Dependencies Installed
 
