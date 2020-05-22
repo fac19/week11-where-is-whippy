@@ -38,7 +38,7 @@ ALTER USER myuser WITH SUPERUSER;
    \i .../db/init.sql;
 ```
 
-5. Create a .env file in the root folder with the following inside:
+5. Create a .env file in the `server-api/` folder with the following inside:
 
 ```
 PGDATABASE=my_new_db
