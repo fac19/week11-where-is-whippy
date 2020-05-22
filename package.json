@@ -1,5 +1,5 @@
 {
-    "scripts": {
-        "start": "cd server-api && npm i && node server.js"
-    }
+  "scripts": {
+    "start": "cd server-api && npm i && node server.js"
+  }
 }
