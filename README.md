@@ -2,7 +2,54 @@
 
 An ice cream truck finder for all you choc-chip nuts out there
 
-https://where-is-whippy.herokuapp.com/
+## Description
+
+The project is split into two subfolders. `client-app/` is the React front end and `server-api` is the backend Express REST API.
+
+## Deployment
+
+The FE and BE are deployed on Heroku. The [FE is deployed here](https://where-is-whippy.herokuapp.com/). Please refer to the API endpoints section for guidance on CRUD functions.
+
+## Set up Instructions
+
+1. Clone this repo
+2. Run npm i on your terminal to install dependencies in the
+
+- client-app/
+- server-api/
+- Root folder (Only need to `npm i` here if deploying)
+
+N.B `npm start` will start the server but for the FE and BE please make sure you use `npm start` in the client-app/ and server-api/ folders respectively.
+
+### Set up database for backend
+
+3. Enter postgres and set up a superuser for local database
+
+```
+CREATE USER myuser WITH PASSWORD 'mypassword';
+ALTER USER myuser WITH SUPERUSER;
+```
+
+4. Set up local database
+
+```
+   CREATE DATABASE my_new_db WITH OWNER myuser;
+   \c my_new_db;
+   \i .../db/init.sql;
+```
+
+5. Create a .env file in the root folder with the following inside:
+
+```
+PGDATABASE=my_new_db
+PGUSER=myuser
+PGPASSWORD=mypassword
+JWT_SECRET=mysecret
+```
+
+Spicy side note: If you hit the home `'/'` route on the BE server it will serve up the FE.
+
+### REST API Endpoints
 
 ## Dependencies Installed
 
@@ -15,18 +62,3 @@ https://where-is-whippy.herokuapp.com/
 ### Dev Dependencies Installed
 
 - Jest - Testing library (API)
-
-## To install a new local database
-
-psql
-CREATE DATABASE (database_name);
-\c (database_name);
-CREATE USER (user_name) WITH PASSWORD (password);
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO (user_name);
-\include server-api/db/init.sql;
-
-## Set up .env file
-
-PG DATABASE=(database_name)
-PGUSER=(user_name)
-PGPASSWORD=(password)
