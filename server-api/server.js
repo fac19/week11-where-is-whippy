@@ -22,7 +22,6 @@ server.get("/", (req, res, next) => {
   const path = require("path")
   const mainPath = path.resolve(__dirname, "../client-app/build/index.html")
   const mainHtml = fs.readFileSync(mainPath, "utf8")
-  // console.log(mainHtml)
   res.send(mainHtml)
 })
 
@@ -33,25 +32,6 @@ server.get("/static/*", (req, res) => {
   console.log("req.path", req.path)
   res.send(fs.readFileSync(mainPath, "utf8"))
 })
-
-// server.get("/static/js/2.0731317b.chunk.js", (req, res) => {
-//   const fs = require("fs")
-//   const path = require("path")
-//   const mainPath = path.resolve(
-//     __dirname,
-//     "../client-app/build/static/js/2.0731317b.chunk.js"
-//   )
-//   res.send(fs.readFileSync(mainPath, "utf8"))
-// })
-// server.get("/static/js/main.708b57a2.chunk.js", (req, res) => {
-//   const fs = require("fs")
-//   const path = require("path")
-//   const mainPath = path.resolve(
-//     __dirname,
-//     "../client-app/build/static/js/main.708b57a2.chunk.js"
-//   )
-//   res.send(fs.readFileSync(mainPath, "utf8"))
-// })
 
 server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
 server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
@@ -66,7 +46,7 @@ server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
 
 // SIGNUP/LOGIN
 server.post("/vendors/signup", vendors.createVendor)
-// server.post('/login vendor endpoint', callback)
+server.post("/vendors/login", vendors.loginVendor)
 // server.post('/customer endpoint', callback)
 // server.post('/login customer endpoint', callback)
 
@@ -95,3 +75,23 @@ server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 
 // get vendor live location
 // get vendor routes
+
+// THIS IS SOME DEPLOYMENT STUFF
+// server.get("/static/js/2.0731317b.chunk.js", (req, res) => {
+//   const fs = require("fs")
+//   const path = require("path")
+//   const mainPath = path.resolve(
+//     __dirname,
+//     "../client-app/build/static/js/2.0731317b.chunk.js"
+//   )
+//   res.send(fs.readFileSync(mainPath, "utf8"))
+// })
+// server.get("/static/js/main.708b57a2.chunk.js", (req, res) => {
+//   const fs = require("fs")
+//   const path = require("path")
+//   const mainPath = path.resolve(
+//     __dirname,
+//     "../client-app/build/static/js/main.708b57a2.chunk.js"
+//   )
+//   res.send(fs.readFileSync(mainPath, "utf8"))
+// })
