@@ -16,11 +16,11 @@ server.use(logger)
 
 // Request Handling
 //GET
-
+// DEPLOYMENT 
 server.get("/", (req, res, next) => {
   const fs = require("fs")
   const path = require("path")
-  const mainPath = path.resolve(__dirname, "../client-app/build/index.html")
+  const mainPath = path.resolve(__dirname, "../client-app/build/index.html") // We are getting the index.html from the FE build file
   const mainHtml = fs.readFileSync(mainPath, "utf8")
   res.send(mainHtml)
 })
@@ -33,6 +33,7 @@ server.get("/static/*", (req, res) => {
   res.send(fs.readFileSync(mainPath, "utf8"))
 })
 
+// REST API
 server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
 server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
 server.get("/vendors", vendors.allVendors)
