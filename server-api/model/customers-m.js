@@ -21,7 +21,7 @@ function createCustomer(customer) {
       customer.username,
       customer.age,
       customer.gender,
-      customer.icecream_flavour,
+      customer.icecreamFlavour,
     ]
   )
 }

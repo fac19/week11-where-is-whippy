@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 8080
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
 const vendorLocationsHandler = require("./handlers/vendor-location-h")
+const vendorRoutesHandler = require("./handlers/vendor-routes-h")
 const vendors = require("./handlers/vendors-h")
 const customers = require("./handlers/customers-h")
 
@@ -48,7 +49,7 @@ server.post(
   customerLocationsHandler.addNewCustomerLocation
 )
 server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
-
+server.post("/vendors/routes/", vendorRoutesHandler.createNewRoute)
 // SIGNUP/LOGIN
 server.post("/vendors/signup", vendors.createVendor)
 server.post("/vendors/login", vendors.loginVendor)
