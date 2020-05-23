@@ -1,8 +1,7 @@
-const vendorLocationModel = require("../model/vendor-location-m")
+const model = require("../model/vendor-location-m")
 
 function allVendorLocations(req, res, next) {
-  // console.log("allVendorLocations has been called")
-  vendorLocationModel
+  model
     .getAllVendorLocations()
     .then((allLocations) => {
       res.send(allLocations)
@@ -11,13 +10,12 @@ function allVendorLocations(req, res, next) {
 }
 
 function addNewVendorLocation(req, res, next) {
-  const reqBody = {
-    customerId: 1,
-    lat: 51.39246,
-    lng: -0.11335,
-  }
-  vendorLocationModel
-    .addNewVendorLocation(reqBody.customerId, reqBody.lat, reqBody.lng)
+  const vendorId = req.body.vendor_id
+  const lat = req.body.latitude
+  const lng = req.body.longitude
+
+  model
+    .addNewVendorLocation(vendorId, lat, lng)
     .then((returning) => {
       res.send(returning.rows[0])
     })
