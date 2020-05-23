@@ -26,4 +26,8 @@ function createCustomer(customer) {
   )
 }
 
-module.exports = { getAllCustomers, getCustomer, createCustomer }
+module.exports = {
+  getAllCustomers,
+  getCustomer,
+  createCustomer,
+}
