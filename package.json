@@ -4,9 +4,12 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "eslint": "^7.1.0"
+    "eslint": "^7.1.0",
+    "husky": "^4.2.5",
+    "prettier": "2.0.5"
   },
   "dependencies": {
-    "lint-staged": "^10.2.6"
+    "lint-staged": "^10.2.6",
+    "pretty-quick": "^2.0.1"
   }
 }
