@@ -16,21 +16,37 @@ function allVendors(req, res, next) {
     .catch(next)
 }
 
+function getSpecificVendor(req, res, next) {
+  const vendorId = req.params.id
+  vendors
+    .getSpecificVendor(vendorId)
+    .then((vendor) => res.send(vendor))
+    .catch(next)
+}
+
 function createVendor(req, res, next) {
-  const reqBody = {
-    name: "Encrypted",
-    email: "encryptedUser@sausages.com",
-    password: "password",
-    mobile: 07868315123,
-    company_name: "Jimmy's Ice",
-    alcohol: true,
-    vegan_option: true,
-  }
+  const name = req.body.name
+  const email = req.body.email
+  const password = req.body.password
+  const mobile = req.body.mobile
+  const companyName = req.body.company_name
+  const alcohol = req.body.alcohol
+  const vegan = req.body.vegan_option
 
   bcrypt
     .genSalt(10)
-    .then((salt) => bcrypt.hash(reqBody.password, salt))
-    .then((hash) => vendors.createVendor({ ...reqBody, password: hash }))
+    .then((salt) => bcrypt.hash(password, salt))
+    .then((hash) =>
+      vendors.createVendor({
+        name,
+        email,
+        password: hash,
+        mobile,
+        companyName,
+        alcohol,
+        vegan,
+      })
+    )
     .then((newVendor) => {
       const token = jwt.sign({ user: newVendor.name }, SECRET, {
         expiresIn: "60m",
@@ -41,15 +57,13 @@ function createVendor(req, res, next) {
 }
 
 function loginVendor(req, res, next) {
-  const reqBody = {
-    email: "encryptedUser@sausages.com",
-    password: "password",
-  }
+  const email = req.body.email
+  const password = req.body.name
 
   vendors
-    .getUser(reqBody.email)
+    .getVendorLogin(email)
     .then((vendor) => {
-      bcrypt.compare(reqBody.password, vendor.password).then((match) => {
+      bcrypt.compare(password, vendor.password).then((match) => {
         if (!match) {
           const error = new Error("Unauthorized")
           error.status = 401
@@ -65,4 +79,4 @@ function loginVendor(req, res, next) {
     .catch(next)
 }
 
-module.exports = { allVendors, createVendor, loginVendor }
+module.exports = { allVendors, getSpecificVendor, createVendor, loginVendor }
