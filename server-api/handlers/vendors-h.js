@@ -58,11 +58,14 @@ function createVendor(req, res, next) {
 
 function loginVendor(req, res, next) {
   const email = req.body.email
+  console.log("loginVendor -> email", email)
   const password = req.body.password
+  console.log("loginVendor -> password", password)
 
   vendors
     .getVendorLogin(email)
     .then((vendor) => {
+    console.log("loginVendor -> vendor", vendor)
       bcrypt.compare(password, vendor.password).then((match) => {
         if (!match) {
           const error = new Error("Unauthorized")
