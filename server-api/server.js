@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8080
 const customerLocationsHandler = require("./handlers/customer-location-h")
 const vendorLocationsHandler = require("./handlers/vendor-location-h")
 const vendors = require("./handlers/vendors-h")
-const customers = require(".handlers/customers-h")
+const customers = require("./handlers/customers-h")
 
 // Middleware
 const handleError = require("./middleware/handleError")
@@ -35,10 +35,12 @@ server.get("/static/*", (req, res) => {
 })
 
 // REST API
+// GET
 server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
 server.get("/customers/:email", customers.getSpecificCustomer)
 server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
 server.get("/vendors", vendors.allVendors)
+server.get("/vendors/:id", vendors.getSpecificVendor)
 
 // POST
 server.post(
