@@ -71,4 +71,19 @@ function loginCustomer(req, res, next) {
     .catch(next)
 }
 
-module.exports = { allCustomers, createCustomer, loginCustomer }
+function getSpecificCustomer(req, res, next) {
+  const customerEmail = req.params.email
+  customers
+    .getCustomer(customerEmail)
+    .then((specificUser) => {
+      res.send(specificUser)
+    })
+    .catch(next)
+}
+
+module.exports = {
+  allCustomers,
+  createCustomer,
+  loginCustomer,
+  getSpecificCustomer,
+}
