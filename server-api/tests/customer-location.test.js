@@ -1,10 +1,13 @@
 const model = require("../model/customer-location-m")
 const handler = require("../handlers/customer-location-h")
-const build = require("../db/build")
-
+const {build, closeDb} = require("../db/build")
 
 beforeAll(() => {
   return build()
+})
+
+afterAll(() => {
+  return closeDb();
 })
 
 test("Tests are working", () => {
@@ -12,12 +15,6 @@ test("Tests are working", () => {
   var actual = 2 + 2
   expect(expected).toBe(actual)
 })
-
-
-
-// test("should fail", () => {
-//   expect(4).toBe(2)
-// })
 
 // test("Customer location database updates with new entry", () => {
 //   // console.log("hello")

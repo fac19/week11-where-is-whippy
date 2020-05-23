@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jest PGDATABASE=student_project_test_db PGUSER=student_project PGPASSWORD=student_project123 'tests/*'"
+    "test": "jest PGDATABASE=student_project_test_db tests/*.test.js"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
