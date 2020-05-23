@@ -1,3 +1,5 @@
+![](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
+
 # week11-where-is-whippy
 
 An ice cream truck finder for all you choc-chip nuts out there
