@@ -1,5 +1,10 @@
 {
   "scripts": {
-    "start": "cd server-api && npm i && node server.js"
+    "start": "cd server-api && npm i && node server.js",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "husky": "^4.2.5"
   }
 }
