@@ -58,7 +58,7 @@ function createVendor(req, res, next) {
 
 function loginVendor(req, res, next) {
   const email = req.body.email
-  const password = req.body.name
+  const password = req.body.password
 
   vendors
     .getVendorLogin(email)
