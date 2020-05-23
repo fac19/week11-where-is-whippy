@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8080
 const customerLocationsHandler = require("./handlers/customer-location-h")
 const vendorLocationsHandler = require("./handlers/vendor-location-h")
 const vendors = require("./handlers/vendors-h")
+const customers = require(".handlers/customers-h")
 
 // Middleware
 const handleError = require("./middleware/handleError")
@@ -16,7 +17,7 @@ server.use(logger)
 
 // Request Handling
 //GET
-// DEPLOYMENT 
+// DEPLOYMENT
 server.get("/", (req, res, next) => {
   const fs = require("fs")
   const path = require("path")
@@ -48,7 +49,7 @@ server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
 // SIGNUP/LOGIN
 server.post("/vendors/signup", vendors.createVendor)
 server.post("/vendors/login", vendors.loginVendor)
-// server.post('/customer endpoint', callback)
+server.post("/customers/signup", customers.createCustomer)
 // server.post('/login customer endpoint', callback)
 
 // PUT
