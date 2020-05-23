@@ -42,7 +42,7 @@ CREATE TABLE vendor_location
     vendor_id INTEGER REFERENCES vendors(id),
     latitude DECIMAL NOT NULL,
     longitude DECIMAL NOT NULL,
-    time TIMESTAMP
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE vendor_routes
