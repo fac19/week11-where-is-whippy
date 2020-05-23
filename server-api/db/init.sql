@@ -5,6 +5,7 @@ BEGIN;
     CREATE TABLE customers
     (
         id SERIAL PRIMARY KEY,
+        name VARCHAR(50) NOT NULL UNIQUE,
         email VARCHAR(100) NOT NULL UNIQUE,
         password VARCHAR(200) NOT NULL,
         username VARCHAR(50) NOT NULL UNIQUE,
@@ -56,13 +57,13 @@ BEGIN;
     );
 
     INSERT INTO customers
-        (email, password, username, age, gender, icecream_flavour)
+        (name, email, password, username, age, gender, icecream_flavour)
     VALUES
-        ('hettie@test.com', 'password', 'HettieMcC', 24, 'F', 'Caramel'),
-        ('jack@test.com', 'password', 'JackAT', 20, 'M', 'Chocolate'),
-        ('sarah@test.com', 'password', 'SarahJBB', 29, 'F', 'Strawberry'),
-        ('bill@test.com', 'password', 'CrazyEastender', 27, 'm', 'Vanilla'),
-        ('louise@test.com', 'password', 'Louise', 19, 'F', 'Vanilla');
+        ('Hettie', 'hettie@test.com', 'password', 'HettieMcC', 24, 'F', 'Caramel'),
+        ('Jack', 'jack@test.com', 'password', 'JackAT', 20, 'M', 'Chocolate'),
+        ('Sarah', 'sarah@test.com', 'password', 'SarahJBB', 29, 'F', 'Strawberry'),
+        ('Bill', 'bill@test.com', 'password', 'CrazyEastender', 27, 'm', 'Vanilla'),
+        ('Louise', 'louise@test.com', 'password', 'Louise', 19, 'F', 'Vanilla');
 
 
     INSERT INTO customer_location
