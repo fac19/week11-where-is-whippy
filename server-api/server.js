@@ -37,6 +37,7 @@ server.get("/static/*", (req, res) => {
 // REST API
 // GET
 server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
+server.get("/customers/:email", customers.getSpecificCustomer)
 server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
 server.get("/vendors", vendors.allVendors)
 server.get("/vendors/:id", vendors.getSpecificVendor)
