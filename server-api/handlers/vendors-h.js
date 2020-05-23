@@ -40,7 +40,7 @@ function createVendor(req, res, next) {
     .then((salt) => bcrypt.hash(req.body.password, salt))
     .then((hash) => vendors.createVendor({ ...newVendor, password: hash }))
     .then((newVendor) => {
-      const token = jwt.sign({ user: newVendor.name }, SECRET, {
+      const token = jwt.sign({ vendor: newVendor.id }, SECRET, {
         expiresIn: "60m",
       })
       res.status(201).send({ access_token: token })

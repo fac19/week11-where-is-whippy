@@ -66,21 +66,7 @@ server.post("/customers/login", customers.loginCustomer)
 server.use(handleError)
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 
-// Tables
-// Customers Info (done)
-// Vendors Info (done)
-// Customer location (done)
-// vendor live location
-// vendor routes
-
-// routes
-// Vendors need:
-// post live location
-// update live location
-// get live location
-
-// get vendor live location
-// get vendor routes
+module.exports = server
 
 // THIS IS SOME DEPLOYMENT STUFF
 // server.get("/static/js/2.0731317b.chunk.js", (req, res) => {

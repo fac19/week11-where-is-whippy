@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jest PGDATABASE=student_project_test_db tests/*.test.js"
+    "test": "jest PGDATABASE=student_project_test_db tests/*.test.js",
+    "test-watch": "jest --watch PGDATABASE=student_project_test_db tests/*.test.js",
+    "initdb": "node db/build.js"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -18,6 +20,10 @@
     "pg": "^8.2.1"
   },
   "devDependencies": {
-    "jest": "^26.0.1"
+    "jest": "^26.0.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

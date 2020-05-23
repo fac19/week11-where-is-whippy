@@ -1,53 +1,60 @@
+const build = require("../db/build")
+const db = require("../db/connection")
+const server = require("../server")
+const supertest = require('supertest')
+const request = supertest(server)
+
 const model = require("../model/customer-location-m")
 const handler = require("../handlers/customer-location-h")
-const { build, closeDb } = require("../db/build")
 
-const db = require("../db/connection")
-
-// beforeAll(() => {
-//   return build()
-// })
-
-test("Customer location database updates with new entry", () => {
-  build()
-    .then(() => {
-      model.addNewCustomerLocation(1, 51.496281, 0.1452, 21).then((result) => {
-        expect(result.rows[0].latitude).toBe(51.496281)
-        expect(result.rows[0].longitude).toBe(0.1452)
-      })
-    })
-    .catch((error) => console.error(error))
+afterAll(() => {
+  db.end()
 })
 
-// test("Customer location database updates with new entry", () => {
-//   const reqBody = {
-//     customerId: 1,
-//     lat: 51.56506,
-//     lng: -0.09763,
-//     temp: 30,
-//   }
+test("Tests are working", () => {
+  var expected = 4
+  var actual = 2 + 2
+  expect(actual).toBe(expected)
+})
 
-//   build().then(() => {
-//     model
-//       .addNewCustomerLocation(1, 51.496281, 0.1452, 21)
-//       .then((result) => {
-//         console.log(result.rows[0])
-//       })
-//       .catch((error) => {
-//         console.error(error)
-//       })
+describe("Test the customer location model", () => {
+  beforeAll(() => {
+    return build() // Why do we need to return build again?
+  })
 
-//     // model.addNewCustomerLocation(1, 51.496281, 0.1452, 21).then(() => {
-//     //   console.log("hello")
-//     //   model
-//     //     .getAllCustomerLocations()
-//     //     .then((locations) => {
-//     //       const latestLocation = locations[locations.length - 1]
-//     //       expect(latestLocation.latitude).toBe(0)
-//     //     })
-//     // })
-//   })
-// })
+  test("Can GET all customer locations", () => {
+    return model
+      .getAllCustomerLocations() // Make sure you return something otherwise the tests will not run
+      .then((locations) => {
+        expect(locations.length).toBe(5)
+        expect(typeof locations[2].latitude).toBe(typeof "string")
+        expect(locations[2].latitude).toBe("51.500729")
+      })
+  })
+
+  test("Can POST new customer location entry", () => {
+    return model
+      .addNewCustomerLocation(1, 51.496281, 0.1452, 21)
+      .then((result) => {
+        expect(typeof result.rows[0].latitude).toBe(typeof "51.496281")
+        expect(result.rows[0].latitude).toBe("51.496281")
+        expect(result.rows[0].longitude).toBe("0.1452")
+      })
+  })
+})
+
+describe("Test the customer location handler", () => {
+  beforeAll( () => {
+    return build() 
+  })
+
+  test("GET all customer locations", async () => {
+    const res = await request.get('/customers/coords')
+    expect(res.status).toBe(201)
+  })
+
+  
+})
 
 // test("Ensure customer cannot create a new database entry within half an hour of their last", () => {
 //   build().then(() => {
@@ -66,14 +73,3 @@ test("Customer location database updates with new entry", () => {
 //     })
 //   })
 // })
-
-// afterAll(() => {
-//   return closeDb()
-// })
-
-test("Tests are working", () => {
-  var expected = 4
-  var actual = 2 + 2
-  expect(expected).toBe(actual)
-  // db.end()
-})
