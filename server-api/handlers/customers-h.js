@@ -30,7 +30,9 @@ function createCustomer(req, res, next) {
   bcrypt
     .genSalt(10)
     .then((salt) => bcrypt.hash(req.body.password, salt))
-    .then((hash) => customers.createCustomer(newCustomer))
+    .then((hash) =>
+      customers.createCustomer({ ...newCustomer, password: hash })
+    )
     .then((customer) => {
       const token = jwt.sign({ customer: customer.id }, SECRET, {
         expiresIn: "1h",
@@ -42,18 +44,23 @@ function createCustomer(req, res, next) {
 
 function loginCustomer(req, res, next) {
   const email = req.body.email
+  console.log("loginCustomer -> email", email)
   const password = req.body.password
+  console.log("loginCustomer -> password", password)
 
   customers
     .getCustomer(email)
     .then((customer) => {
+      console.log("loginCustomer -> customer", customer)
       bcrypt.compare(password, customer.password).then((match) => {
         if (!match) {
-          const error = new Error("Sorry, no ice cream for you today")
+          const error = new Error(
+            "Unauthorized: Sorry, no ice cream for you today"
+          )
           error.status = 401
           next(error)
         } else {
-          const token = jwt.sign({ customer: customer.id }, SECRET, {
+          const token = jwt.sign({ user: customer.id }, SECRET, {
             expiresIn: "1h",
           })
           res.status(200).send({ access_token: token })

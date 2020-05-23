@@ -25,28 +25,20 @@ function getSpecificVendor(req, res, next) {
 }
 
 function createVendor(req, res, next) {
-  const name = req.body.name
-  const email = req.body.email
-  const password = req.body.password
-  const mobile = req.body.mobile
-  const companyName = req.body.company_name
-  const alcohol = req.body.alcohol
-  const vegan = req.body.vegan_option
+  const newVendor = {
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    mobile: req.body.mobile,
+    companyName: req.body.company_name,
+    alcohol: req.body.alcohol,
+    vegan: req.body.vegan_option,
+  }
 
   bcrypt
     .genSalt(10)
-    .then((salt) => bcrypt.hash(password, salt))
-    .then((hash) =>
-      vendors.createVendor({
-        name,
-        email,
-        password: hash,
-        mobile,
-        companyName,
-        alcohol,
-        vegan,
-      })
-    )
+    .then((salt) => bcrypt.hash(req.body.password, salt))
+    .then((hash) => vendors.createVendor({ ...newVendor, password: hash }))
     .then((newVendor) => {
       const token = jwt.sign({ user: newVendor.name }, SECRET, {
         expiresIn: "60m",
@@ -65,7 +57,7 @@ function loginVendor(req, res, next) {
   vendors
     .getVendorLogin(email)
     .then((vendor) => {
-    console.log("loginVendor -> vendor", vendor)
+      console.log("loginVendor -> vendor", vendor)
       bcrypt.compare(password, vendor.password).then((match) => {
         if (!match) {
           const error = new Error("Unauthorized")
