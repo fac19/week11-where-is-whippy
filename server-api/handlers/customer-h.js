@@ -48,4 +48,27 @@ function createCustomer(req, res, next) {
     .catch(next)
 }
 
-module.exports = { allCustomers, createCustomer }
+function loginCustomer(req, res, next) {
+  const username = req.body.username
+  const password = req.body.password
+
+  customers
+    .getCustomer(email)
+    .then((customer) => {
+      bcrypt.compare(password, customer.password).then((match) => {
+        if (!match) {
+          const error = new Error("Sorry, no ice cream for you today")
+          error.status = 401
+          next(error)
+        } else {
+          const token = jwt.sign({ customer: customer.id }, SECRET, {
+            expiresIn: "1h",
+          })
+          res.status(200).send({ access_token: token })
+        }
+      })
+    })
+    .catch(next)
+}
+
+module.exports = { allCustomers, createCustomer, loginCustomer }

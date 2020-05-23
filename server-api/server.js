@@ -50,7 +50,7 @@ server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
 server.post("/vendors/signup", vendors.createVendor)
 server.post("/vendors/login", vendors.loginVendor)
 server.post("/customers/signup", customers.createCustomer)
-// server.post('/login customer endpoint', callback)
+server.post("/customers/login", customers.loginCustomer)
 
 // PUT
 // server.put('/vendor endpoint', callback) // For vendors to update info

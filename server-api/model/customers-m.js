@@ -4,7 +4,7 @@ function getAllCustomers() {
   return db.query(`SELECT * FROM customers;`).then((results) => results.rows)
 }
 
-function getCustomers(email) {
+function getCustomer(email) {
   return db
     .query(`SELECT * FROM customers WHERE email=($1)`, [email])
     .then((user) => user.rows[0])
