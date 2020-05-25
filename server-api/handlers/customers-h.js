@@ -34,7 +34,7 @@ function createCustomer(req, res, next) {
       customers.createCustomer({ ...newCustomer, password: hash })
     )
     .then((customer) => {
-      const token = jwt.sign({ customer: customer.id }, SECRET, {
+      const token = jwt.sign({ customerId: customer.id }, SECRET, {
         expiresIn: "1h",
       })
       res.status(201).send({ access_token: token })
