@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "cd server-api && npm i && node server.js",
-    "test": "JWT_SECRET=mysecret PGDATABASE=travistestdb jest --coverage=true",
+    "test": "JWT_SECRET=mysecret PGDATABASE=travis_ci_test jest --coverage=true",
     "initdb": "node server-api/db/build.js"
   },
   "devDependencies": {
