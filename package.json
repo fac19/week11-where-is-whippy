@@ -1,15 +1,27 @@
 {
   "scripts": {
     "start": "cd server-api && npm i && node server.js",
-    "lint": "eslint ."
+    "test": "JWT_SECRET=mysecret PGDATABASE=travistestdb jest --coverage=true",
+    "initdb": "node server-api/db/build.js"
   },
   "devDependencies": {
-    "eslint": "^7.1.0",
     "husky": "^4.2.5",
     "prettier": "2.0.5"
   },
   "dependencies": {
+    "jest": "^26.0.1",
     "lint-staged": "^10.2.6",
     "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "pretty-quick --staged"
+    ]
   }
 }
