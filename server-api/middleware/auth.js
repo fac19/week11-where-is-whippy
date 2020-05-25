@@ -54,4 +54,4 @@ function verifyVendor(req, res, next) {
   }
 }
 
-model.exports = { verifyCustomer, verifyVendor }
+module.exports = { verifyCustomer, verifyVendor }

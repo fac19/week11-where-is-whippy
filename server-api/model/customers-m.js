@@ -19,7 +19,6 @@ function getSpecificCustomer(id) {
 }
 
 function createCustomer(newCustomer) {
-  console.log("createCustomer -> newCustomer", newCustomer)
   return db.query(
     `INSERT INTO customers(name, email, password, username, age, gender, icecream_flavour) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id, name, password;`,
     [
@@ -29,7 +28,7 @@ function createCustomer(newCustomer) {
       newCustomer.username,
       newCustomer.age,
       newCustomer.gender,
-      newCustomer.icecream_flavour,
+      newCustomer.icecreamFlavour,
     ]
   )
 }
