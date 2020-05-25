@@ -14,4 +14,4 @@ function createNewRouteStop(routeStop) {
   )
 }
 
-module.exports = { createNewRouteStop }
+module.exports = { createNewRouteStop, getAllStopsInOneRoute }
