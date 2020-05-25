@@ -1,5 +1,5 @@
 const express = require("express")
-const PORT = process.env.PORT || 8080
+
 
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
@@ -38,10 +38,11 @@ server.get("/static/*", (req, res) => {
 // REST API
 // GET
 server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
-server.get("/customers/:email", customers.getSpecificCustomer)
+server.get("/customers/:id", customers.getSpecificCustomer)
 server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
 server.get("/vendors", vendors.allVendors)
 server.get("/vendors/:id", vendors.getSpecificVendor)
+server.get("/customers", customers.allCustomers)
 
 // POST
 server.post(
@@ -64,23 +65,8 @@ server.post("/customers/login", customers.loginCustomer)
 // server.delete('/customer endpoint', callback) // For customer to delete account
 
 server.use(handleError)
-server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 
-// Tables
-// Customers Info (done)
-// Vendors Info (done)
-// Customer location (done)
-// vendor live location
-// vendor routes
-
-// routes
-// Vendors need:
-// post live location
-// update live location
-// get live location
-
-// get vendor live location
-// get vendor routes
+module.exports = server
 
 // THIS IS SOME DEPLOYMENT STUFF
 // server.get("/static/js/2.0731317b.chunk.js", (req, res) => {

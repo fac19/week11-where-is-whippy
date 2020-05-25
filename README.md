@@ -1,3 +1,5 @@
+![](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
+
 # week11-where-is-whippy
 
 An ice cream truck finder for all you choc-chip nuts out there
@@ -50,7 +52,10 @@ JWT_SECRET=mysecret
 Spicy side note: If you hit the home `'/'` route on the BE server it will serve up the FE.
 
 ### REST API Endpoints
-Can check these locally with Postman
+Can check these locally with Postman. Here is a collection for testing endpoints locally. 
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/49b550d2bcb9bb2c74a7)
+
 ### GET
 - GET all vendors: `http://localhost:8080/vendors/`
 - GET all customer coordinates:`http://localhost:8080/customers/coords`
