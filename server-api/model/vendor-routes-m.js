@@ -23,4 +23,10 @@ function getAllStopsInOneRoute(name) {
     .then((results) => results.rows)
 }
 
-module.exports = { createNewRouteStop, getAllStopsInOneRoute }
+function deleteRoute(name) {
+  return db.query(`DELETE FROM vendor_routes WHERE lower(name)=lower($1)`, [
+    name,
+  ])
+}
+
+module.exports = { createNewRouteStop, getAllStopsInOneRoute, deleteRoute }

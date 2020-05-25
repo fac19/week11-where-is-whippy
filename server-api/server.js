@@ -62,6 +62,7 @@ server.post("/vendors/routes/", vendorRoutesHandler.createNewRoute)
 // DELETE
 // server.delete('/vendor endpoint', callback) // For vendors to delete account
 // server.delete('/customer endpoint', callback) // For customer to delete account
+server.delete("/vendors/routes/:name", vendorRoutesHandler.deleteRoute)
 
 server.use(handleError)
 

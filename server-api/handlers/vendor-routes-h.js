@@ -26,7 +26,6 @@ function createNewRoute(req, res, next) {
 function getRoute(req, res, next) {
   const routeName = req.params.name
   //name MUST be sent with %20 on FE
-
   model
     .getAllStopsInOneRoute(routeName)
     .then((allStops) => {
@@ -35,4 +34,12 @@ function getRoute(req, res, next) {
     .catch(next)
 }
 
-module.exports = { createNewRoute, getRoute }
+function deleteRoute(req, res, next) {
+  const routeName = req.params.name
+  model
+    .deleteRoute(routeName)
+    .then((result) => res.sendStatus(204))
+    .catch(next)
+}
+
+module.exports = { createNewRoute, getRoute, deleteRoute }
