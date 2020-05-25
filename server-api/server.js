@@ -64,8 +64,6 @@ server.post("/customers/login", customers.loginCustomer)
 // server.delete('/customer endpoint', callback) // For customer to delete account
 
 server.use(handleError)
-// const PORT = process.env.PORT || 8080
-// server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`)) // This creates an instance of server
 
 module.exports = server
 
