@@ -22,7 +22,7 @@ test("Returns a 401 status code if customer is not verfied", done => {
 
 
   it('should return error 401 if no valid token provided', (done) => {
-    //sed request with no token
+    //send request with no middleware token
     chai.request(app).get('/protected')
       .set('Authorization', '')
       .then(res => {
