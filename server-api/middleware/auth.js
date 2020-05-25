@@ -17,9 +17,9 @@ function verifyCustomer(req, res, next) {
   try {
     const data = jwt.verify(token, SECRET)
     customerModel
-      .getCustomer(data.email)
-      .then((email) => {
-        req.email = email
+      .getSpecificCustomer(data.email)
+      .then((id) => {
+        req.id = id
         next()
       })
       .catch(next)
@@ -41,9 +41,9 @@ function verifyVendor(req, res, next) {
   try {
     const data = jwt.verify(token, SECRET)
     vendorModel
-      .getVendor(data.email)
-      .then((email) => {
-        req.email = email
+      .getSpecificVendor(data.email)
+      .then((id) => {
+        req.id = id
         next()
       })
       .catch(next)
