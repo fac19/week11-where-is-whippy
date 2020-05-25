@@ -5,6 +5,7 @@ function getAllCustomers() {
 }
 
 function getCustomer(email) {
+  console.log("getCustomer -> email", email)
   return db
     .query(`SELECT * FROM customers WHERE email=($1)`, [email])
     .then((user) => user.rows[0])

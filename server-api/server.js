@@ -1,6 +1,5 @@
 const express = require("express")
 
-
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
 const vendorLocationsHandler = require("./handlers/vendor-location-h")
@@ -37,25 +36,25 @@ server.get("/static/*", (req, res) => {
 
 // REST API
 // GET
-server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
+server.get("/customers", customers.allCustomers)
 server.get("/customers/:id", customers.getSpecificCustomer)
-server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
+server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
 server.get("/vendors", vendors.allVendors)
 server.get("/vendors/:id", vendors.getSpecificVendor)
-server.get("/customers", customers.allCustomers)
+server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
+server.get("/vendors/routes/:name", vendorRoutesHandler.getRoute)
 
 // POST
+server.post("/customers/signup", customers.createCustomer)
+server.post("/customers/login", customers.loginCustomer)
 server.post(
   "/customers/coords/",
   customerLocationsHandler.addNewCustomerLocation
 )
-server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
-server.post("/vendors/routes/", vendorRoutesHandler.createNewRoute)
-// SIGNUP/LOGIN
 server.post("/vendors/signup", vendors.createVendor)
 server.post("/vendors/login", vendors.loginVendor)
-server.post("/customers/signup", customers.createCustomer)
-server.post("/customers/login", customers.loginCustomer)
+server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
+server.post("/vendors/routes/", vendorRoutesHandler.createNewRoute)
 
 // PUT
 // server.put('/vendor endpoint', callback) // For vendors to update info
@@ -67,23 +66,3 @@ server.post("/customers/login", customers.loginCustomer)
 server.use(handleError)
 
 module.exports = server
-
-// THIS IS SOME DEPLOYMENT STUFF
-// server.get("/static/js/2.0731317b.chunk.js", (req, res) => {
-//   const fs = require("fs")
-//   const path = require("path")
-//   const mainPath = path.resolve(
-//     __dirname,
-//     "../client-app/build/static/js/2.0731317b.chunk.js"
-//   )
-//   res.send(fs.readFileSync(mainPath, "utf8"))
-// })
-// server.get("/static/js/main.708b57a2.chunk.js", (req, res) => {
-//   const fs = require("fs")
-//   const path = require("path")
-//   const mainPath = path.resolve(
-//     __dirname,
-//     "../client-app/build/static/js/main.708b57a2.chunk.js"
-//   )
-//   res.send(fs.readFileSync(mainPath, "utf8"))
-// })

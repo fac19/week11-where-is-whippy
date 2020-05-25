@@ -23,4 +23,16 @@ function createNewRoute(req, res, next) {
     .catch(next)
 }
 
-module.exports = { createNewRoute }
+function getRoute(req, res, next) {
+  const routeName = req.params.name
+  //name MUST be sent with %20 on FE
+
+  model
+    .getAllStopsInOneRoute(routeName)
+    .then((allStops) => {
+      res.send(allStops)
+    })
+    .catch(next)
+}
+
+module.exports = { createNewRoute, getRoute }
