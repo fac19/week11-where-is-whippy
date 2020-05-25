@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon index.js",
     "test": "jest PGDATABASE=student_project_test_db tests/*.test.js",
     "test-watch": "jest --watch PGDATABASE=student_project_test_db tests/*.test.js",
     "initdb": "node db/build.js"

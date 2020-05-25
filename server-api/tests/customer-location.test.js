@@ -9,10 +9,8 @@ const server = require("../server")
 
 // *important* Without this you get the error:
 // "This usually means that there are asynchronous operations that weren't stopped in your tests."
-afterAll(done => {
+afterAll(() => {
   db.end() // After all the tests have run close the db connection
-  server.close()
-  done()
 })
 
 test("Tests are working", () => {
@@ -23,7 +21,7 @@ test("Tests are working", () => {
 
 describe("Test the customer location model db queries", () => {
   beforeEach(() => {
-    return build() // We teardown the db (drop the tables )then initialize it before each test
+    return build() // We teardown the db (drop the tables) then initialize it before each test
   })
 
   // Declare the variables to be used in the tests
