@@ -1,6 +1,17 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 export default function SignUp({ isVendor }) {
+  const [submission, handleSubmission] = React.useState([])
+  React.useEffect(() => {
+    const reqOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "React POST Request Example" }),
+    }
+    // fetch(url goes here, reqOptions)
+    //   .then(data =>)
+  })
+
   return (
     <section>
       {isVendor ? (
@@ -105,3 +116,37 @@ export default function SignUp({ isVendor }) {
     </section>
   )
 }
+
+//function handleFormSubmission(event){
+//const username = document.getElementById('customerName').value
+//axios.post(api url)
+//.then(result =>)
+//}
+
+// function signUp({ redirect }) {
+//   document.title = "Sign Up"
+//   app.innerHTML = html
+//   app.querySelector("form").addEventListener("submit", (e) => {
+//     e.preventDefault()
+//     const formData = new FormData(e.target)
+//     const formObject = Object.fromEntries(formData)
+//     fetch("https://dogs-rest.herokuapp.com/v1/users/", {
+//       method: "POST",
+//       body: JSON.stringify(formObject),
+
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     })
+//       .then((res) => res.json())
+//       .then((json) => {
+//         window.localStorage.setItem("id", json.id)
+//         window.localStorage.setItem("token", json.access_token)
+//         redirect("/")
+//       })
+//       .catch((error) => {
+//         console.log("error in signup!")
+//         app.querySelector("#message").innerHTML = `<h1>${error} haha</h1>`
+//       })
+//   })
+// }

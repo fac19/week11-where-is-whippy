@@ -52,6 +52,7 @@ server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
 
 // SIGNUP/LOGIN
 server.post("/vendors/signup", vendors.createVendor)
+
 server.post("/vendors/login", vendors.loginVendor)
 server.post("/customers/signup", customers.createCustomer)
 server.post("/customers/login", customers.loginCustomer)
