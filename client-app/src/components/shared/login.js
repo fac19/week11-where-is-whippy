@@ -1,6 +1,6 @@
 import React from "react"
 
-function Login({ isVendor }) {
+export default function Login({ isVendor }) {
   return (
     <section>
       {isVendor ? (
@@ -32,5 +32,3 @@ function Login({ isVendor }) {
   )
 }
 // <h2 className="login-subtitle">Find</h2>Find
-
-module.export = { Login, getLogin }
