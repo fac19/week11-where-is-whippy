@@ -1,6 +1,5 @@
 const express = require("express")
 
-
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
 const vendorLocationsHandler = require("./handlers/vendor-location-h")
@@ -10,6 +9,7 @@ const customers = require("./handlers/customers-h")
 // Middleware
 const handleError = require("./middleware/handleError")
 const logger = require("./middleware/logger")
+const auth = require("./middleware/auth")
 
 const server = express()
 server.use(express.json())
