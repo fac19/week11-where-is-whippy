@@ -1,7 +1,6 @@
 {
   "scripts": {
     "start": "cd server-api && npm i && node server.js",
-    "travistestdb": "TESTDATABASE=travis_ci_test SECRET=testsecret jest",
     "lint": "eslint ."
   },
   "devDependencies": {

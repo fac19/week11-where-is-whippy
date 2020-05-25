@@ -1,10 +1,10 @@
 language: node_js
 node_js: 13
-install:
-  - npm ci
-before_script:
-  - psql -c "create database travis_ci_test;" -U postgres
-script:
-  - npm run initdb && npm run travistestdb
-services:
-  - postgresql
+# install:
+#   - npm ci
+# before_script:
+#   - psql -c "create database travis_ci_test;" -U postgres
+# script:
+#   - npm run initdb && npm run travistestdb
+# services:
+#   - postgresql
