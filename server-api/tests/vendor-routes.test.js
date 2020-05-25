@@ -1,6 +1,5 @@
 const build = require("../db/build")
 const db = require("../db/connection")
-
 const model = require("../model/vendor-routes-m")
 const handler = require("../handlers/vendor-routes-h")
 

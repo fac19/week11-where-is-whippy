@@ -15,7 +15,6 @@ function createNewRouteStop(routeStop) {
 }
 
 function getAllStopsInOneRoute(name) {
-  console.log("getAllStopsInOneRoute -> name", name, typeof name)
   return db
     .query(
       `SELECT stop_number, time_from, time_to, address FROM vendor_routes WHERE lower(name)=lower($1)`,
