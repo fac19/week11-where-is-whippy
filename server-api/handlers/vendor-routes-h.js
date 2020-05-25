@@ -1,50 +1,26 @@
 const model = require("../model/vendor-routes-m")
 
 function createNewRoute(req, res, next) {
-  //   req.body = [
-  //         {"vendor_id": 1,
-  //         "name": "fave-route",
-  //         "stop_number": 1,
-  //         "time_from": 10:00:00,
-  //         "time_to": 11:00:00,
-  //         "address": "E9 6C2"},
-  //         {"vendor_id": 1,
-  //         "name": "fave-route",
-  //         "stop_number": 2,
-  //         "time_from": 11:40:00,
-  //         "time_to": 12:20:00,
-  //         "address": "E9 6C4"},
-  //         {"vendor_id": 1,
-  //         "name": "fave-route",
-  //         "stop_number": 3,
-  //         "time_from": 13:00:00,
-  //         "time_to": 13:20:00,
-  //         "address": "E10 6C4"}
-  //     ]
-  //   const noOfStops = req.body.length
-  //   console.log(typeOf(req.body))
-  req.body
-    .forEach((obj) => {
-      const vendorId = obj.vendor_id
-      const name = obj.name
-      const stopNumber = obj.stop_number
-      const timeFrom = obj.time_from
-      const timeTo = obj.time_to
-      const address = obj.adress
-      console.log(stopNumber)
-      //   model
-      //     .createNewRouteStop({
-      //       vendorId,
-      //       name,
-      //       stopNumber,
-      //       timeFrom,
-      //       timeTo,
-      //       address,
-      //     })
-      //     .then()
-      //     .catch(next)
+  // 1) Create an array of promises as a variable
+  // 2) use a Promise.all to wait until all of the promises have resolved
+  // 3) Then you can chain on a .then()
+
+  //FOR SINGLE ROUTE STOP ADDITION
+  // model
+  // .createNewRouteStop(req.body)
+  // .then((returning) => res.send(returning.rows[0]))
+  // .catch(next)
+
+  let promiseArray = req.body.map((obj) => {
+    return model.createNewRouteStop(obj) // We need to return a promise for each db query!!
+  })
+
+  Promise.all(promiseArray)
+    .then((arrOfDbResults) => {
+      let resultsArrForFe = arrOfDbResults.map((result) => result.rows[0])
+      res.status(201).send(resultsArrForFe)
     })
-    .then((route) => res.status(201).send(route))
     .catch(next)
 }
+
 module.exports = { createNewRoute }
