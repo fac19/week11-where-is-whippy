@@ -30,9 +30,9 @@ function createVendor(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     mobile: req.body.mobile,
-    companyName: req.body.company_name,
+    companyName: req.body.companyName,
     alcohol: req.body.alcohol,
-    vegan: req.body.vegan_option,
+    vegan: req.body.veganOption,
   }
 
   bcrypt

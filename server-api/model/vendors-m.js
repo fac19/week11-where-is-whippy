@@ -8,12 +8,11 @@ function getVendorLogin(email) {
   return db
     .query(`SELECT * FROM vendors WHERE email=($1)`, [email])
     .then((user) => user.rows[0])
-    .catch((error) => error)
 }
 
-function getSpecificVendor(vendor_id) {
+function getSpecificVendor(vendorId) {
   return db
-    .query("SELECT * FROM vendors WHERE id=($1)", [vendor_id])
+    .query("SELECT * FROM vendors WHERE id=($1)", [vendorId])
     .then((user) => user.rows[0])
 }
 
