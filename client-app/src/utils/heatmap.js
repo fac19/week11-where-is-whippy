@@ -10,3 +10,7 @@
 //     zoom: 13,
 //     mapTypeId: 'satellite'
 // })
+
+export default function HeatMap() {
+  const heatmapData = fetch(url + "/customers/coords").then((res) => res.json())
+}

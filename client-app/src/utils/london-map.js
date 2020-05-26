@@ -1,6 +1,7 @@
 import React from "react"
 import { GoogleMap, LoadScript } from "@react-google-maps/api"
-require("dotenv").config()
+
+// "AIzaSyCpZyYXf7AXSluljORIU3cgXpeNJXLl0Fw"
 
 export default function LondonMap() {
   const mapStyles = {
@@ -9,45 +10,21 @@ export default function LondonMap() {
   }
 
   const defaultCenter = {
-    lat: 51.5074,
-    lng: 0.1278,
+    lat: 51.5646,
+    lng: 0.1047,
   }
+
+  const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY
 
   return (
     <section>
-      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
+      <LoadScript googleMapsApiKey={gMAPI}>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={10}
+          zoom={13}
           center={defaultCenter}
-        />
+        ></GoogleMap>
       </LoadScript>
     </section>
   )
 }
-
-// import { Map, GoogleApiWrapper } from 'google-maps-react'
-
-// const mapStyles = {
-//   height: 500,
-//   width: 500,
-// }
-
-// const defaultCenter = {
-//   lat: 51.5074,
-//   lng: 0.1278,
-// }
-
-// render() {
-//     return (
-//       <Map
-//       google={this.PaymentResponse.google}
-//       zoom={8}
-//       style={mapsStyles}
-//       initialCenter={defaultCenter} />
-//   );
-// }
-
-// export default GoogleApiWrapper( {
-//   apiKey: process.env.REACT_APP_GOOGLE_API_KEY
-// })
