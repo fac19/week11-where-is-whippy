@@ -16,7 +16,6 @@ function getSpecificCustomer(id) {
   return db
     .query(`SELECT * FROM customers WHERE id=($1)`, [id])
     .then((user) => user.rows[0])
-    .catch((error) => error)
 }
 
 function createCustomer(newCustomer) {
