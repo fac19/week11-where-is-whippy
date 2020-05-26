@@ -24,7 +24,7 @@ function createCustomer(req, res, next) {
     username: req.body.username,
     age: req.body.age,
     gender: req.body.gender,
-    icecream_flavour: req.body.icecream_flavour,
+    icecreamFlavour: req.body.icecreamFlavour,
   }
 
   bcrypt
@@ -34,7 +34,7 @@ function createCustomer(req, res, next) {
       customers.createCustomer({ ...newCustomer, password: hash })
     )
     .then((customer) => {
-      const token = jwt.sign({ customer: customer.id }, SECRET, {
+      const token = jwt.sign({ customerId: customer.id }, SECRET, {
         expiresIn: "1h",
       })
       res.status(201).send({ access_token: token })
@@ -44,14 +44,11 @@ function createCustomer(req, res, next) {
 
 function loginCustomer(req, res, next) {
   const email = req.body.email
-  console.log("loginCustomer -> email", email)
   const password = req.body.password
-  console.log("loginCustomer -> password", password)
 
   customers
     .getCustomer(email)
     .then((customer) => {
-      console.log("loginCustomer -> customer", customer)
       bcrypt.compare(password, customer.password).then((match) => {
         if (!match) {
           const error = new Error(

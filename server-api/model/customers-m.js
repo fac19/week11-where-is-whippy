@@ -5,6 +5,7 @@ function getAllCustomers() {
 }
 
 function getCustomer(email) {
+  console.log("getCustomer -> email", email)
   return db
     .query(`SELECT * FROM customers WHERE email=($1)`, [email])
     .then((user) => user.rows[0])
@@ -19,7 +20,6 @@ function getSpecificCustomer(id) {
 }
 
 function createCustomer(newCustomer) {
-  console.log("createCustomer -> newCustomer", newCustomer)
   return db.query(
     `INSERT INTO customers(name, email, password, username, age, gender, icecream_flavour) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id, name, password;`,
     [
@@ -29,7 +29,7 @@ function createCustomer(newCustomer) {
       newCustomer.username,
       newCustomer.age,
       newCustomer.gender,
-      newCustomer.icecream_flavour,
+      newCustomer.icecreamFlavour,
     ]
   )
 }

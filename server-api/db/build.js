@@ -8,10 +8,12 @@ function build() {
   return db.query(initSql)
 }
 
-function closeDb() {
-  return db.end()
+// if (require.main === module) build(); // Calls build function only if this file is invoked from command line 
+// If want to invoke from another file use require.main !== module
+if (require.main === module) {
+  console.log(`db reinitializing from command line. Entry point: ${require.main.filename}`)
+  console.log(`Please wait...`)
+  build()
 }
 
-// if (require.main === module) build(); // calls build only if this file is invoked from command line - if via another file, require.main !== module
-
-module.exports = { build, closeDb}
+module.exports = build 

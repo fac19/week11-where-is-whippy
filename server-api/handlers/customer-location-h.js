@@ -5,7 +5,7 @@ function allCustomerLocations(req, res, next) {
   model
     .getAllCustomerLocations()
     .then((allLocations) => {
-      res.send(allLocations)
+      res.send(allLocations) 
     })
     .catch(next)
 }
