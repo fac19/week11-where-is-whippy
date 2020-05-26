@@ -1,13 +1,12 @@
 const model = require("../model/vendor-location-m")
 
 function allVendorLocations(req, res, next) {
-  console.log("hi")
-  // model
-  //   .getAllVendorLocations()
-  //   .then((allLocations) => {
-  //     res.send(allLocations)
-  //   })
-  //   .catch(next)
+  model
+    .getAllVendorLocations()
+    .then((allLocations) => {
+      res.send(allLocations)
+    })
+    .catch(next)
 }
 
 function addNewVendorLocation(req, res, next) {

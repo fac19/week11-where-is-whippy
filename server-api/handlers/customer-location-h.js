@@ -2,7 +2,7 @@ const model = require("../model/customer-location-m")
 // const geo = navigator.geolocation maybe need to add window.navigator.geolocation?
 
 function allCustomerLocations(req, res, next) {
-  console.log("In function")
+  // console.log("In function")
   model
     .getAllCustomerLocations()
     .then((allLocations) => {

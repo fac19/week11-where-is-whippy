@@ -38,11 +38,11 @@ server.get("/static/*", (req, res) => {
 // REST API
 // GET
 server.get("/customers", customers.allCustomers) // WORKING
-server.get("/customers/:id", customers.getSpecificCustomer) // WORKING
 server.get("/customers/coords", customerLocationsHandler.allCustomerLocations) // NOT WORKING
+server.get("/customers/:id", customers.getSpecificCustomer) // WORKING
 server.get("/vendors", vendors.allVendors) // WORKING
+server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations) // WORKING
 server.get("/vendors/:id", vendors.getSpecificVendor) // WORKING
-server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations) // NOT WORKING
 server.get("/vendors/routes/:name", vendorRoutesHandler.getRoute) // WORKING
 
 // POST
