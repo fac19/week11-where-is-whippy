@@ -1,4 +1,5 @@
-![](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0e9d253d-58de-49ca-8655-8be52752a91b/deploy-status)](https://app.netlify.com/sites/competent-feynman-176d4a/deploys)
+![Travis](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
 
 # week11-where-is-whippy
 
