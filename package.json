@@ -20,7 +20,6 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint",
       "pretty-quick --staged"
     ]
   }
