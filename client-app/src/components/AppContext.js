@@ -5,12 +5,15 @@ const AppContext = createContext()
 function AppContextProvider(props) {
   const [logInStatus, setLogInStatus] = useState(true)
   const [isVendor, setIsVendor] = useState(true)
+  const [signUpState, setSignUpState] = useState(null)
 
   const providerValue = {
     logInStatus,
     setLogInStatus,
     isVendor,
     setIsVendor,
+    signUpState,
+    setSignUpState,
   }
 
   return (

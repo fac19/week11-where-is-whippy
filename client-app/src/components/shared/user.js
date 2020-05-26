@@ -1,4 +1,4 @@
-//Second page (have chosen whether customer/vedor) - choice between login + signup
+//Second page (have chosen whether customer/vendor) - choice between login + signup
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
 import { AppContext } from "../AppContext"

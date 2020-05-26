@@ -13,26 +13,16 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { AppContextProvider } from "./components/AppContext"
 
 function App() {
-  const [logInStatus, setLogInStatus] = useState(false)
   const [isVendor, setIsVendor] = useState(true)
 
   return (
     <AppContextProvider>
       <Router>
         <div className="App">
-          <Header logInStatus={logInStatus} />
+          <Header />
           <Switch>
-            <Route
-              path="/"
-              exact
-              render={() => (
-                <Landing setIsVendor={setIsVendor} isVendor={isVendor} />
-              )}
-            />
-            <Route
-              path="/user"
-              component={() => <User isVendor={isVendor} />}
-            />
+            <Route path="/" exact render={() => <Landing />} />
+            <Route path="/user" component={() => <User />} />
             <Route
               path="/signup"
               component={() => <Signup isVendor={isVendor} />}

@@ -1,84 +1,58 @@
 // https://github.com/fac18/signpost/blob/master/client/src/components/AddNewService/AddNewService.js
 
-import React, { useState, useEffect, useReducer } from "react"
+import React, { useState, useEffect, useReducer, useContext } from "react"
 import postSignUpInformation from "../../utils/postData"
+import { AppContext } from "../AppContext"
 
-function reducer(state, { field, value }) {
-  return {
-    ...state,
-    [field]: value,
-  }
-}
+export default function SignUp() {
+  const { isVendor, signUpState, setSignUpState } = useContext(AppContext)
+  console.log(isVendor, signUpState)
 
-export default function SignUp({ isVendor }) {
-  // const [submission, handleSubmission] = React.useState([])
-  // React.useEffect(() => {
-  //   const reqOptions = {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ title: "React POST Request Example" }),
-  //   }
-  // fetch(url goes here, reqOptions)
-  //   .then(data =>)
+  useEffect(
+    //checks to see if a user is a customer or vendor and will render the relevant form fields
+    () => {
+      isVendor
+        ? setSignUpState({
+            name: "",
+            email: "",
+            password: "",
+            mobile: "",
+            company_name: "",
+            alcohol: "",
+            vegan_option: "",
+          })
+        : setSignUpState({
+            name: "",
+            email: "",
+            password: "",
+            username: "",
+            age: "",
+            gender: "",
+            icecream_flavour: "",
+          })
+    },
+    []
+  )
 
-  const initialState = isVendor
-    ? {
-        name: "",
-        email: "",
-        password: "",
-        mobile: "",
-        company_name: "",
-        alcohol: "",
-        vegan_option: "",
-      }
-    : {
-        name: "",
-        email: "",
-        password: "",
-        username: "",
-        age: "",
-        gender: "",
-        icecream_flavour: "",
-      }
+  // const [state, dispatch] = useReducer(reducer, signUpState)
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  // const handleOnChange = (e) => {
+  //   dispatch({ field: e.target.name, value: e.target.value })
+  // }
 
-  const handleOnChange = (e) => {
-    dispatch({ field: e.target.name, value: e.target.value })
-  }
+  const handleOnChange = (e) => {}
 
-  if (isVendor) {
-    const {
-      name,
-      email,
-      password,
-      mobile,
-      company_name,
-      alcohol,
-      vegan_option,
-    } = state
-  } else {
-    const {
-      name,
-      email,
-      password,
-      username,
-      age,
-      gender,
-      icecream_flavour,
-    } = state
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    postSignUpInformation(state)
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error))
-    //post signup.
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   postSignUpInformation(state)
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.error(error))
+  //   //post signup.
+  // }
 
   return (
     <section>
+      <h1>Hello!</h1>
       {isVendor ? (
         <form action="submit" onSubmit={handleSubmit}>
           <label for="vendorName">Name</label>
@@ -88,9 +62,9 @@ export default function SignUp({ isVendor }) {
             name="name"
             required
             onChange={handleOnChange}
+            value={signUpState.name}
           />
-
-          <label for="vendorEmail">Email</label>
+          {/* <label for="vendorEmail">Email</label>
           <input
             type="email"
             id="vendorEmail"
@@ -160,9 +134,9 @@ export default function SignUp({ isVendor }) {
               id="veganNo"
               name="vegan"
               value="false"
-              onChange={handleOnChange}
-            />
-          </fieldset>
+              onChange={handleOnChange} */}
+          />
+          {/* </fieldset> */}
           <button>Sign up</button>
         </form>
       ) : (
@@ -252,6 +226,45 @@ export default function SignUp({ isVendor }) {
     </section>
   )
 }
+
+// const [submission, handleSubmission] = React.useState([])
+// React.useEffect(() => {
+//   const reqOptions = {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ title: "React POST Request Example" }),
+//   }
+// fetch(url goes here, reqOptions)
+//   .then(data =>)
+
+// function reducer(state, { field, value }) {
+//   return {
+//     ...state,
+//     [field]: value,
+//   }
+// }
+
+// if (isVendor) {
+//   const {
+//     name,
+//     email,
+//     password,
+//     mobile,
+//     company_name,
+//     alcohol,
+//     vegan_option,
+//   } = state
+// } else {
+//   const {
+//     name,
+//     email,
+//     password,
+//     username,
+//     age,
+//     gender,
+//     icecream_flavour,
+//   } = state
+// }
 
 //function handleFormSubmission(event){
 //const username = document.getElementById('customerName').value
