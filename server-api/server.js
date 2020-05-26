@@ -37,26 +37,26 @@ server.get("/static/*", (req, res) => {
 
 // REST API
 // GET
-server.get("/customers", customers.allCustomers)
-server.get("/customers/:id", customers.getSpecificCustomer)
-server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
-server.get("/vendors", vendors.allVendors)
-server.get("/vendors/:id", vendors.getSpecificVendor)
-server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
-server.get("/vendors/routes/:name", vendorRoutesHandler.getRoute)
+server.get("/customers", customers.allCustomers) // WORKING
+server.get("/customers/:id", customers.getSpecificCustomer) // WORKING
+server.get("/customers/coords", customerLocationsHandler.allCustomerLocations) // NOT WORKING
+server.get("/vendors", vendors.allVendors) // WORKING
+server.get("/vendors/:id", vendors.getSpecificVendor) // WORKING
+server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations) // NOT WORKING
+server.get("/vendors/routes/:name", vendorRoutesHandler.getRoute) // WORKING
 
 // POST
-server.post("/customers/signup", customers.createCustomer)
-server.post("/customers/login", customers.loginCustomer)
+server.post("/customers/signup", customers.createCustomer) // WORKING
+server.post("/customers/login", customers.loginCustomer) // WORKING
 server.post(
   "/customers/coords/",
   customerLocationsHandler.addNewCustomerLocation
-)
-server.post("/vendors/signup", vendors.createVendor)
+) // WORKING
 
-server.post("/vendors/login", vendors.loginVendor)
-server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
-server.post("/vendors/routes/", vendorRoutesHandler.createNewRoute)
+server.post("/vendors/signup", vendors.createVendor) // WORKING
+server.post("/vendors/login", vendors.loginVendor) // WORKING
+server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation) // WORKING
+server.post("/vendors/routes/", vendorRoutesHandler.createNewRoute) // WORKING
 
 // PUT
 // server.put('/vendor endpoint', callback) // For vendors to update info

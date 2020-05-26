@@ -3,7 +3,7 @@ const db = require("../db/connection")
 function getAllCustomerLocations() {
   return db
     .query(`SELECT * FROM customer_location;`)
-    .then((results) => results.rows)
+    .then((results) => results.row[0])
 }
 
 function addNewCustomerLocation(customer_id, latitude, longitude, temperature) {
