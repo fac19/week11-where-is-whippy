@@ -1,8 +1,6 @@
 import React, { useContext } from "react"
 import { AppContext } from "../AppContext"
 
-// { logInStatus }
-
 export default function Header() {
   const { logInStatus } = useContext(AppContext)
 

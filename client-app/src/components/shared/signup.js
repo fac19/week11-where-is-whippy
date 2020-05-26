@@ -5,34 +5,13 @@ import postSignUpInformation from "../../utils/postData"
 import { AppContext } from "../AppContext"
 
 export default function SignUp() {
-  const { isVendor, signUpState, setSignUpState } = useContext(AppContext)
-  console.log(isVendor, signUpState)
-
-  useEffect(
-    //checks to see if a user is a customer or vendor and will render the relevant form fields
-    () => {
-      isVendor
-        ? setSignUpState({
-            name: "",
-            email: "",
-            password: "",
-            mobile: "",
-            company_name: "",
-            alcohol: "",
-            vegan_option: "",
-          })
-        : setSignUpState({
-            name: "",
-            email: "",
-            password: "",
-            username: "",
-            age: "",
-            gender: "",
-            icecream_flavour: "",
-          })
-    },
-    []
-  )
+  const {
+    isVendor,
+    signUpStateVendor,
+    setSignUpStateVendor,
+    signUpStateCustomer,
+    setSignUpStateCustomer,
+  } = useContext(AppContext)
 
   // const [state, dispatch] = useReducer(reducer, signUpState)
 
@@ -40,7 +19,23 @@ export default function SignUp() {
   //   dispatch({ field: e.target.name, value: e.target.value })
   // }
 
-  const handleOnChange = (e) => {}
+  const handleOnChangeVendor = (e) => {
+    const property = e.target.name
+    const newSignUpStateVendor = {
+      ...signUpStateVendor,
+      [property]: e.target.value,
+    }
+    setSignUpStateVendor(newSignUpStateVendor)
+  }
+
+  const handleOnChangeCustomer = (e) => {
+    const property = e.target.name
+    const newSignUpStateCustomer = {
+      ...signUpStateCustomer,
+      [property]: e.target.value,
+    }
+    setSignUpStateCustomer(newSignUpStateCustomer)
+  }
 
   // const handleSubmit = (e) => {
   //   e.preventDefault()
@@ -50,127 +45,112 @@ export default function SignUp() {
   //   //post signup.
   // }
 
+  // onSubmit={handleSubmit}
+
   return (
     <section>
       <h1>Hello!</h1>
+      <form>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          onChange={
+            isVendor
+              ? (e) => handleOnChangeVendor(e)
+              : (e) => handleOnChangeCustomer(e)
+          }
+          value={isVendor ? signUpStateVendor.name : signUpStateCustomer.name}
+        />
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          onChange={
+            isVendor
+              ? (e) => handleOnChangeVendor(e)
+              : (e) => handleOnChangeCustomer(e)
+          }
+          value={isVendor ? signUpStateVendor.email : signUpStateCustomer.email}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          onChange={
+            isVendor
+              ? (e) => handleOnChangeVendor(e)
+              : (e) => handleOnChangeCustomer(e)
+          }
+          value={
+            isVendor ? signUpStateVendor.password : signUpStateCustomer.password
+          }
+        />        
+        
       {isVendor ? (
-        <form action="submit" onSubmit={handleSubmit}>
-          <label for="vendorName">Name</label>
-          <input
-            type="text"
-            id="vendorName"
-            name="name"
-            required
-            onChange={handleOnChange}
-            value={signUpState.name}
-          />
-          {/* <label for="vendorEmail">Email</label>
-          <input
-            type="email"
-            id="vendorEmail"
-            name="email"
-            required
-            onChange={handleOnChange}
-          />
-
-          <label for="vendorPassword">Password</label>
-          <input
-            type="password"
-            id="vendorPassword"
-            name="password"
-            required
-            onChange={handleOnChange}
-          />
-
-          <label for="vendorMobile">Mobile Number</label>
+          <label Htmlfor="vendorMobile">Mobile Number</label>
           <input
             type="tel"
             id="vendorMobile"
             name="mobile"
             required
-            onChange={handleOnChange}
+            // onChange={handleOnChange}
           />
-
-          <label for="vendorCompany">Company Name</label>
+          <label htmlFor="vendorCompany">Company Name</label>
           <input
             type="text"
             id="vendorCompany"
             name="company"
             required
-            onChange={handleOnChange}
+            // onChange={handleOnChange}
           />
-
           <fieldset id="vendorAlcohol">
             <legend>Do you sell alcohol?</legend>
-            <label for="alcoholYes">Yes</label>
+            <label htmlFor="alcoholYes">Yes</label>
             <input
               type="radio"
               id="alcoholYes"
               name="alcohol"
               value="true"
               checked
-              onChange={handleOnChange}
+              // onChange={handleOnChange}
             />
 
-            <label for="alcoholNo">No</label>
+            <label htmlFor="alcoholNo">No</label>
             <input type="radio" id="alcoholNo" name="alcohol" value="false" />
           </fieldset>
-
           <fieldset id="vendorVegan">
             <legend>Do you offer vegan options?</legend>
-            <label for="veganYes">Yes</label>
+            <label htmlFor="veganYes">Yes</label>
             <input
               type="radio"
               id="veganYes"
               name="vegan"
               value="true"
               checked
-              onChange={handleOnChange}
+              // onChange={handleOnChange}
             />
 
-            <label for="veganNo">No</label>
+            <label htmlFor="veganNo">No</label>
             <input
               type="radio"
               id="veganNo"
               name="vegan"
               value="false"
-              onChange={handleOnChange} */}
-          />
-          {/* </fieldset> */}
-          <button>Sign up</button>
-        </form>
-      ) : (
-        <form action="">
-          <label for="customerName">Name</label>
-          <input
-            type="text"
-            id="customerName"
-            name="name"
-            required
-            onChange={handleOnChange}
-          />
-
-          <label for="customerEmail">Email</label>
-          <input
-            type="email"
-            id="customerEmail"
-            name="email"
-            required
-            onChange={handleOnChange}
-          />
-
-          <label for="customerPassword">Password</label>
-          <input
-            type="password"
-            id="customerPassword"
-            name="password"
-            required
-            onChange={handleOnChange}
-          />
-
+              // onChange={handleOnChange}
+            />
+          </fieldset>
+        )
+       : (
           <fieldset id="customerAge">
             <legend>What is your age group?</legend>
-            <label for="age-group-1">14-18</label>
+            <label htmlFor="age-group-1">14-18</label>
             <input
               type="radio"
               id="ageGroup1"
@@ -179,7 +159,7 @@ export default function SignUp() {
               checked
               onChange={handleOnChange}
             />
-            <label for="age-group-2">19-24</label>
+            <label htmlFor="age-group-2">19-24</label>
             <input
               type="radio"
               id="ageGroup2"
@@ -187,7 +167,7 @@ export default function SignUp() {
               value="19-24"
               onChange={handleOnChange}
             />
-            <label for="ageGroup3">25-30</label>
+            <label htmlFor="ageGroup3">25-30</label>
             <input
               type="radio"
               id="ageGroup3"
@@ -195,7 +175,7 @@ export default function SignUp() {
               value="25-30"
               onChange={handleOnChange}
             />
-            <label for="ageGroup4">31-40</label>
+            <label htmlFor="ageGroup4">31-40</label>
             <input
               type="radio"
               id="ageGroup4"
@@ -210,7 +190,7 @@ export default function SignUp() {
               In order to use this app, I consent to sharing my location
               information
             </legend>
-            <label for="consent">I consent</label>
+            <label htmlFor="consent">I consent</label>
             <input
               type="radio"
               id="consent"
@@ -220,12 +200,38 @@ export default function SignUp() {
               onChange={handleOnChange}
             />
           </fieldset>
-          <button type="submit">Sign up</button>
+          
         </form>
       )}
     </section>
   )
 }
+
+// useEffect(
+//   //checks to see if a user is a customer or vendor and will render the relevant form fields
+//   () => {
+//     isVendor
+//       ? setSignUpState({
+//           name: "",
+//           email: "",
+//           password: "",
+//           mobile: "",
+//           company_name: "",
+//           alcohol: "",
+//           vegan_option: "",
+//         })
+//       : setSignUpState({
+//           name: "",
+//           email: "",
+//           password: "",
+//           username: "",
+//           age: "",
+//           gender: "",
+//           icecream_flavour: "",
+//         })
+//   },
+//   []
+// )
 
 // const [submission, handleSubmission] = React.useState([])
 // React.useEffect(() => {
