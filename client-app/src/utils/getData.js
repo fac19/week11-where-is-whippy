@@ -2,7 +2,7 @@
 const hostname = window && window.location && window.location.hostname
 const domain =
   hostname === "localhost"
-    ? "http://localhost:3000"
+    ? "http://localhost:8080"
     : "https://where-is-whippy.herokuapp.com"
 
 const getRequest = (endpoint) => {
