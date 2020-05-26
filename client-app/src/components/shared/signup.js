@@ -1,6 +1,6 @@
 // https://github.com/fac18/signpost/blob/master/client/src/components/AddNewService/AddNewService.js
 
-import React, { useState, useEffect, useReducer, useContext } from "react"
+import React, { Fragment, useState, useEffect, useReducer, useContext } from "react"
 import postSignUpInformation from "../../utils/postData"
 import { AppContext } from "../AppContext"
 
@@ -48,10 +48,8 @@ export default function SignUp() {
   // onSubmit={handleSubmit}
 
   return (
-    <section>
-      <h1>Hello!</h1>
-      <form>
-        <label htmlFor="name">Name</label>
+    <form>
+      <label htmlFor="name">Name</label>
         <input
           type="text"
           id="name"
@@ -64,7 +62,8 @@ export default function SignUp() {
           }
           value={isVendor ? signUpStateVendor.name : signUpStateCustomer.name}
         />
-        <label htmlFor="email">Email</label>
+
+    <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -77,7 +76,9 @@ export default function SignUp() {
           }
           value={isVendor ? signUpStateVendor.email : signUpStateCustomer.email}
         />
-        <label htmlFor="password">Password</label>
+
+
+    <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -91,101 +92,109 @@ export default function SignUp() {
           value={
             isVendor ? signUpStateVendor.password : signUpStateCustomer.password
           }
-        />        
-        
-      {isVendor ? (
-          <label Htmlfor="vendorMobile">Mobile Number</label>
-          <input
-            type="tel"
-            id="vendorMobile"
-            name="mobile"
-            required
-            // onChange={handleOnChange}
-          />
-          <label htmlFor="vendorCompany">Company Name</label>
-          <input
-            type="text"
-            id="vendorCompany"
-            name="company"
-            required
-            // onChange={handleOnChange}
-          />
-          <fieldset id="vendorAlcohol">
-            <legend>Do you sell alcohol?</legend>
-            <label htmlFor="alcoholYes">Yes</label>
-            <input
-              type="radio"
-              id="alcoholYes"
-              name="alcohol"
-              value="true"
-              checked
-              // onChange={handleOnChange}
-            />
+        />
+    </form>
+    
 
-            <label htmlFor="alcoholNo">No</label>
-            <input type="radio" id="alcoholNo" name="alcohol" value="false" />
-          </fieldset>
-          <fieldset id="vendorVegan">
-            <legend>Do you offer vegan options?</legend>
-            <label htmlFor="veganYes">Yes</label>
-            <input
-              type="radio"
-              id="veganYes"
-              name="vegan"
-              value="true"
-              checked
-              // onChange={handleOnChange}
-            />
+        // {isVendor ? (
+        // <>
+        // <label Htmlfor="vendorMobile">Mobile Number</label>
+        //   <input
+        //     type="tel"
+        //     id="vendorMobile"
+        //     name="mobile"
+        //     required
+        //     // onChange={handleOnChange}
+        //   />
+        //   <label htmlFor="vendorCompany">Company Name</label>
+        //   <input
+        //     type="text"
+        //     id="vendorCompany"
+        //     name="company"
+        //     required
+        //     // onChange={handleOnChange}
+        //   />
+        //   <fieldset id="vendorAlcohol">
+        //     <legend>Do you sell alcohol?</legend>
+        //     <label htmlFor="alcoholYes">Yes</label>
+        //     <input
+        //       type="radio"
+        //       id="alcoholYes"
+        //       name="alcohol"
+        //       value="true"
+        //       checked
+        //       // onChange={handleOnChange}
+        //     />
 
-            <label htmlFor="veganNo">No</label>
-            <input
-              type="radio"
-              id="veganNo"
-              name="vegan"
-              value="false"
-              // onChange={handleOnChange}
-            />
-          </fieldset>
-        )
-       : (
-          <fieldset id="customerAge">
-            <legend>What is your age group?</legend>
-            <label htmlFor="age-group-1">14-18</label>
-            <input
-              type="radio"
-              id="ageGroup1"
-              name="ageGroup"
-              value="14-18"
-              checked
-              onChange={handleOnChange}
-            />
-            <label htmlFor="age-group-2">19-24</label>
-            <input
-              type="radio"
-              id="ageGroup2"
-              name="ageGroup"
-              value="19-24"
-              onChange={handleOnChange}
-            />
-            <label htmlFor="ageGroup3">25-30</label>
-            <input
-              type="radio"
-              id="ageGroup3"
-              name="ageGroup"
-              value="25-30"
-              onChange={handleOnChange}
-            />
-            <label htmlFor="ageGroup4">31-40</label>
-            <input
-              type="radio"
-              id="ageGroup4"
-              name="ageGroup"
-              value="31-40"
-              onChange={handleOnChange}
-            />
-          </fieldset>
+        //     <label htmlFor="alcoholNo">No</label>
+        //     <input type="radio" id="alcoholNo" name="alcohol" value="false" />
+        //   </fieldset>
+        //   <fieldset id="vendorVegan">
+        //     <legend>Do you offer vegan options?</legend>
+        //     <label htmlFor="veganYes">Yes</label>
+        //     <input
+        //       type="radio"
+        //       id="veganYes"
+        //       name="vegan"
+        //       value="true"
+        //       checked
+        //       // onChange={handleOnChange}
+        //     />
 
-          <fieldset>
+        //     <label htmlFor="veganNo">No</label>
+        //     <input
+        //       type="radio"
+        //       id="veganNo"
+        //       name="vegan"
+        //       value="false"
+        //       // onChange={handleOnChange}
+        //     />
+        //     </>    
+        // : (
+        //   <fieldset id="customerAge">
+        //     <legend>What is your age group?</legend>
+        //     <label htmlFor="age-group-1">14-18</label>
+        //     <input
+        //       type="radio"
+        //       id="ageGroup1"
+        //       name="ageGroup"
+        //       value="14-18"
+        //       checked
+        //       onChange={handleOnChange}
+        //     />
+        //     <label htmlFor="age-group-2">19-24</label>
+        //     <input
+        //       type="radio"
+        //       id="ageGroup2"
+        //       name="ageGroup"
+        //       value="19-24"
+        //       onChange={handleOnChange}
+        //     />
+        //     <label htmlFor="ageGroup3">25-30</label>
+        //     <input
+        //       type="radio"
+        //       id="ageGroup3"
+        //       name="ageGroup"
+        //       value="25-30"
+        //       onChange={handleOnChange}
+        //     />
+        //     <label htmlFor="ageGroup4">31-40</label>
+        //     <input
+        //       type="radio"
+        //       id="ageGroup4"
+        //       name="ageGroup"
+        //       value="31-40"
+        //       onChange={handleOnChange}
+        //     />
+        // })
+
+    
+   
+
+  )
+}
+
+{/* <fieldset>
             <legend>
               In order to use this app, I consent to sharing my location
               information
@@ -199,13 +208,7 @@ export default function SignUp() {
               required
               onChange={handleOnChange}
             />
-          </fieldset>
-          
-        </form>
-      )}
-    </section>
-  )
-}
+          </fieldset> */}
 
 // useEffect(
 //   //checks to see if a user is a customer or vendor and will render the relevant form fields
