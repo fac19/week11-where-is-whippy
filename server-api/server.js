@@ -10,6 +10,7 @@ const customers = require("./handlers/customers-h")
 // Middleware
 const handleError = require("./middleware/handleError")
 const logger = require("./middleware/logger")
+const auth = require("./middleware/auth")
 
 const server = express()
 server.use(express.json())
@@ -52,6 +53,7 @@ server.post(
   customerLocationsHandler.addNewCustomerLocation
 )
 server.post("/vendors/signup", vendors.createVendor)
+
 server.post("/vendors/login", vendors.loginVendor)
 server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
 server.post("/vendors/routes/", vendorRoutesHandler.createNewRoute)
