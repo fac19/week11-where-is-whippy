@@ -10,7 +10,7 @@ function allVendorLocations(req, res, next) {
 }
 
 function addNewVendorLocation(req, res, next) {
-  const vendorId = req.body.vendor_id
+  const vendorId = req.body.vendorId
   const lat = req.body.latitude
   const lng = req.body.longitude
 

@@ -12,7 +12,7 @@ function allCustomerLocations(req, res, next) {
 }
 
 function addNewCustomerLocation(req, res, next) {
-  const customerId = req.body.customer_id
+  const customerId = req.body.customerId
   const lat = req.body.latitude
   const lng = req.body.longitude
   const temp = req.body.temperature

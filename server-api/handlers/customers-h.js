@@ -24,7 +24,7 @@ function createCustomer(req, res, next) {
     username: req.body.username,
     age: req.body.age,
     gender: req.body.gender,
-    icecreamFlavour: req.body.icecream_flavour,
+    icecreamFlavour: req.body.icecreamFlavour,
   }
 
   bcrypt

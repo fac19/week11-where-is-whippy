@@ -6,10 +6,10 @@ function getAllVendorLocations() {
     .then((result) => result.rows)
 }
 
-function addNewVendorLocation(vendor_id, latitude, longitude) {
+function addNewVendorLocation(vendorId, latitude, longitude) {
   return db.query(
     `INSERT INTO vendor_location (vendor_id, latitude, longitude) VALUES ($1, $2, $3) RETURNING vendor_id, latitude, longitude, time;`,
-    [vendor_id, latitude, longitude]
+    [vendorId, latitude, longitude]
   )
 }
 
