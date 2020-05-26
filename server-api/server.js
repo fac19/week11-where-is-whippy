@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
@@ -16,7 +17,17 @@ const server = express()
 server.use(express.json())
 server.use(logger)
 
+// Only allowing cross origin request from a specific url.
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV == "production"
+      ? "https://competent-feynman-176d4a.netlify.app/"
+      : "http://localhost:3000",
+}
+
 // Request Handling
+server.use(cors(corsOptions))
+
 //GET
 
 // REST API
