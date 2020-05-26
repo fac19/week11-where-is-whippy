@@ -33,7 +33,7 @@ function verifyCustomer(req, res, next) {
 
 function verifyVendor(req, res, next) {
   const authHeader = req.headers.authorization
-  console.log(authHeader)
+  console.log("autheheader" + authHeader)
   if (!authHeader) {
     const error = new Error("Authorization header required") //look into this
     error.status = 400
@@ -42,7 +42,7 @@ function verifyVendor(req, res, next) {
   const token = authHeader.replace("Bearer ", "")
   try {
     const data = jwt.verify(token, SECRET)
-    console.log(data)
+    console.log("data" + data)
     vendorModel
       .getSpecificVendor(data.user)
       .then((user) => {

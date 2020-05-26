@@ -20,6 +20,7 @@ function addNewCustomerLocation(req, res, next) {
   model
     .addNewCustomerLocation(customerId, lat, lng, temp)
     .then((RETURNING) => {
+      console.log(RETURNING)
       res.send(RETURNING.rows[0])
     })
     .catch(next)
