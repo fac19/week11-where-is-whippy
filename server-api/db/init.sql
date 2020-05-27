@@ -23,9 +23,9 @@ CREATE TABLE vendors
     password VARCHAR(200) NOT NULL,
     mobile VARCHAR(15) NOT NULL,
     company_name VARCHAR(50) NOT NULL,
-    al cohol
+    alcohol
     BOOLEAN NOT NULL,
-     ve gan_option BOOLEAN NOT NULL
+    vegan_option BOOLEAN NOT NULL
   );
 
     CREATE TABLE customer_location
@@ -34,9 +34,9 @@ CREATE TABLE vendors
         customer_id INTEGER REFERENCES customers(id),
         latitude DECIMAL NOT NULL,
         longitude DECIMAL NOT NULL,
-        te mperature
+        temperature
         DECIMAL NOT NULL,
-     ti me TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+     time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
 
         CREATE TABLE vendor_location

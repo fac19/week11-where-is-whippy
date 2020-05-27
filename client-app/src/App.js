@@ -10,40 +10,34 @@ import Heatmap from "./components/vendor/heatmap.js"
 import Timetable from "./components/vendor/timetable.js"
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+// For React context management
+import { AppContextProvider } from "./components/AppContext"
 
 function App() {
-  const [logInStatus, setLogInStatus] = useState(false)
   const [isVendor, setIsVendor] = useState(true)
-  console.log("App -> isVendor", isVendor)
 
   return (
-    <Router>
-      <div className="App">
-        <Header logInStatus={logInStatus} />
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <Landing setIsVendor={setIsVendor} isVendor={isVendor} />
-            )}
-          />
-          <Route path="/user" component={() => <User isVendor={isVendor} />} />
-          <Route
-            path="/signup"
-            component={() => <Signup isVendor={isVendor} />}
-          />
-          <Route
-            path="/login"
-            component={() => <Login isVendor={isVendor} />}
-          />
-          <Route path="/home" component={() => <Home />} />
-          <Route path="/heatmap" component={() => <Heatmap />} />
-
-          <Route path="/timetable" component={() => <Timetable />} />
-        </Switch>
-      </div>
-    </Router>
+    <AppContextProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route path="/" exact render={() => <Landing />} />
+            <Route path="/user" component={() => <User />} />
+            <Route
+              path="/signup"
+              component={() => <Signup isVendor={isVendor} />}
+            />
+            <Route
+              path="/login"
+              component={() => <Login isVendor={isVendor} />}
+            />
+            <Route path="/home" component={() => <Home />} />
+            <Route path="/heatmap" component={() => <Heatmap />} />
+          </Switch>
+        </div>
+      </Router>
+    </AppContextProvider>
   )
 }
 

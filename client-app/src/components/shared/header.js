@@ -1,6 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
+import { AppContext } from "../AppContext"
 
-export default function Header({ logInStatus }) {
+export default function Header() {
+  const { logInStatus } = useContext(AppContext)
+
   return (
     <header>
       <h1>Where's Whippy</h1>
