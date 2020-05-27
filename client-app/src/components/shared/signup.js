@@ -1,7 +1,4 @@
-import React, {
-  useEffect,
-  useContext,
-} from "react"
+import React, { useContext } from "react"
 import postSignUpInformation from "../../utils/postData"
 import { AppContext } from "../AppContext"
 
@@ -26,6 +23,7 @@ export default function SignUp() {
   } = useContext(AppContext)
 
   const handleOnChangeVendor = (e) => {
+    debugger;
     let property = e.target.name
     let value = e.target.value
     if (value === "true") {
@@ -60,7 +58,10 @@ export default function SignUp() {
   const handleSubmitVendor = (e) => {
     e.preventDefault()
     console.log(`Posting vendor object:`, signUpStateVendor)
-    postSignUpInformation(signUpStateVendor).then(token => console.log(token))
+    postSignUpInformation(signUpStateVendor).then(token => {
+      console.log(token)
+      // window.localStorage.setItem("token", body)
+    })
   }
 
   const handleSubmitCustomer = (e) => {
