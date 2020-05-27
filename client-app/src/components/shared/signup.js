@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react"
 import postSignUpInformation from "../../utils/postData"
 import { AppContext } from "../AppContext"
-
+import { BlueButton, PinkButton } from "../../styles/buttons"
 // ***NOTES***
 // Radio buttons are not much fun
 // The value attribute of a <input/> tag only be a string

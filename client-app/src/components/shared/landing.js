@@ -20,13 +20,20 @@ export default function Landing() {
         Vendors
       </PinkButton>
 
-      <BlueButton
+      {/* <BlueButton
         href="/user"
         onClick={() => setIsVendor(false)}
         className="landing-btn-customers"
       >
         Customers
-      </BlueButton>
+      </BlueButton> */}
+      <Link
+        to="/user"
+        onClick={() => setIsVendor(false)}
+        className="landing-btn-customers"
+      >
+        Customers
+      </Link>
     </PageContainer>
   )
 
