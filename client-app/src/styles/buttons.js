@@ -6,13 +6,14 @@ const lightPink = "#F7DCD5"
 const background = "#F7F4F0"
 
 const Button = `
-padding: 10% 15% 10% 15%;
+padding: 5%;
 margin: 5% auto;
   max-width: 200px;
   border-radius: 5%;
   color: ${navy};
   text-decoration: none;
   font-size: 2rem;
+  display: in-block;
 `
 
 const BlueButton = styled.a`
