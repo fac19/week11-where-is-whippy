@@ -4,7 +4,7 @@ const AppContext = createContext()
 
 function AppContextProvider(props) {
   const [logInStatus, setLogInStatus] = useState(true)
-  const [isVendor, setIsVendor] = useState(false)
+  const [isVendor, setIsVendor] = useState(true)
   const [signUpStateVendor, setSignUpStateVendor] = useState({
     name: "",
     email: "",
@@ -12,7 +12,7 @@ function AppContextProvider(props) {
     mobile: "",
     companyName: "",
     alcohol: false,
-    veganOption: true,
+    vegan: true,
   })
 
   const [signUpStateCustomer, setSignUpStateCustomer] = useState({

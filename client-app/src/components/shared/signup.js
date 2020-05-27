@@ -60,6 +60,7 @@ export default function SignUp() {
   const handleSubmitVendor = (e) => {
     e.preventDefault()
     console.log(`Posting vendor object:`, signUpStateVendor)
+    postSignUpInformation(signUpStateVendor).then(token => console.log(token))
   }
 
   const handleSubmitCustomer = (e) => {
@@ -172,9 +173,9 @@ export default function SignUp() {
             <input
               type="radio"
               id="veganYes"
-              name="veganOption"
+              name="vegan"
               value="true"
-              checked={signUpStateVendor.veganOption === true}
+              checked={signUpStateVendor.vegan === true}
               onChange={(e) => handleOnChangeVendor(e)}
             />
 
@@ -182,9 +183,9 @@ export default function SignUp() {
             <input
               type="radio"
               id="veganNo"
-              name="veganOption"
+              name="vegan"
               value="false"
-              checked={signUpStateVendor.veganOption === false}
+              checked={signUpStateVendor.vegan === false}
               onChange={(e) => handleOnChangeVendor(e)}
             />
           </fieldset>
