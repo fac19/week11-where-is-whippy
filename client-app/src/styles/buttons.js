@@ -6,22 +6,20 @@ const lightPink = "#F7DCD5"
 const background = "#F7F4F0"
 
 const Button = `
-padding: 5%;
-margin: 5% auto;
-  max-width: 200px;
+  width: 75%;
+  max-width: 250px;
   border-radius: 5%;
   color: ${navy};
   text-decoration: none;
   font-size: 2rem;
-  display: in-block;
 `
 
-const BlueButton = styled.a`
+const BlueButton = styled.button`
 ${Button}
 background-color: ${lightBlue}
 `
 
-const PinkButton = styled.a`
+const PinkButton = styled.button`
   ${Button}
   background-color: ${lightPink};
 `
@@ -35,12 +33,4 @@ const PageContainer = styled.section`
   min-height: 90vh;
 `
 
-const Header = styled.h1`
-  width: 320px;
-  height: 80px;
-  font-style: italic;
-  color: navy;
-}
-`
-
-export { BlueButton, PinkButton, PageContainer, Header }
+export { BlueButton, PinkButton, PageContainer }
