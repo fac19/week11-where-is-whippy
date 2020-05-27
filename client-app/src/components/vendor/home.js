@@ -1,7 +1,7 @@
 // Home page for vendor - includes current route and links to add/ change route + see heatmap
 import React from "react"
 import { Link } from "react-router-dom"
-
+import { PinkButton } from "../../styles/buttons"
 export default function Home() {
   const [routeName, setRouteName] = React.useState("")
 
@@ -62,10 +62,6 @@ export default function Home() {
       </section>
 
       <section className="home-links">
-        <Link to="/schedule" className="home-link__schedule">
-          Create a new schedule
-        </Link>
-
         <Link
           to={{
             pathname: "/timetable",
@@ -75,7 +71,9 @@ export default function Home() {
           }}
           className="home-link__schedule"
         >
-          Edit schedule
+          <PinkButton className="home-btn__schedule">
+            Edit Current Schedule
+          </PinkButton>
         </Link>
 
         <Link
@@ -87,11 +85,13 @@ export default function Home() {
           }}
           className="home-link__schedule"
         >
-          Add new schedule
+          <PinkButton className="home-btn__schedule">
+            Create a New Schedule
+          </PinkButton>
         </Link>
 
         <Link to="/heatmap" className="home-link__heatmap">
-          View heatmap
+          <PinkButton className="home-btn__schedule">View Heatmap</PinkButton>
         </Link>
       </section>
     </section>
