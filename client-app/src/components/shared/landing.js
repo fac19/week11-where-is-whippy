@@ -10,10 +10,7 @@ export default function Landing() {
   return (
     <PageContainer>
       <h2 className="landing-subtitle">Tired of waiting for the jingle?</h2>
-      <img
-        className="landing-img"
-        src="https://media.giphy.com/media/3orieXuD6SY02z1VtK/giphy.gif"
-      />
+      <img className="landing-img" src="#" alt="illustation" />
 
       <PinkButton
         href="/user"
