@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const navy = #1f4068
+const navy = "#1f4068"
 
 const Header = styled.h1`
   width: 320px;
