@@ -1,6 +1,6 @@
-import React, { useContext } from "react"
-import postSignUpInformation from "../../utils/postData"
-import { AppContext } from "../AppContext"
+import React, { useContext } from "react";
+import postSignUpInformation from "../../utils/postData";
+import { AppContext } from "../AppContext";
 
 // ***NOTES***
 // Radio buttons are not much fun
@@ -20,55 +20,55 @@ export default function SignUp() {
     setSignUpStateVendor,
     signUpStateCustomer,
     setSignUpStateCustomer,
-  } = useContext(AppContext)
+  } = useContext(AppContext);
 
   const handleOnChangeVendor = (e) => {
     debugger;
-    let property = e.target.name
-    let value = e.target.value
+    let property = e.target.name;
+    let value = e.target.value;
     if (value === "true") {
-      value = true
+      value = true;
     }
     if (value === "false") {
-      value = false
+      value = false;
     }
     const newSignUpStateVendor = {
       ...signUpStateVendor,
       [property]: value,
-    }
-    setSignUpStateVendor(newSignUpStateVendor)
-  }
+    };
+    setSignUpStateVendor(newSignUpStateVendor);
+  };
 
   const handleOnChangeCustomer = (e) => {
-    let property = e.target.name
-    let value = e.target.value
+    let property = e.target.name;
+    let value = e.target.value;
     if (value === "true") {
-      value = true
+      value = true;
     }
     if (value === "false") {
-      value = false
+      value = false;
     }
     const newSignUpStateCustomer = {
       ...signUpStateCustomer,
       [property]: value,
-    }
-    setSignUpStateCustomer(newSignUpStateCustomer)
-  }
+    };
+    setSignUpStateCustomer(newSignUpStateCustomer);
+  };
 
   const handleSubmitVendor = (e) => {
-    e.preventDefault()
-    console.log(`Posting vendor object:`, signUpStateVendor)
-    postSignUpInformation(signUpStateVendor).then(token => {
-      console.log(token)
+    e.preventDefault();
+    console.log(`Posting vendor object:`, signUpStateVendor);
+    postSignUpInformation(signUpStateVendor).then((token) => {
+      console.log(token);
       // window.localStorage.setItem("token", body)
-    })
-  }
+    });
+  };
 
   const handleSubmitCustomer = (e) => {
-    e.preventDefault()
-    console.log(`Posting customer object:`, signUpStateCustomer)
-  }
-  
+    e.preventDefault();
+    console.log(`Posting customer object:`, signUpStateCustomer);
+  };
+
   // ***NOTES***
   // name, pasword and email are common to both the vendor and customer
   // A ternary is user to render the other customer or vendor inputs
@@ -309,7 +309,7 @@ export default function SignUp() {
           </fieldset>
         </>
       )}
-      { signUpStateCustomer.consent && (<button type="submit">Signup</button>)}
+      {signUpStateCustomer.consent && <button type="submit">Signup</button>}
     </form>
-  )
+  );
 }

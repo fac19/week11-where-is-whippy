@@ -1,28 +1,28 @@
-// import React from "react"
-// // import { Map, GoogleApiWrapper } from "google-maps-react"
-// import { GoogleMap, LoadScript } from "@react-google-maps/api"
-// require("dotenv").config()
+import React from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
-// export default function LondonMap() {
-//   const mapStyles = {
-//     height: 500,
-//     width: 500,
-//   }
+export default function LondonMap() {
+  const mapStyles = {
+    height: 500,
+    width: 500,
+  };
 
-//   const defaultCenter = {
-//     lat: 51.5074,
-//     lng: 0.1278,
-//   }
+  const defaultCenter = {
+    lat: 51.5646,
+    lng: 0.1047,
+  };
 
-//   return (
-//     <section>
-//       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
-//         <GoogleMap
-//           mapContainerStyle={mapStyles}
-//           zoom={10}
-//           center={defaultCenter}
-//         />
-//       </LoadScript>
-//     </section>
-//   )
-// }
+  const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
+
+  return (
+    <section>
+      <LoadScript googleMapsApiKey={gMAPI}>
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={13}
+          center={defaultCenter}
+        ></GoogleMap>
+      </LoadScript>
+    </section>
+  );
+}

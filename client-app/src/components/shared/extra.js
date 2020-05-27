@@ -1,7 +1,5 @@
 // https://github.com/fac18/signpost/blob/master/client/src/components/AddNewService/AddNewService.js
 
-
-
 // useEffect(
 //   //checks to see if a user is a customer or vendor and will render the relevant form fields
 //   () => {
