@@ -1,18 +1,18 @@
-import React from "react"
-import { GoogleMap, LoadScript } from "@react-google-maps/api"
+import React from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 export default function LondonMap() {
   const mapStyles = {
     height: 500,
     width: 500,
-  }
+  };
 
   const defaultCenter = {
     lat: 51.5646,
     lng: 0.1047,
-  }
+  };
 
-  const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY
+  const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 
   return (
     <section>
@@ -24,5 +24,5 @@ export default function LondonMap() {
         ></GoogleMap>
       </LoadScript>
     </section>
-  )
+  );
 }

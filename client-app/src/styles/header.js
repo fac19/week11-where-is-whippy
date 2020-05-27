@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 // import Montserrat from ‘./fonts/Montserrat-Regular.ttf’
 // injectGlobal`
@@ -15,18 +15,18 @@ import styled from "styled-components"
 //   format('embedded-opentype')
 // }
 
-const navy = "#1f4068"
-const background = "#F7F4F0"
+const navy = "#1f4068";
+const background = "#F7F4F0";
 
 const Title = styled.h1`
   width: 320px;
   height: 80px;
   font-style: italic;
   color: ${navy};
-`
+`;
 
 const HeaderArea = styled.header`
   background-color: ${background};
-`
+`;
 
-export { Title, HeaderArea }
+export { Title, HeaderArea };

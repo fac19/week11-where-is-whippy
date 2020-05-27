@@ -1,20 +1,20 @@
-import React, { useState } from "react"
-import "./App.css"
-import Landing from "./components/shared/landing.js"
-import Header from "./components/shared/header.js"
-import User from "./components/shared/user.js"
-import Signup from "./components/shared/signup.js"
-import Login from "./components/shared/login.js"
-import Home from "./components/vendor/home.js"
-import Heatmap from "./components/vendor/heatmap.js"
-import Timetable from "./components/vendor/timetable.js"
+import React, { useState } from "react";
+import "./App.css";
+import Landing from "./components/shared/landing.js";
+import Header from "./components/shared/header.js";
+import User from "./components/shared/user.js";
+import Signup from "./components/shared/signup.js";
+import Login from "./components/shared/login.js";
+import Home from "./components/vendor/home.js";
+import Heatmap from "./components/vendor/heatmap.js";
+import Timetable from "./components/vendor/timetable.js";
 // For react router
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // For React context management
-import { AppContextProvider } from "./components/AppContext"
+import { AppContextProvider } from "./components/AppContext";
 
 function App() {
-  const [isVendor, setIsVendor] = useState(true)
+  const [isVendor, setIsVendor] = useState(true);
 
   return (
     <AppContextProvider>
@@ -38,7 +38,7 @@ function App() {
         </div>
       </Router>
     </AppContextProvider>
-  )
+  );
 }
 
 /* <Route exact path="/props-through-render" render={(props) => <PropsPage {...props} title={`Props through render`} />} />
@@ -53,7 +53,7 @@ function App() {
   render={(props) => <Dashboard {...props} isAuthed={true} />}
 /> */
 
-export default App
+export default App;
 
 /* <Route path="/signup-c" component={signupCustomer} />
 <Route path="/signup-v" component={signupVendor} /> */

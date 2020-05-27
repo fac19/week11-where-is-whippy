@@ -1,10 +1,10 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext } from "react";
 
-const AppContext = createContext()
+const AppContext = createContext();
 
 function AppContextProvider(props) {
-  const [logInStatus, setLogInStatus] = useState(true)
-  const [isVendor, setIsVendor] = useState(true)
+  const [logInStatus, setLogInStatus] = useState(true);
+  const [isVendor, setIsVendor] = useState(true);
   const [signUpStateVendor, setSignUpStateVendor] = useState({
     name: "",
     email: "",
@@ -13,7 +13,7 @@ function AppContextProvider(props) {
     companyName: "",
     alcohol: false,
     vegan: true,
-  })
+  });
 
   const [signUpStateCustomer, setSignUpStateCustomer] = useState({
     name: "",
@@ -24,7 +24,7 @@ function AppContextProvider(props) {
     gender: "Female",
     icecreamFlavour: "",
     consent: true,
-  })
+  });
 
   const providerValue = {
     logInStatus,
@@ -35,13 +35,13 @@ function AppContextProvider(props) {
     setSignUpStateVendor,
     signUpStateCustomer,
     setSignUpStateCustomer,
-  }
+  };
 
   return (
     <AppContext.Provider value={providerValue}>
       {props.children}
     </AppContext.Provider>
-  )
+  );
 }
 
-export { AppContext, AppContextProvider }
+export { AppContext, AppContextProvider };

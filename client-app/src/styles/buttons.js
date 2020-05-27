@@ -1,9 +1,9 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-const lightBlue = "#C3DDED"
-const navy = "#1f4068"
-const lightPink = "#F7DCD5"
-const background = "#F7F4F0"
+const lightBlue = "#C3DDED";
+const navy = "#1f4068";
+const lightPink = "#F7DCD5";
+const background = "#F7F4F0";
 
 const Button = `
   width: 75%;
@@ -15,17 +15,17 @@ const Button = `
   padding: 0.25em 1em;
   margin-top: 2.5%;
   display: block;
-`
+`;
 
 const BlueButton = styled.a`
 ${Button}
 background-color: ${lightBlue}
-`
+`;
 
 const PinkButton = styled.a`
   ${Button}
   background-color: ${lightPink};
-`
+`;
 
 const PageContainer = styled.section`
   background-color: ${background};
@@ -33,7 +33,7 @@ const PageContainer = styled.section`
   flex-direction: column;
   align-items: center;
   height: 90vh;
-`
+`;
 /* 
   justify-content: center;
   position: relative;
@@ -41,4 +41,4 @@ const PageContainer = styled.section`
 
 //fix width of the buttons
 
-export { BlueButton, PinkButton, PageContainer }
+export { BlueButton, PinkButton, PageContainer };

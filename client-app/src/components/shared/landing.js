@@ -1,13 +1,13 @@
 //First page - choice between customer + vendor options
-import React, { useContext } from "react"
-import { Link } from "react-router-dom"
-import { AppContext } from "../AppContext"
-import { BlueButton, PinkButton, PageContainer } from "../../styles/buttons.js"
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AppContext } from "../AppContext";
+import { BlueButton, PinkButton, PageContainer } from "../../styles/buttons.js";
 
 export default function Landing() {
-  const { isVendor, setIsVendor } = useContext(AppContext)
+  const { isVendor, setIsVendor } = useContext(AppContext);
 
-  console.log("landing state: ", isVendor)
+  console.log("landing state: ", isVendor);
 
   return (
     <PageContainer>
@@ -20,7 +20,7 @@ export default function Landing() {
         <BlueButton className="landing-btn-customers">Customers</BlueButton>
       </Link>
     </PageContainer>
-  )
+  );
 
   // function handleLoginLinkVendor() {
   //   alert("Vendor login button clicked")

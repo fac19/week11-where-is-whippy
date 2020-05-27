@@ -1,9 +1,10 @@
 // Home page for vendor - includes current route and links to add/ change route + see heatmap
-import React from "react"
-import { Link } from "react-router-dom"
-import { PinkButton } from "../../styles/buttons"
+import React from "react";
+import { Link } from "react-router-dom";
+import { PinkButton } from "../../styles/buttons";
+
 export default function Home() {
-  const [routeName, setRouteName] = React.useState("")
+  const [routeName, setRouteName] = React.useState("");
 
   function handleSubmit(event) {
     //   PRINT THE SELECTED ROUTE
@@ -13,7 +14,7 @@ export default function Home() {
   }
 
   function handleRoute(event) {
-    setRouteName(event.target.value)
+    setRouteName(event.target.value);
   }
 
   function displayOptions() {
@@ -95,5 +96,5 @@ export default function Home() {
         </Link>
       </section>
     </section>
-  )
+  );
 }
