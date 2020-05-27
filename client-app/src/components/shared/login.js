@@ -1,5 +1,6 @@
-import React, { useContext } from "react"
-import { AppContext } from "../AppContext"
+import React, { useContext } from "react";
+
+import { AppContext } from "../AppContext";
 
 export default function Login() {
   const {
@@ -10,46 +11,46 @@ export default function Login() {
     setSignUpStateCustomer,
     signUpStateVendor,
     setSignUpStateVendor,
-  } = useContext(AppContext)
+  } = useContext(AppContext);
 
   const handleChange = (e) => {
-    if(isVendor) { 
-      handleOnChangeVendor(e)
+    if (isVendor) {
+      handleOnChangeVendor(e);
     } else {
       handleOnChangeCustomer(e);
     }
-  }
+  };
 
   const handleSubmit = (e) => {
-    if(isVendor) {
+    if (isVendor) {
       handleSubmitVendor(e);
     } else {
       handleSubmitCustomer(e);
     }
-  }
+  };
 
   const handleOnChangeVendor = (e) => {
-    let property = e.target.name
-    let value = e.target.value
+    let property = e.target.name;
+    let value = e.target.value;
 
     const newLogInStateVendor = {
       ...signUpStateVendor,
       [property]: value,
-    }
-    setSignUpStateVendor(newLogInStateVendor)
-  }
+    };
+    setSignUpStateVendor(newLogInStateVendor);
+  };
 
-  const handleOnChangeCustomer = (e) => {}
+  const handleOnChangeCustomer = (e) => {};
 
-  const handleSubmitVendor = (e) => {}
+  const handleSubmitVendor = (e) => {};
 
-  const handleSubmitCustomer = (e) => {}
+  const handleSubmitCustomer = (e) => {};
 
-  const inputValue = isVendor ? signUpStateVendor.email : signUpStateCustomer.email;
+  const inputValue = isVendor
+    ? signUpStateVendor.email
+    : signUpStateCustomer.email;
   return (
-    <form
-      onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email</label>
       <input
         type="email"
@@ -65,5 +66,5 @@ export default function Login() {
         Login
       </button>
     </form>
-  )
+  );
 }
