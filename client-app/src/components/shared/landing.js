@@ -11,28 +11,11 @@ export default function Landing() {
     <PageContainer>
       <h2 className="landing-subtitle">Tired of waiting for the jingle?</h2>
       <img className="landing-img" src="#" alt="illustation" />
-
-      <PinkButton
-        href="/user"
-        onClick={() => setIsVendor(true)}
-        className="landing-btn-vendors"
-      >
-        Vendors
-      </PinkButton>
-
-      {/* <BlueButton
-        href="/user"
-        onClick={() => setIsVendor(false)}
-        className="landing-btn-customers"
-      >
-        Customers
-      </BlueButton> */}
-      <Link
-        to="/user"
-        onClick={() => setIsVendor(false)}
-        className="landing-btn-customers"
-      >
-        Customers
+      <Link to="/user" onClick={() => setIsVendor(true)}>
+        <PinkButton className="landing-btn-vendors">Vendors</PinkButton>
+      </Link>
+      <Link to="/user" onClick={() => setIsVendor(false)}>
+        <BlueButton className="landing-btn-customers">Customers</BlueButton>
       </Link>
     </PageContainer>
   )
