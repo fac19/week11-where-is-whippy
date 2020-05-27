@@ -7,8 +7,7 @@ const background = "#F7F4F0"
 
 const Button = `
 padding: 10% 15% 10% 15%;
-margin: 5% 5% 0 5%;
-  display: block;
+margin: 5% auto;
   max-width: 200px;
   border-radius: 5%;
   color: ${navy};
