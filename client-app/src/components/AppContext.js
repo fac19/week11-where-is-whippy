@@ -4,15 +4,15 @@ const AppContext = createContext()
 
 function AppContextProvider(props) {
   const [logInStatus, setLogInStatus] = useState(true)
-  const [isVendor, setIsVendor] = useState(true)
+  const [isVendor, setIsVendor] = useState(false)
   const [signUpStateVendor, setSignUpStateVendor] = useState({
     name: "",
     email: "",
     password: "",
     mobile: "",
-    company_name: "",
-    alcohol: "",
-    vegan_option: "",
+    companyName: "",
+    alcohol: false,
+    veganOption: true,
   })
 
   const [signUpStateCustomer, setSignUpStateCustomer] = useState({
@@ -20,9 +20,10 @@ function AppContextProvider(props) {
     email: "",
     password: "",
     username: "",
-    age: "",
-    gender: "",
-    icecream_flavour: "",
+    age: "31-40",
+    gender: "Female",
+    icecreamFlavour: "",
+    consent: true
   })
 
   const providerValue = {
