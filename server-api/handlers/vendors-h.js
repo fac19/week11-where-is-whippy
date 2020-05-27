@@ -30,9 +30,9 @@ function createVendor(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     mobile: req.body.mobile,
-    companyName: req.body.company_name,
+    companyName: req.body.companyName,
     alcohol: req.body.alcohol,
-    vegan: req.body.vegan_option,
+    vegan: req.body.veganOption,
   }
 
   bcrypt
@@ -40,7 +40,7 @@ function createVendor(req, res, next) {
     .then((salt) => bcrypt.hash(req.body.password, salt))
     .then((hash) => vendors.createVendor({ ...newVendor, password: hash }))
     .then((newVendor) => {
-      const token = jwt.sign({ user: newVendor.name }, SECRET, {
+      const token = jwt.sign({ vendor: newVendor.id }, SECRET, {
         expiresIn: "60m",
       })
       res.status(201).send({ access_token: token })
@@ -50,14 +50,11 @@ function createVendor(req, res, next) {
 
 function loginVendor(req, res, next) {
   const email = req.body.email
-  console.log("loginVendor -> email", email)
   const password = req.body.password
-  console.log("loginVendor -> password", password)
 
   vendors
-    .getVendorLogin(email)
+    .getVendorLogin(email) // Need to handle error if no user exists because empty arr is passed into next .then()
     .then((vendor) => {
-      console.log("loginVendor -> vendor", vendor)
       bcrypt.compare(password, vendor.password).then((match) => {
         if (!match) {
           const error = new Error("Unauthorized")

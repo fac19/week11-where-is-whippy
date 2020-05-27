@@ -2,6 +2,7 @@ const model = require("../model/customer-location-m")
 // const geo = navigator.geolocation maybe need to add window.navigator.geolocation?
 
 function allCustomerLocations(req, res, next) {
+  // console.log("In function")
   model
     .getAllCustomerLocations()
     .then((allLocations) => {
@@ -11,14 +12,15 @@ function allCustomerLocations(req, res, next) {
 }
 
 function addNewCustomerLocation(req, res, next) {
-  const customerId = req.body.customer_id
+  const customerId = req.body.customerId
   const lat = req.body.latitude
-  const lng = req.body.longitutde
+  const lng = req.body.longitude
   const temp = req.body.temperature
 
   model
     .addNewCustomerLocation(customerId, lat, lng, temp)
     .then((RETURNING) => {
+      console.log(RETURNING)
       res.send(RETURNING.rows[0])
     })
     .catch(next)
@@ -39,4 +41,7 @@ function addNewCustomerLocation(req, res, next) {
 //   }
 // }
 
-module.exports = { addNewCustomerLocation, allCustomerLocations }
+module.exports = {
+  addNewCustomerLocation,
+  allCustomerLocations,
+}

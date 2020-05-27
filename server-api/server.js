@@ -1,60 +1,66 @@
 const express = require("express")
-const PORT = process.env.PORT || 8080
+const cors = require("cors")
 
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
 const vendorLocationsHandler = require("./handlers/vendor-location-h")
+const vendorRoutesHandler = require("./handlers/vendor-routes-h")
 const vendors = require("./handlers/vendors-h")
 const customers = require("./handlers/customers-h")
 
 // Middleware
 const handleError = require("./middleware/handleError")
 const logger = require("./middleware/logger")
+const auth = require("./middleware/auth")
 
 const server = express()
 server.use(express.json())
 server.use(logger)
 
-// Request Handling
-//GET
-// DEPLOYMENT
-server.get("/", (req, res, next) => {
-  const fs = require("fs")
-  const path = require("path")
-  const mainPath = path.resolve(__dirname, "../client-app/build/index.html") // We are getting the index.html from the FE build file
-  const mainHtml = fs.readFileSync(mainPath, "utf8")
-  res.send(mainHtml)
-})
+// Only allowing cross origin request from a specific url.
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV == "production"
+      ? "https://competent-feynman-176d4a.netlify.app/"
+      : "http://localhost:3000",
+}
 
-server.get("/static/*", (req, res) => {
-  const fs = require("fs")
-  const path = require("path")
-  const mainPath = path.resolve(__dirname, "../client-app/build/" + req.path)
-  console.log("req.path", req.path)
-  res.send(fs.readFileSync(mainPath, "utf8"))
-})
+// Request Handling
+server.use(cors(corsOptions))
+
+//GET
 
 // REST API
-// GET
-server.get("/customers/coords", customerLocationsHandler.allCustomerLocations)
-server.get("/customers/:id", customers.getSpecificCustomer)
-server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations)
-server.get("/vendors", vendors.allVendors)
-server.get("/vendors/:id", vendors.getSpecificVendor)
-server.get("/customers", customers.allCustomers)
+// GETauth. verifyCustomer,
+server.get("/customers", customers.allCustomers) // WORKING
+server.get("/customers/coords", customerLocationsHandler.allCustomerLocations) // WORKING
+server.get("/customers/:id", customers.getSpecificCustomer) // WORKING
+server.get("/vendors", vendors.allVendors) // WORKING
+server.get("/vendors/coords", vendorLocationsHandler.allVendorLocations) // WORKING
+server.get("/vendors/:id", vendors.getSpecificVendor) // WORKING
+server.get("/vendors/routes/:name", vendorRoutesHandler.getRoute) // WORKING
 
 // POST
+server.post("/customers/signup", customers.createCustomer) // WORKING
+server.post("/customers/login", customers.loginCustomer) // WORKING
 server.post(
   "/customers/coords/",
+  auth.verifyCustomer,
   customerLocationsHandler.addNewCustomerLocation
-)
-server.post("/vendors/coords/", vendorLocationsHandler.addNewVendorLocation)
+) // WORKING
 
-// SIGNUP/LOGIN
-server.post("/vendors/signup", vendors.createVendor)
-server.post("/vendors/login", vendors.loginVendor)
-server.post("/customers/signup", customers.createCustomer)
-server.post("/customers/login", customers.loginCustomer)
+server.post("/vendors/signup", vendors.createVendor) // WORKING
+server.post("/vendors/login", vendors.loginVendor) // WORKING
+server.post(
+  "/vendors/coords/",
+  auth.verifyVendor,
+  vendorLocationsHandler.addNewVendorLocation
+) // WORKING
+server.post(
+  "/vendors/routes/",
+  auth.verifyVendor,
+  vendorRoutesHandler.createNewRoute
+) // WORKING
 
 // PUT
 // server.put('/vendor endpoint', callback) // For vendors to update info
@@ -62,42 +68,8 @@ server.post("/customers/login", customers.loginCustomer)
 // DELETE
 // server.delete('/vendor endpoint', callback) // For vendors to delete account
 // server.delete('/customer endpoint', callback) // For customer to delete account
+server.delete("/vendors/routes/:name", vendorRoutesHandler.deleteRoute)
 
 server.use(handleError)
-server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 
-// Tables
-// Customers Info (done)
-// Vendors Info (done)
-// Customer location (done)
-// vendor live location
-// vendor routes
-
-// routes
-// Vendors need:
-// post live location
-// update live location
-// get live location
-
-// get vendor live location
-// get vendor routes
-
-// THIS IS SOME DEPLOYMENT STUFF
-// server.get("/static/js/2.0731317b.chunk.js", (req, res) => {
-//   const fs = require("fs")
-//   const path = require("path")
-//   const mainPath = path.resolve(
-//     __dirname,
-//     "../client-app/build/static/js/2.0731317b.chunk.js"
-//   )
-//   res.send(fs.readFileSync(mainPath, "utf8"))
-// })
-// server.get("/static/js/main.708b57a2.chunk.js", (req, res) => {
-//   const fs = require("fs")
-//   const path = require("path")
-//   const mainPath = path.resolve(
-//     __dirname,
-//     "../client-app/build/static/js/main.708b57a2.chunk.js"
-//   )
-//   res.send(fs.readFileSync(mainPath, "utf8"))
-// })
+module.exports = server

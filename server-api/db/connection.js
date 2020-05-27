@@ -1,10 +1,10 @@
-const pg = require("pg");
-const dontenv = require("dotenv");
-
-dontenv.config();
+const pg = require("pg")
+const dontenv = require("dotenv")
+dontenv.config()
 
 const db = new pg.Pool({
-  // connectionString: process.env.DATABASE_URL
-});
+  // Not 100% sure what this is doing
+  connectionString: process.env.DATABASE_URL,
+})
 
-module.exports = db;
+module.exports = db
