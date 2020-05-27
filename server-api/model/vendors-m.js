@@ -17,6 +17,7 @@ function getSpecificVendor(vendorId) {
 }
 
 function createVendor(vendor) {
+  console.log("createVendor -> vendor", vendor)
   return db.query(
     `INSERT INTO vendors(name, email, password, mobile, company_name, alcohol, vegan_option) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id, name, password;`,
     [
@@ -26,7 +27,7 @@ function createVendor(vendor) {
       vendor.mobile,
       vendor.companyName,
       vendor.alcohol,
-      vendor.vegan,
+      vendor.vegan
     ]
   )
 }

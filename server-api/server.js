@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 
 // Handler modules
 const customerLocationsHandler = require("./handlers/customer-location-h")
@@ -16,24 +17,18 @@ const server = express()
 server.use(express.json())
 server.use(logger)
 
-// Request Handling
-//GET
-// DEPLOYMENT
-server.get("/", (req, res, next) => {
-  const fs = require("fs")
-  const path = require("path")
-  const mainPath = path.resolve(__dirname, "../client-app/build/index.html") // We are getting the index.html from the FE build file
-  const mainHtml = fs.readFileSync(mainPath, "utf8")
-  res.send(mainHtml)
-})
+// Only allowing cross origin request from a specific url.
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV == "production"
+      ? "https://competent-feynman-176d4a.netlify.app/"
+      : "http://localhost:3000",
+}
 
-server.get("/static/*", (req, res) => {
-  const fs = require("fs")
-  const path = require("path")
-  const mainPath = path.resolve(__dirname, "../client-app/build/" + req.path)
-  console.log("req.path", req.path)
-  res.send(fs.readFileSync(mainPath, "utf8"))
-})
+// Request Handling
+server.use(cors(corsOptions))
+
+//GET
 
 // REST API
 // GETauth. verifyCustomer,

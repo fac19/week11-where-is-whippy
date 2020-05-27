@@ -1,10 +1,11 @@
 //First page - choice between customer + vendor options
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
+import { AppContext } from "../AppContext"
 
-export default function Landing({ setIsVendor, isVendor }) {
-  console.log("Landing -> setIsVendor", setIsVendor)
-  console.log(isVendor)
+export default function Landing() {
+  const { isVendor, setIsVendor } = useContext(AppContext)
+
   return (
     <section>
       <h2 className="landing-subtitle">Tired of waiting for the jingle?</h2>

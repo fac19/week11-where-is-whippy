@@ -1,8 +1,10 @@
-//Second page (have chosen whether customer/vedor) - choice between login + signup
-import React from "react"
+//Second page (have chosen whether customer/vendor) - choice between login + signup
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
+import { AppContext } from "../AppContext"
 
-export default function User({ isVendor }) {
+export default function User() {
+  const { isVendor } = useContext(AppContext)
   return (
     <section>
       {isVendor ? (
