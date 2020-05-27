@@ -30,4 +30,6 @@ const FormContainer = styled.form`
   background-color: ${background};
 `
 
+const radioBtnWrapper = styled.input``
+
 export { Label, Input, Legend, FormContainer }
