@@ -27,7 +27,7 @@ function createVendor(vendor) {
       vendor.mobile,
       vendor.companyName,
       vendor.alcohol,
-      vendor.vegan
+      vendor.vegan,
     ]
   )
 }

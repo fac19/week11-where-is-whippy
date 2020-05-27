@@ -23,7 +23,7 @@ function AppContextProvider(props) {
     age: "31-40",
     gender: "Female",
     icecreamFlavour: "",
-    consent: true
+    consent: true,
   })
 
   const providerValue = {

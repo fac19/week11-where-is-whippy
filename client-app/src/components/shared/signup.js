@@ -1,7 +1,4 @@
-import React, {
-  useEffect,
-  useContext,
-} from "react"
+import React, { useEffect, useContext } from "react"
 import postSignUpInformation from "../../utils/postData"
 import { AppContext } from "../AppContext"
 
@@ -60,14 +57,14 @@ export default function SignUp() {
   const handleSubmitVendor = (e) => {
     e.preventDefault()
     console.log(`Posting vendor object:`, signUpStateVendor)
-    postSignUpInformation(signUpStateVendor).then(token => console.log(token))
+    postSignUpInformation(signUpStateVendor).then((token) => console.log(token))
   }
 
   const handleSubmitCustomer = (e) => {
     e.preventDefault()
     console.log(`Posting customer object:`, signUpStateCustomer)
   }
-  
+
   // ***NOTES***
   // name, pasword and email are common to both the vendor and customer
   // A ternary is user to render the other customer or vendor inputs
@@ -308,7 +305,7 @@ export default function SignUp() {
           </fieldset>
         </>
       )}
-      { signUpStateCustomer.consent && (<button type="submit">Signup</button>)}
+      {signUpStateCustomer.consent && <button type="submit">Signup</button>}
     </form>
   )
 }
