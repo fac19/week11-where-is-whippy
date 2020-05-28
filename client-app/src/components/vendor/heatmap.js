@@ -5,49 +5,21 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import getRequest from "../../utils/getData";
+
 // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 // const gMAPI = "AIzaSyApyt224I8eHKHjNrZMZUZ6h5nCWm-0qus";
 require("dotenv").config();
 
-// export const MapContainer = () => {
-
-//   const [ currentPosition, setCurrentPosition ] = useState({});
-
-//   const success = position => {
-//     const currentPosition = {
-//       lat: position.coords.latitude,
-//       lng: position.coords.longitude
-//     }
-//     setCurrentPosition(currentPosition);
-//   };
-
-//   useEffect(() => {
-//     navigator.geolocation.getCurrentPosition(success);
-//   })
-// ...
-//   return (
-//      ...
-//         <GoogleMap
-//           mapContainerStyle={mapStyles}
-//           zoom={13}
-//           center={currentPosition}>
-//           {
-//             currentPosition.lat &&
-//             (
-//               <Marker position={currentPosition}
-//             )
-//           }
-//         <GoogleMap/>
-//      ...
-//   )
-// }
-
 export default function HeatMapForVendor() {
+  // console.log(getRequest.res);
+
   const gMAPI = "AIzaSyBlm3QfivNjejFqL3StXdPuRf0-yEsdM9o";
   // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
+
   const mapStyles = {
-    height: 500,
-    width: 500,
+    height: 400,
+    width: "100vw",
   };
 
   // const defaultCenter = {
@@ -76,7 +48,7 @@ export default function HeatMapForVendor() {
           zoom={13}
           center={currentPosition}
         >
-          {currentPosition.lat && <Marker position={currentPosition}></Marker>}>
+          {currentPosition.lat && <Marker position={currentPosition} />}>
         </GoogleMap>
       </LoadScript>
     </section>
