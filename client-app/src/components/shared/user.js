@@ -1,11 +1,11 @@
 //Second page (have chosen whether customer/vendor) - choice between login + signup
-import React, { useContext } from "react"
-import { Link } from "react-router-dom"
-import { AppContext } from "../AppContext"
-import { BlueButton, PinkButton } from "../../styles/buttons"
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AppContext } from "../AppContext";
+import { BlueButton, PinkButton } from "../../styles/buttons";
 
 export default function User() {
-  const { isVendor, setIsVendor } = useContext(AppContext)
+  const { isVendor, setIsVendor } = useContext(AppContext);
   return (
     <section>
       {isVendor ? (
@@ -36,5 +36,5 @@ export default function User() {
         </section>
       )}
     </section>
-  )
+  );
 }

@@ -73,7 +73,6 @@ export default function Login() {
         }
       })
       .then((body) => {
-        console.log(`Vendor token set in local storage: ${body.access_token}`);
         window.localStorage.setItem("token", body.access_token);
         setLogInStatus(true);
       })
@@ -93,9 +92,6 @@ export default function Login() {
         }
       })
       .then((body) => {
-        console.log(
-          `Customer token set in local storage: ${body.access_token}`
-        );
         window.localStorage.setItem("token", body.access_token);
         setLogInStatus(true);
       })
@@ -111,8 +107,6 @@ export default function Login() {
     : signUpStateCustomer.password;
 
   function loggedInStatusCheckerAndRedirect() {
-    // alert('You called the bigbad login checker')
-    // console.log("loginstatus ", logInStatus, "isvendor ", isVendor)
     if (logInStatus && isVendor) {
       return <Redirect to="/home" />;
     }

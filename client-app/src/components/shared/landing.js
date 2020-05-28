@@ -19,16 +19,4 @@ export default function Landing() {
       </Link>
     </PageContainer>
   );
-
-  // function handleLoginLinkVendor() {
-  //   alert("Vendor login button clicked")
-  //   setIsVendor(true)
-  // }
-
-  // function handleLoginLinkCustomer() {
-  //   console.log(isVendor)
-  //   setIsVendor(false)
-  //   console.log(isVendor)
-  //   // alert("Customer login button clicked")
-  // }
 }

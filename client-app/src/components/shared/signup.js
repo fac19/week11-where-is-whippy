@@ -89,7 +89,6 @@ export default function SignUp() {
 
   const handleSubmitVendor = (e) => {
     e.preventDefault();
-    console.log(`Posting vendor object:`, signUpStateVendor);
     postVendorSignUpInformation(signUpStateVendor)
       .then((res) => {
         if (!res.ok) {
@@ -101,9 +100,6 @@ export default function SignUp() {
         }
       })
       .then((body) => {
-        console.log(
-          `Signup successful. Vendor token set in local storage: ${body.access_token}`
-        );
         window.localStorage.setItem("token", body.access_token);
         setLogInStatus(true);
       })
@@ -112,7 +108,6 @@ export default function SignUp() {
 
   const handleSubmitCustomer = (e) => {
     e.preventDefault();
-    console.log(`Posting customer object:`, signUpStateCustomer);
     postCustomerSignUpInformation(signUpStateCustomer)
       .then((res) => {
         if (!res.ok) {
