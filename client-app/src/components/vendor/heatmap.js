@@ -38,7 +38,8 @@ export default function HeatMapForVendor() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-  });
+    getRequest();
+  }, []);
 
   return (
     <section>

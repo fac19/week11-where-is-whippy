@@ -6,9 +6,14 @@ const domain =
     : "https://where-is-whippy.herokuapp.com";
 
 const getRequest = () => {
-  return fetch("https://where-is-whippy.herokuapp.com/customers/coords")
-    .then((res) => res.json())
-    .catch(console.log);
+  return (
+    fetch("http://localhost:8080/customers/coords")
+      // http://localhost:8080/customers/coords
+      // localhosthttp://localhost:8080
+      .then((res) => res.json())
+      .then((jsonObj) => console.log(jsonObj))
+      .catch((err) => console.log(err))
+  );
 };
 
 export default getRequest;
