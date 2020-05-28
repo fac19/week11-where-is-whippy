@@ -23,6 +23,7 @@ const Title = styled.h1`
   height: 80px;
   font-style: italic;
   color: ${navy};
+  margin-top: 0;
 `;
 
 const HeaderArea = styled.header`

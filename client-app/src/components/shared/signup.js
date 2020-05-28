@@ -1,12 +1,17 @@
-import React, { useEffect, useContext } from "react"
-import { Link } from "react-router-dom"
-import postSignUpInformation from "../../utils/postData"
-import { AppContext } from "../AppContext"
-import { Button, BlueButton, PinkButton } from "../../styles/buttons"
-import { textStyle } from "../../styles/text"
-import { Label, Input, Legend, FormContainer } from "../../styles/form"
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import {
+  postVendorSignUpInformation,
+  postCustomerSignUpInformation,
+} from "../../utils/postData";
+import { AppContext } from "../AppContext";
+import { Button, BlueButton, PinkButton } from "../../styles/buttons";
+import { textStyle } from "../../styles/text";
+import { Label, Input, Legend, FormContainer } from "../../styles/form";
 
-// ***NOTES***
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
+
+// ***TEAM NOTES***
 // Radio buttons are not much fun
 // The value attribute of a <input/> tag only be a string
 // The checked attribute on a radio button needs to a boolean (for alcohol or veganOption)
@@ -19,6 +24,8 @@ import { Label, Input, Legend, FormContainer } from "../../styles/form"
 
 export default function SignUp() {
   const {
+    logInStatus,
+    setLogInStatus,
     isVendor,
     setIsVendor,
     signUpStateVendor,
@@ -27,8 +34,20 @@ export default function SignUp() {
     setSignUpStateCustomer,
   } = useContext(AppContext);
 
+  // ***NOTES***
+  // name, pasword and email are common to both the vendor and customer
+  // A ternary is user to render the other customer or vendor inputs
+  // JS functions have been extracted from JSX into helper functions
+
+  const handleChange = (e) => {
+    if (isVendor) {
+      handleOnChangeVendor(e);
+    } else {
+      handleOnChangeCustomer(e);
+    }
+  };
+
   const handleOnChangeVendor = (e) => {
-    debugger;
     let property = e.target.name;
     let value = e.target.value;
     if (value === "true") {
@@ -60,42 +79,92 @@ export default function SignUp() {
     setSignUpStateCustomer(newSignUpStateCustomer);
   };
 
+  const handleSubmit = (e) => {
+    if (isVendor) {
+      handleSubmitVendor(e);
+    } else {
+      handleSubmitCustomer(e);
+    }
+  };
+
   const handleSubmitVendor = (e) => {
     e.preventDefault();
     console.log(`Posting vendor object:`, signUpStateVendor);
-    postSignUpInformation(signUpStateVendor).then((token) => {
-      console.log(token);
-      // window.localStorage.setItem("token", body)
-    });
+    postVendorSignUpInformation(signUpStateVendor)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            `Unable to signup. API responded with status code: ${res.status}`
+          );
+        } else {
+          return res.json();
+        }
+      })
+      .then((body) => {
+        console.log(`Vendor token set in local storage: ${body.access_token}`);
+        window.localStorage.setItem("token", body.access_token);
+        setLogInStatus(true);
+      })
+      .catch((err) => console.error(err));
   };
 
   const handleSubmitCustomer = (e) => {
     e.preventDefault();
     console.log(`Posting customer object:`, signUpStateCustomer);
+    postCustomerSignUpInformation(signUpStateCustomer)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            `Unable to signup. API responded with status code: ${res.status}`
+          );
+        } else {
+          return res.json();
+        }
+      })
+      .then((body) => {
+        console.log(
+          `Customer token set in local storage: ${body.access_token}`
+        );
+        window.localStorage.setItem("token", body.access_token);
+        setLogInStatus(true);
+      })
+      .catch((err) => console.error(err));
   };
 
-  // ***NOTES***
-  // name, pasword and email are common to both the vendor and customer
-  // A ternary is user to render the other customer or vendor inputs
+  // When component mounts checks to see if user is logged in
+  function loggedInStatusCheckerandRedirect() {
+    if (logInStatus && isVendor) {
+      return <Redirect to="/home" />;
+    }
+    if (logInStatus && !isVendor) {
+      return <Redirect to="/map" />;
+    }
+  }
+
+  // Input value helper functions
+  const inputValueName = isVendor
+    ? signUpStateVendor.name
+    : signUpStateCustomer.name;
+
+  const inputValueEmail = isVendor
+    ? signUpStateVendor.email
+    : signUpStateCustomer.email;
+
+  const inputValuePassword = isVendor
+    ? signUpStateVendor.password
+    : signUpStateCustomer.password;
 
   return (
-    <FormContainer
-      onSubmit={
-        isVendor ? (e) => handleSubmitVendor(e) : (e) => handleSubmitCustomer(e)
-      }
-    >
+    <FormContainer onSubmit={handleSubmit}>
+      {loggedInStatusCheckerandRedirect()}
       <Label htmlFor="name">Name</Label>
       <Input
         type="text"
         id="name"
         name="name"
         required
-        onChange={
-          isVendor
-            ? (e) => handleOnChangeVendor(e)
-            : (e) => handleOnChangeCustomer(e)
-        }
-        value={isVendor ? signUpStateVendor.name : signUpStateCustomer.name}
+        onChange={handleChange}
+        value={inputValueName}
       />
 
       <Label htmlFor="email">Email</Label>
@@ -104,12 +173,8 @@ export default function SignUp() {
         id="email"
         name="email"
         required
-        onChange={
-          isVendor
-            ? (e) => handleOnChangeVendor(e)
-            : (e) => handleOnChangeCustomer(e)
-        }
-        value={isVendor ? signUpStateVendor.email : signUpStateCustomer.email}
+        onChange={handleChange}
+        value={inputValueEmail}
       />
 
       <Label htmlFor="password">Password</Label>
@@ -118,14 +183,8 @@ export default function SignUp() {
         id="password"
         name="password"
         required
-        onChange={
-          isVendor
-            ? (e) => handleOnChangeVendor(e)
-            : (e) => handleOnChangeCustomer(e)
-        }
-        value={
-          isVendor ? signUpStateVendor.password : signUpStateCustomer.password
-        }
+        onChange={handleChange}
+        value={inputValuePassword}
       />
       {/* THIS IS THE TERNARY */}
       {isVendor ? (
@@ -137,7 +196,7 @@ export default function SignUp() {
             name="mobile"
             required
             value={signUpStateVendor.mobile}
-            onChange={(e) => handleOnChangeVendor(e)}
+            onChange={handleOnChangeVendor}
           />
 
           <Label htmlFor="companyName">Company Name</Label>
@@ -147,7 +206,7 @@ export default function SignUp() {
             name="companyName"
             required
             value={signUpStateVendor.companyName}
-            onChange={(e) => handleOnChangeVendor(e)}
+            onChange={handleOnChangeVendor}
           />
 
           <fieldset id="fieldset-vendorAlcohol">
@@ -159,7 +218,7 @@ export default function SignUp() {
               name="alcohol"
               value="true"
               checked={signUpStateVendor.alcohol === true}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
 
             <Label htmlFor="alcoholNo">No</Label>
@@ -169,7 +228,7 @@ export default function SignUp() {
               name="alcohol"
               value="false"
               checked={signUpStateVendor.alcohol === false}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
           </fieldset>
 
@@ -182,7 +241,7 @@ export default function SignUp() {
               name="vegan"
               value="true"
               checked={signUpStateVendor.vegan === true}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
 
             <Label htmlFor="veganNo">No</Label>
@@ -192,15 +251,26 @@ export default function SignUp() {
               name="vegan"
               value="false"
               checked={signUpStateVendor.vegan === false}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
           </fieldset>
-          <Link to="/home" onClick={() => setIsVendor(true)}>
-            <PinkButton className="signup-btn-vendors">Sign Up</PinkButton>
-          </Link>
+
+          <PinkButton type="submit" className="signup-btn-vendors">
+            Sign Up
+          </PinkButton>
         </>
       ) : (
         <>
+          <Label htmlFor="username">Username</Label>
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            required
+            value={signUpStateCustomer.username}
+            onChange={handleOnChangeCustomer}
+          />
+
           <fieldset id="fieldset-customer-age">
             <Legend>What is your age group?</Legend>
             <Label htmlFor="gender-1">14-18</Label>
@@ -210,7 +280,7 @@ export default function SignUp() {
               name="age"
               value="14-18"
               checked={signUpStateCustomer.age === "14-18"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-2">19-24</Label>
             <Input
@@ -219,7 +289,7 @@ export default function SignUp() {
               name="age"
               value="19-24"
               checked={signUpStateCustomer.age === "19-24"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="ageGroup3">25-30</Label>
             <Input
@@ -228,7 +298,7 @@ export default function SignUp() {
               name="age"
               value="25-30"
               checked={signUpStateCustomer.age === "25-30"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="ageGroup4">31-40</Label>
             <Input
@@ -237,7 +307,7 @@ export default function SignUp() {
               name="age"
               value="31-40"
               checked={signUpStateCustomer.age === "31-40"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
           </fieldset>
 
@@ -250,7 +320,7 @@ export default function SignUp() {
               name="gender"
               value="Male"
               checked={signUpStateCustomer.gender === "Male"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-2">Female</Label>
             <Input
@@ -259,7 +329,7 @@ export default function SignUp() {
               name="gender"
               value="Female"
               checked={signUpStateCustomer.gender === "Female"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-3">Nonbinary</Label>
             <Input
@@ -268,7 +338,7 @@ export default function SignUp() {
               name="gender"
               value="Nonbinary"
               checked={signUpStateCustomer.gender === "Nonbinary"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-4">Prefer not to say</Label>
             <Input
@@ -277,7 +347,7 @@ export default function SignUp() {
               name="gender"
               value="Prefer not to say"
               checked={signUpStateCustomer.gender === "Prefer not to say"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
           </fieldset>
 
@@ -288,7 +358,7 @@ export default function SignUp() {
             name="icecreamFlavour"
             required
             value={signUpStateCustomer.icecreamFlavour}
-            onChange={(e) => handleOnChangeCustomer(e)}
+            onChange={handleOnChangeCustomer}
           />
 
           <fieldset>
@@ -303,7 +373,7 @@ export default function SignUp() {
               name="consent"
               value="true"
               checked={signUpStateCustomer.consent === true}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="consentNo">I do not consent</Label>
             <Input
@@ -312,22 +382,15 @@ export default function SignUp() {
               name="consent"
               value="false"
               checked={signUpStateCustomer.consent === false}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
           </fieldset>
-          <Link to="/map" onClick={() => setIsVendor(false)}>
-            {signUpStateCustomer.consent && (
-              <BlueButton className="signup-btn-customers">Sign Up</BlueButton>
-            )}
-          </Link>
+
+          <BlueButton type="submit" className="signup-btn-customers">
+            Sign Up
+          </BlueButton>
         </>
       )}
-<<<<<<< HEAD
     </FormContainer>
-  )
-=======
-      {signUpStateCustomer.consent && <button type="submit">Signup</button>}
-    </form>
   );
->>>>>>> master
 }

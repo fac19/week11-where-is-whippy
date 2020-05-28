@@ -7,8 +7,6 @@ import { BlueButton, PinkButton, PageContainer } from "../../styles/buttons.js";
 export default function Landing() {
   const { isVendor, setIsVendor } = useContext(AppContext);
 
-  console.log("landing state: ", isVendor);
-
   return (
     <PageContainer>
       <h2 className="landing-subtitle">Tired of waiting for the jingle?</h2>

@@ -17,12 +17,12 @@ const Button = `
   display: block;
 `;
 
-const BlueButton = styled.a`
+const BlueButton = styled.button`
 ${Button}
 background-color: ${lightBlue}
 `;
 
-const PinkButton = styled.a`
+const PinkButton = styled.button`
   ${Button}
   background-color: ${lightPink};
 `;
