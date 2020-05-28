@@ -19,15 +19,19 @@ const navy = "#1f4068";
 const background = "#F7F4F0";
 
 const Title = styled.h1`
-  width: 320px;
-  height: 80px;
   font-style: italic;
   color: ${navy};
-  margin-top: 0;
+  font-size: 2.5rem;
+  margin-bottom: 0;
 `;
 
 const HeaderArea = styled.header`
   background-color: ${background};
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5%;
 `;
 
-export { Title, HeaderArea };
+const LogInOption = styled.a``;
+
+export { Title, HeaderArea, LogInOption };

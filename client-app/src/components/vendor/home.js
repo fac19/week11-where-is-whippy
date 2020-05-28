@@ -1,10 +1,14 @@
 // Home page for vendor - includes current route and links to add/ change route + see heatmap
-import React from "react";
+
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../AppContext";
 import { PinkButton } from "../../styles/buttons";
 
 export default function Home() {
   const [routeName, setRouteName] = React.useState("");
+
+  const { logInStatus, setLogInStatus } = useContext(AppContext);
 
   function handleSubmit(event) {
     //   PRINT THE SELECTED ROUTE
@@ -24,6 +28,7 @@ export default function Home() {
 
   return (
     <section>
+      {setLogInStatus(true)}
       <h2 className="home-subtitle">
         Welcome back
         <str>
