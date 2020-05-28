@@ -3,7 +3,7 @@ const hostname = window && window.location && window.location.hostname;
 const domain =
   hostname === "localhost"
     ? "http://localhost:8080"
-    : "https://where-is-whippy.herokuapp.com";
+    : "https://where-is-whippy.herokuapp.com/customers/coords";
 
 const getRequest = () => {
   return (
@@ -11,7 +11,11 @@ const getRequest = () => {
       // http://localhost:8080/customers/coords
       // localhosthttp://localhost:8080
       .then((res) => res.json())
-      .then((jsonObj) => console.log(jsonObj))
+      .then((jsonObj) => {
+        jsonObj.map((coords) => {
+          console.log(coords.latitude, coords.longitude);
+        });
+      })
       .catch((err) => console.log(err))
   );
 };

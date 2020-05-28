@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
-import {
-  GoogleMap,
-  LoadScript,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
+/*global google*/
+import React, { useEffect, useState, Component } from "react";
+import GoogleMapReact from "google-map-react";
 import getRequest from "../../utils/getData";
 
 // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
@@ -27,31 +23,36 @@ export default function HeatMapForVendor() {
   //   lng: 0.1047,
   // };
 
-  const [currentPosition, setCurrentPosition] = useState({});
-  const success = (position) => {
-    const currentPosition = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    };
-    setCurrentPosition(currentPosition);
-  };
+  // const [currentPosition, setCurrentPosition] = useState(defaultCenter);
+  // const success = (position) => {
+  //   const currentPosition = {
+  //     lat: position.coords.latitude,
+  //     lng: position.coords.longitude,
+  //   };
+  //   setCurrentPosition(currentPosition);
+  // };
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success);
-    getRequest();
-  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(success);
+  //   getRequest();
+  // }, []);
+
+  // const heatmap = new Google.maps.visualization.HeatmapLayer({
+  //   data: heatMapData,
+  // });
 
   return (
     <section>
-      <LoadScript googleMapsApiKey={gMAPI}>
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={13}
-          center={currentPosition}
-        >
-          {currentPosition.lat && <Marker position={currentPosition} />}>
-        </GoogleMap>
-      </LoadScript>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: gMAPI }}
+        mapContainerStyle={mapStyles}
+        defaultZoom={13}
+        defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
+        heatmapLibrary={true}
+        heatmap={{ positions: [{ lat: 51.39246, lng: -0.11335 }] }}
+      >
+        {/* {currentPosition.lat && <Marker position={currentPosition} />}  */}
+      </GoogleMapReact>
     </section>
   );
 }
