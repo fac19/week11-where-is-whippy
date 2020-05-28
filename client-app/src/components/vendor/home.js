@@ -3,7 +3,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { PinkButton } from "../../styles/buttons";
+import { PinkButton, PageContainer } from "../../styles/buttons";
 
 export default function Home() {
   const [routeName, setRouteName] = React.useState("");
@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <section>
+    <PageContainer>
       {setLogInStatus(true)}
       <h2 className="home-subtitle">
         Welcome back
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
 
       <section className="home-links">
-        <Link
+        {/* <Link
           to={{
             pathname: "/timetable",
             state: {
@@ -80,7 +80,7 @@ export default function Home() {
           <PinkButton className="home-btn__schedule">
             Edit Current Schedule
           </PinkButton>
-        </Link>
+        </Link> */}
 
         <Link
           to={{
@@ -100,6 +100,6 @@ export default function Home() {
           <PinkButton className="home-btn__schedule">View Heatmap</PinkButton>
         </Link>
       </section>
-    </section>
+    </PageContainer>
   );
 }
