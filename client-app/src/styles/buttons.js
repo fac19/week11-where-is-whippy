@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const lightBlue = "#C3DDED";
 const navy = "#1f4068";
@@ -22,12 +23,13 @@ background-color: ${lightBlue}
 `;
 
 const PinkButton = styled.button`
-  ${Button}
+  ${Button};
   background-color: ${lightPink};
 `;
 
 const PinkSmallButton = styled.button`
-  ${PinkButton}
+  ${Button};
+  background-color: ${lightPink};
   font-size: 1rem;
 `;
 
@@ -39,11 +41,8 @@ const PageContainer = styled.section`
   height: 90vh;
 `;
 
-/* 
-  justify-content: center;
-  position: relative;
-  min-height: 90vh;*/
-
-//fix width of the buttons
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 
 export { BlueButton, PinkButton, PinkSmallButton, PageContainer };

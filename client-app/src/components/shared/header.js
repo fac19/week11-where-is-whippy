@@ -4,6 +4,7 @@ import { Title, HeaderArea, LogInOption } from "../../styles/header.js";
 
 export default function Header() {
   const { logInStatus, setLogInStatus } = useContext(AppContext);
+  console.log(logInStatus);
 
   function headerStatus() {
     let token = localStorage.getItem("token");
@@ -12,6 +13,7 @@ export default function Header() {
       return <LogInOption href="/">Log In or Sign Up Here!</LogInOption>;
     } else {
       window.localStorage.removeItem("token");
+      setLogInStatus(false);
       return <LogInOption href="/">Log Out</LogInOption>;
     }
   }

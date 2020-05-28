@@ -3,7 +3,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { PinkButton, PageContainer } from "../../styles/buttons";
+import { PinkSmallButton, PageContainer } from "../../styles/buttons";
 
 export default function Home() {
   const [routeName, setRouteName] = React.useState("");
@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <PageContainer>
-      {setLogInStatus(true)}
+      {/* {setLogInStatus(true)} */}
       <h2>
         Welcome back
         <str>
@@ -68,11 +68,11 @@ export default function Home() {
             },
           }}
         >
-          <PinkButton>Create a New Schedule</PinkButton>
+          <PinkSmallButton>Create a New Schedule</PinkSmallButton>
         </Link>
 
         <Link to="/heatmap">
-          <PinkButton>View Heatmap</PinkButton>
+          <PinkSmallButton>View Heatmap</PinkSmallButton>
         </Link>
       </section>
     </PageContainer>
