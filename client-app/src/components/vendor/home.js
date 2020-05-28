@@ -4,11 +4,18 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import { PinkSmallButton, PageContainer } from "../../styles/buttons";
+import { Label, Input } from "../../styles/form";
 
 export default function Home() {
   const [routeName, setRouteName] = React.useState("");
 
-  const { logInStatus, setLogInStatus } = useContext(AppContext);
+  const {
+    logInStatus,
+    setLogInStatus,
+    isVendor,
+    signUpStateVendor,
+    signUpStateCustomer,
+  } = useContext(AppContext);
 
   function handleSubmit(event) {
     //   PRINT THE SELECTED ROUTE
@@ -26,12 +33,16 @@ export default function Home() {
     //.then(data => data.forEach(print as option))
   }
 
+  const showUserName = () => {
+    return isVendor ? signUpStateVendor.name : signUpStateCustomer.name;
+  };
+
   return (
     <PageContainer>
       <h2>
         Welcome back
         <str>
-          <i>name</i>
+          <i>{showUserName}</i>
         </str>
         !
       </h2>
