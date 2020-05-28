@@ -14,7 +14,7 @@ export default function HeatMapForVendor() {
   // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 
   const mapStyles = {
-    height: "75vh",
+    height: "65vh",
     width: "100%",
   };
 
@@ -23,14 +23,14 @@ export default function HeatMapForVendor() {
   //   lng: 0.1047,
   // };
 
-  // const [currentPosition, setCurrentPosition] = useState(defaultCenter);
-  // const success = (position) => {
-  //   const currentPosition = {
-  //     lat: position.coords.latitude,
-  //     lng: position.coords.longitude,
-  //   };
-  //   setCurrentPosition(currentPosition);
-  // };
+  const [currentPosition, setCurrentPosition] = useState({});
+  const success = (position) => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+  };
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(success);
@@ -50,7 +50,15 @@ export default function HeatMapForVendor() {
         defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
         heatmapLibrary={true}
         heatmap={{ positions: [{ lat: 51.39246, lng: -0.11335 }] }}
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
       >
+        <Marker
+          key={place.id}
+          text={place.name}
+          lat={place.geometry.location.lat}
+          lng={place.geometry.location.lng}
+        />
         {/* {currentPosition.lat && <Marker position={currentPosition} />}  */}
       </GoogleMapReact>
     </section>
