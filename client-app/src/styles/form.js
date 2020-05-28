@@ -14,10 +14,10 @@ const Input = styled.input`
   background-color: ${background};
   color: ${navy};
   border-radius: 5px;
-  margin-bottom: 0.2rem;
+  margin-bottom: 1rem;
   width: 75%;
   max-width: 500px;
-  height: 31px;
+  height: 1.5rem;
 `;
 
 const Legend = styled.legend`
@@ -29,14 +29,18 @@ const FormContainer = styled.form`
   flex-direction: column;
   background-color: ${background};
   align-items: center;
+  height: 100vh;
+  padding: 1rem;
 `;
 
 const radioBtnWrapper = styled.input``;
 
 const FieldSet = styled.fieldset`
+  font-size: 1.25rem;
   border-radius: 5px;
   width: 75%;
   max-width: 250px;
+  margin-bottom: 1rem;
 `;
 
 export { Label, Input, Legend, FormContainer, FieldSet };

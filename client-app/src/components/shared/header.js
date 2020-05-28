@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
-import { Title, HeaderArea, LogInOption } from "../../styles/header.js";
+import { Title, HeaderArea, StyledLogInLink } from "../../styles/header.js";
 
 export default function Header() {
   const { logInStatus, setLogInStatus } = useContext(AppContext);
@@ -13,13 +13,13 @@ export default function Header() {
     let token = localStorage.getItem("token");
     if (!token) {
       setLogInStatus(false);
-      return <LogInOption href="/">Log In or Sign Up Here!</LogInOption>;
+      return <StyledLogInLink to="/">Log In or Sign Up Here!</StyledLogInLink>;
     } else {
       setLogInStatus(true);
       return (
-        <LogInOption onClick={removeToken} href="/">
+        <StyledLogInLink onClick={removeToken} href="/">
           Log Out
-        </LogInOption>
+        </StyledLogInLink>
       );
     }
   }

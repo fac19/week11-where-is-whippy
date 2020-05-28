@@ -15,11 +15,15 @@ const Button = `
   display: block;
   width: 75vw;
   max-width: 400px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const BlueButton = styled.button`
-${Button}
-background-color: ${lightBlue}
+  ${Button}
+  background-color: ${lightBlue}
 `;
 
 const PinkButton = styled.button`
@@ -45,4 +49,4 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export { BlueButton, PinkButton, PinkSmallButton, PageContainer };
+export { BlueButton, PinkButton, PinkSmallButton, PageContainer, StyledLink };

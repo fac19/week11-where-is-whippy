@@ -2,21 +2,30 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { BlueButton, PinkButton, PageContainer } from "../../styles/buttons.js";
+import {
+  BlueButton,
+  PinkButton,
+  PageContainer,
+  StyledLink,
+} from "../../styles/buttons";
+import { LandingImg, Title2 } from "../../styles/landing";
 
 export default function Landing() {
   const { isVendor, setIsVendor } = useContext(AppContext);
 
   return (
     <PageContainer>
-      <h2>Tired of waiting for the jingle?</h2>
-      <img src="#" alt="illustation" />
-      <Link to="/user" onClick={() => setIsVendor(true)}>
+      <Title2>Tired of waiting for the jingle?</Title2>
+      <LandingImg
+        src="https://image.flaticon.com/icons/svg/346/346178.svg"
+        alt="Ice cream cone"
+      />
+      <StyledLink to="/user" onClick={() => setIsVendor(true)}>
         <PinkButton>Vendors</PinkButton>
-      </Link>
-      <Link to="/user" onClick={() => setIsVendor(false)}>
+      </StyledLink>
+      <StyledLink to="/user" onClick={() => setIsVendor(false)}>
         <BlueButton>Customers</BlueButton>
-      </Link>
+      </StyledLink>
     </PageContainer>
   );
 }
