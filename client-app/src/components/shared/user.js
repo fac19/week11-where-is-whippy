@@ -2,7 +2,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { BlueButton, PinkButton, PageContainer } from "../../styles/buttons";
+import {
+  BlueButton,
+  PinkButton,
+  PageContainer,
+  StyledLink,
+} from "../../styles/buttons";
+import { LandingImg } from "../../styles/landing";
 
 export default function User() {
   const { isVendor, setIsVendor } = useContext(AppContext);
@@ -11,28 +17,34 @@ export default function User() {
       {isVendor ? (
         <PageContainer>
           <h2>Find ice cream lovers today</h2>
-          <img src="#" />
+          <LandingImg
+            src="https://image.flaticon.com/icons/svg/346/346178.svg"
+            alt="Ice cream cone"
+          />
 
-          <Link to="/signup" onClick={() => setIsVendor(true)}>
+          <StyledLink to="/signup" onClick={() => setIsVendor(true)}>
             <PinkButton>Sign Up</PinkButton>
-          </Link>
+          </StyledLink>
 
-          <Link to="/login" onClick={() => setIsVendor(true)}>
+          <StyledLink to="/login" onClick={() => setIsVendor(true)}>
             <PinkButton>Log In</PinkButton>
-          </Link>
+          </StyledLink>
         </PageContainer>
       ) : (
         <PageContainer>
           <h2>Find ice cream today</h2>
-          <img src="#" />
+          <LandingImg
+            src="https://image.flaticon.com/icons/svg/346/346178.svg"
+            alt="Ice cream cone"
+          />
 
-          <Link to="/signup" onClick={() => setIsVendor(false)}>
+          <StyledLink to="/signup" onClick={() => setIsVendor(false)}>
             <BlueButton>Sign Up</BlueButton>
-          </Link>
+          </StyledLink>
 
-          <Link to="/login" onClick={() => setIsVendor(false)}>
+          <StyledLink to="/login" onClick={() => setIsVendor(false)}>
             <BlueButton>Log In</BlueButton>
-          </Link>
+          </StyledLink>
         </PageContainer>
       )}
     </section>

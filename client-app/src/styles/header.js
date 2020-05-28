@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // import Montserrat from ‘./fonts/Montserrat-Regular.ttf’
 // injectGlobal`
@@ -22,7 +23,7 @@ const Title = styled.h1`
   font-style: italic;
   color: ${navy};
   font-size: 2.5rem;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 `;
 
 const HeaderArea = styled.header`
@@ -32,6 +33,10 @@ const HeaderArea = styled.header`
   padding-bottom: 5%;
 `;
 
-const LogInOption = styled.a``;
+const StyledLogInLink = styled(Link)`
+  font-size: 1rem;
+  color: ${navy};
+  text-decoration: none;
+`;
 
-export { Title, HeaderArea, LogInOption };
+export { Title, HeaderArea, StyledLogInLink };

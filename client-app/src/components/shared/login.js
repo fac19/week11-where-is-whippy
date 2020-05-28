@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
-import { Button, BlueButton, PinkButton } from "../../styles/buttons";
+import {
+  Button,
+  BlueButton,
+  PinkButton,
+  StyledLink,
+} from "../../styles/buttons";
 import { textStyle } from "../../styles/text";
 import { Label, Input, FormContainer } from "../../styles/form";
 
