@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import Landing from "./components/shared/landing.js";
 import Header from "./components/shared/header.js";
@@ -8,32 +8,27 @@ import Login from "./components/shared/login.js";
 import Home from "./components/vendor/home.js";
 import Heatmap from "./components/vendor/heatmap.js";
 import Timetable from "./components/vendor/timetable.js";
+import CustomerMap from "./components/customer/map.js";
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // For React context management
 import { AppContextProvider } from "./components/AppContext";
 
 function App() {
-  const [isVendor, setIsVendor] = useState(true);
-
   return (
     <AppContextProvider>
       <Router>
         <div className="App">
           <Header />
           <Switch>
-            <Route path="/" exact render={() => <Landing />} />
+            <Route exact path="/" component={() => <Landing />} />
             <Route path="/user" component={() => <User />} />
-            <Route
-              path="/signup"
-              component={() => <Signup isVendor={isVendor} />}
-            />
-            <Route
-              path="/login"
-              component={() => <Login isVendor={isVendor} />}
-            />
+            <Route path="/signup" component={() => <Signup />} />
+            <Route path="/login" component={() => <Login />} />
             <Route path="/home" component={() => <Home />} />
             <Route path="/heatmap" component={() => <Heatmap />} />
+            <Route path="/map" component={() => <CustomerMap />} />
+            <Route path="/timetable" component={() => <Timetable />} />
           </Switch>
         </div>
       </Router>
@@ -41,19 +36,4 @@ function App() {
   );
 }
 
-/* <Route exact path="/props-through-render" render={(props) => <PropsPage {...props} title={`Props through render`} />} />
-
-<Route
-  path='/dashboard'
-  component={() => <Dashboard isAuthed={true} />}
-/> */
-
-/* <Route
-  path='/dashboard'
-  render={(props) => <Dashboard {...props} isAuthed={true} />}
-/> */
-
 export default App;
-
-/* <Route path="/signup-c" component={signupCustomer} />
-<Route path="/signup-v" component={signupVendor} /> */

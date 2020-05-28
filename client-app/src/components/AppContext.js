@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 const AppContext = createContext();
 
 function AppContextProvider(props) {
-  const [logInStatus, setLogInStatus] = useState(true);
+  const [logInStatus, setLogInStatus] = useState(false);
   const [isVendor, setIsVendor] = useState(true);
   const [signUpStateVendor, setSignUpStateVendor] = useState({
     name: "",
