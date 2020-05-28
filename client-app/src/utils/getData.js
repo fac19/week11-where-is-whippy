@@ -11,11 +11,11 @@ const getCustomerCoords = () => {
       // http://localhost:8080/customers/coords
       // localhosthttp://localhost:8080
       .then((res) => res.json())
-      .then((jsonObj) => {
-        console.log("getCustomerCoords -> jsonObj", jsonObj);
-        jsonObj.map((coords) => {
-          console.log(coords.latitude, coords.longitude);
+      .then((jsonArr) => {
+        const newArr = jsonArr.map((coordsObj) => {
+          return { lat: coordsObj.latitude, lng: coordsObj.longitude };
         });
+        return newArr;
       })
       .catch((err) => console.log(err))
   );
