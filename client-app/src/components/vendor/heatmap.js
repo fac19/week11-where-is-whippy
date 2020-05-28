@@ -13,26 +13,28 @@ export default function HeatMapForVendor() {
   const gMAPI = "AIzaSyBlm3QfivNjejFqL3StXdPuRf0-yEsdM9o";
   // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 
-  let coordsArrPure = [
-    { lat: 51.5646, lng: 0.0047 },
-    { lat: 51.5646, lng: 0.1547 },
-    { lat: 51.8646, lng: 0.1047 },
-    { lat: 51.2646, lng: 0.2047 },
-  ];
+  let coordsArrPure = {
+    positions: [
+      { lat: 51.5646, lng: 0.0047 },
+      { lat: 51.5646, lng: 0.1547 },
+      { lat: 51.8646, lng: 0.1047 },
+      { lat: 51.2646, lng: 0.2047 },
+    ],
+  };
 
   const mapStyles = {
     height: "60vh",
     width: "100%",
   };
 
-  const [currentPosition, setCurrentPosition] = useState({});
-  const success = (position) => {
-    const currentPosition = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    };
-    setCurrentPosition(currentPosition);
-  };
+  // const [currentPosition, setCurrentPosition] = useState({});
+  // const success = (position) => {
+  //   const currentPosition = {
+  //     lat: position.coords.latitude,
+  //     lng: position.coords.longitude,
+  //   };
+  //   setCurrentPosition(currentPosition);
+  // };
 
   // useEffect(async () => {
   //   let coordsArr = await getCustomerCoords();
@@ -40,7 +42,13 @@ export default function HeatMapForVendor() {
   //   setCustomerCoords((coordsArr) => [...coordsArr]);
   // }, []);
 
-  const handleFetchCoords = () => {};
+  const handleFetchCoords = async () => {
+    console.log("FETCH COORDS CALLED");
+    let coordsArr = await getCustomerCoords();
+    console.log("HeatMapForVendor -> coordsArr", coordsArr);
+    let positionsValue = { positions: coordsArr };
+    setCustomerCoords(positionsValue);
+  };
 
   return (
     <section style={mapStyles}>
@@ -50,7 +58,7 @@ export default function HeatMapForVendor() {
         defaultZoom={13}
         defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
         heatmapLibrary={true}
-        heatmap={{ positions: customerCoords }}
+        heatmap={customerCoords}
       ></GoogleMapReact>
       <PinkButton type="submit" onClick={handleFetchCoords}>
         Generate Heatmap
