@@ -1,4 +1,5 @@
-![](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0e9d253d-58de-49ca-8655-8be52752a91b/deploy-status)](https://app.netlify.com/sites/where-is-whippy/deploys)
+![Travis](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
 
 # week11-where-is-whippy
 
@@ -52,16 +53,19 @@ JWT_SECRET=mysecret
 Spicy side note: If you hit the home `'/'` route on the BE server it will serve up the FE.
 
 ### REST API Endpoints
-Can check these locally with Postman. Here is a collection for testing endpoints locally. 
+
+Can check these locally with Postman. Here is a collection for testing endpoints locally.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/49b550d2bcb9bb2c74a7)
 
 ### GET
+
 - GET all vendors: `http://localhost:8080/vendors/`
 - GET all customer coordinates:`http://localhost:8080/customers/coords`
 - GET all vendor coordinates: `http://localhost:8080/vendors/coords`
 
 ### POST
+
 - POST new customer coordinates: `http://localhost:8080/customers/coords`
 - POST new vendor coordinates: `http://localhost:8080/vendors/coords`
 - POST signup new vendor `http://localhost:8080/vendors/signup`
@@ -74,6 +78,7 @@ Can check these locally with Postman. Here is a collection for testing endpoints
 - nodemon - Restarts the server automatically when you make a change to the code
 - bcrypt - hashes the passwords
 - jsonwebtoken - used to create a jwt for the users to sign in and out
+- Styled components - for CSS
 
 ### Dev Dependencies Installed
 

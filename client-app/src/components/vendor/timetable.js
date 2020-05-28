@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
 export default function Timetable() {
   //Editing: fetch API - SELECT * FROM routes WHERE route_name == /whatever route name chosen
   // fill in form with data
   function generateNewRow(event) {
-    event.preventDefault()
-    const newRows = document.querySelector(".timetable-newRows")
+    event.preventDefault();
+    const newRows = document.querySelector(".timetable-newRows");
     return (
       <section className="timetable-new-entry">
         <label for="from" className="timetable-route__from">
@@ -38,7 +38,7 @@ export default function Timetable() {
           className="timetable-route__address"
         />
       </section>
-    )
+    );
   }
 
   return (
@@ -110,7 +110,7 @@ export default function Timetable() {
         <button className="timetable-submit">Submit</button>
       </form>
     </section>
-  )
+  );
 }
 
 // function TimetableStates() {
