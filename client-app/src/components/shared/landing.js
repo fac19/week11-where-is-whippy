@@ -9,13 +9,13 @@ export default function Landing() {
 
   return (
     <PageContainer>
-      <h2 className="landing-subtitle">Tired of waiting for the jingle?</h2>
-      <img className="landing-img" src="#" alt="illustation" />
+      <h2>Tired of waiting for the jingle?</h2>
+      <img src="#" alt="illustation" />
       <Link to="/user" onClick={() => setIsVendor(true)}>
-        <PinkButton className="landing-btn-vendors">Vendors</PinkButton>
+        <PinkButton>Vendors</PinkButton>
       </Link>
       <Link to="/user" onClick={() => setIsVendor(false)}>
-        <BlueButton className="landing-btn-customers">Customers</BlueButton>
+        <BlueButton>Customers</BlueButton>
       </Link>
     </PageContainer>
   );

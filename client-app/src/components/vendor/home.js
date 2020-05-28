@@ -29,59 +29,37 @@ export default function Home() {
   return (
     <PageContainer>
       {setLogInStatus(true)}
-      <h2 className="home-subtitle">
+      <h2>
         Welcome back
         <str>
           <i>name</i>
         </str>
         !
       </h2>
-      <h2 className="home-subtitle">Today's route is:</h2>
+      <h2>Today's route is:</h2>
 
-      <form className="home-dropdown" onSubmit={handleSubmit}>
-        <label className="home-dropdown__label" htmlFor="routes">
-          Select routes
-        </label>
-        <select
-          onChange={handleRoute}
-          id="routes"
-          className="home-dropdown__input"
-        >
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="routes">Select routes</label>
+        <select onChange={handleRoute} id="routes">
           {/* Run displayOptions */}
           <option value="">Route 1</option>
           <option value=""> Route 2</option>
           <option value=""> Route 3</option>
         </select>
-        <button className="home-dropdown__submit-btn" type="submit">
-          Choose
-        </button>
+        <button type="submit">Choose</button>
       </form>
 
-      <section className="current-route"></section>
+      <section></section>
 
-      <section className="toggleAlerts">
-        <p className="toggleAlert-subtitle">Turn on alerts for customers</p>
+      <section>
+        <p>Turn on alerts for customers</p>
         <label class="switch">
           <input type="checkbox" />
           <span class="slider round"></span>
         </label>
       </section>
 
-      <section className="home-links">
-        {/* <Link
-          to={{
-            pathname: "/timetable",
-            state: {
-              editSchedule: true,
-            },
-          }}
-          className="home-link__schedule"
-        >
-          <PinkButton className="home-btn__schedule">
-            Edit Current Schedule
-          </PinkButton>
-        </Link> */}
-
+      <section>
         <Link
           to={{
             pathname: "/timetable",
@@ -89,15 +67,12 @@ export default function Home() {
               editSchedule: false,
             },
           }}
-          className="home-link__schedule"
         >
-          <PinkButton className="home-btn__schedule">
-            Create a New Schedule
-          </PinkButton>
+          <PinkButton>Create a New Schedule</PinkButton>
         </Link>
 
-        <Link to="/heatmap" className="home-link__heatmap">
-          <PinkButton className="home-btn__schedule">View Heatmap</PinkButton>
+        <Link to="/heatmap">
+          <PinkButton>View Heatmap</PinkButton>
         </Link>
       </section>
     </PageContainer>

@@ -10,35 +10,14 @@ export default function Timetable() {
     // const newRows = document.querySelector(".timetable-newRows");
     return (
       <section className="timetable-new-entry">
-        <Label for="from" className="timetable-route__from">
-          From
-        </Label>
-        <Input
-          type="text"
-          id="from-input__0"
-          name="from"
-          className="timetable-route__from"
-        />
+        <Label for="from">From</Label>
+        <Input type="text" id="from-input__0" name="from" />
 
-        <Label for="to" className="timetable-route__to">
-          To
-        </Label>
-        <Input
-          type="text"
-          id="to-input__0"
-          name="to"
-          className="timetable-route__to"
-        />
+        <Label for="to">To</Label>
+        <Input type="text" id="to-input__0" name="to" />
 
-        <Label for="from" className="timetable-route__address">
-          Address
-        </Label>
-        <Input
-          type="text"
-          id="address-input__0"
-          name="address"
-          className="timetable-route__address"
-        />
+        <Label for="from">Address</Label>
+        <Input type="text" id="address-input__0" name="address" />
       </section>
     );
   }
@@ -46,70 +25,28 @@ export default function Timetable() {
   return (
     <section>
       <FormContainer>
-        <Label for="from" className="timetable-route__from">
-          From
-        </Label>
-        <Input
-          type="text"
-          id="from-input__0"
-          name="from"
-          className="timetable-route__from"
-        />
+        <Label for="from">From</Label>
+        <Input type="text" id="from-input__0" name="from" />
 
-        <Label for="to" className="timetable-route__to">
-          To
-        </Label>
-        <Input
-          type="text"
-          id="to-input__0"
-          name="to"
-          className="timetable-route__to"
-        />
+        <Label for="to">To</Label>
+        <Input type="text" id="to-input__0" name="to" />
 
-        <Label for="from" className="timetable-route__address">
-          Address
-        </Label>
-        <Input
-          type="text"
-          id="address-input__0"
-          name="address"
-          className="timetable-route__address"
-        />
+        <Label for="from">Address</Label>
+        <Input type="text" id="address-input__0" name="address" />
 
-        <Label for="from" className="timetable-route__from">
-          From
-        </Label>
-        <Input
-          type="text"
-          id="from-input__1"
-          name="from"
-          className="timetable-route__from"
-        />
+        <Label for="from">From</Label>
+        <Input type="text" id="from-input__1" name="from" />
 
-        <Label for="to" className="timetable-route__to">
-          To
-        </Label>
-        <Input
-          type="text"
-          id="to-input__1"
-          name="to"
-          className="timetable-route__to"
-        />
+        <Label for="to">To</Label>
+        <Input type="text" id="to-input__1" name="to" />
 
-        <Label for="from" className="timetable-route__address">
-          Address
-        </Label>
-        <Input
-          type="text"
-          id="address-input__1"
-          name="address"
-          className="timetable-route__address"
-        />
+        <Label for="from">Address</Label>
+        <Input type="text" id="address-input__1" name="address" />
         <section className="timetable-newRows"></section>
 
         <button onClick={generateNewRow}>Add another row</button>
 
-        <PinkButton className="timetable-submit">Submit</PinkButton>
+        <PinkButton>Submit</PinkButton>
       </FormContainer>
     </section>
   );

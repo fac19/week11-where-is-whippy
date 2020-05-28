@@ -26,6 +26,11 @@ const PinkButton = styled.button`
   background-color: ${lightPink};
 `;
 
+const PinkSmallButton = styled.button`
+  ${PinkButton}
+  font-size: 1rem;
+`;
+
 const PageContainer = styled.section`
   background-color: ${background};
   display: flex;
@@ -41,4 +46,4 @@ const PageContainer = styled.section`
 
 //fix width of the buttons
 
-export { BlueButton, PinkButton, PageContainer };
+export { BlueButton, PinkButton, PinkSmallButton, PageContainer };

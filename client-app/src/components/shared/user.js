@@ -10,28 +10,28 @@ export default function User() {
     <section>
       {isVendor ? (
         <PageContainer>
-          <h2 className="user-subtitle">Find ice cream lovers today</h2>
+          <h2>Find ice cream lovers today</h2>
           <img src="#" />
 
           <Link to="/signup" onClick={() => setIsVendor(true)}>
-            <PinkButton className="signup-btn-vendors">Sign Up</PinkButton>
+            <PinkButton>Sign Up</PinkButton>
           </Link>
 
           <Link to="/login" onClick={() => setIsVendor(true)}>
-            <PinkButton className="login-btn-vendors">Log In</PinkButton>
+            <PinkButton>Log In</PinkButton>
           </Link>
         </PageContainer>
       ) : (
         <PageContainer>
-          <h2 className="user-subtitle">Find ice cream today</h2>
+          <h2>Find ice cream today</h2>
           <img src="#" />
 
           <Link to="/signup" onClick={() => setIsVendor(false)}>
-            <BlueButton className="signup-btn-customers">Sign Up</BlueButton>
+            <BlueButton>Sign Up</BlueButton>
           </Link>
 
           <Link to="/login" onClick={() => setIsVendor(false)}>
-            <BlueButton className="login-btn-customers">Log In</BlueButton>
+            <BlueButton>Log In</BlueButton>
           </Link>
         </PageContainer>
       )}
