@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import LondonMap from "../../utils/london-map.js"
-
+import { PinkButton } from "../../styles/buttons"
 export default function Heatmap() {
   //fetch API - retrieve all lat/lng coordinates from
   //then(data => data.forEach(create new array heatmapData))
@@ -28,14 +28,16 @@ export default function Heatmap() {
       </section>
       <Link
         to={{
-          pathname: "/schedule",
+          pathname: "/timetable",
           state: {
             editSchedule: true,
           },
         }}
         className="home-link__schedule"
       >
-        Edit schedule
+        <PinkButton className="home-btn__schedule">
+          Edit Current Schedule
+        </PinkButton>
       </Link>
     </section>
   )

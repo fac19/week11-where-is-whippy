@@ -1,6 +1,10 @@
-import React, { useContext } from "react";
-import postSignUpInformation from "../../utils/postData";
-import { AppContext } from "../AppContext";
+import React, { useEffect, useContext } from "react"
+import { Link } from "react-router-dom"
+import postSignUpInformation from "../../utils/postData"
+import { AppContext } from "../AppContext"
+import { Button, BlueButton, PinkButton } from "../../styles/buttons"
+import { textStyle } from "../../styles/text"
+import { Label, Input, Legend, FormContainer } from "../../styles/form"
 
 // ***NOTES***
 // Radio buttons are not much fun
@@ -16,6 +20,7 @@ import { AppContext } from "../AppContext";
 export default function SignUp() {
   const {
     isVendor,
+    setIsVendor,
     signUpStateVendor,
     setSignUpStateVendor,
     signUpStateCustomer,
@@ -74,13 +79,13 @@ export default function SignUp() {
   // A ternary is user to render the other customer or vendor inputs
 
   return (
-    <form
+    <FormContainer
       onSubmit={
         isVendor ? (e) => handleSubmitVendor(e) : (e) => handleSubmitCustomer(e)
       }
     >
-      <label htmlFor="name">Name</label>
-      <input
+      <Label htmlFor="name">Name</Label>
+      <Input
         type="text"
         id="name"
         name="name"
@@ -93,8 +98,8 @@ export default function SignUp() {
         value={isVendor ? signUpStateVendor.name : signUpStateCustomer.name}
       />
 
-      <label htmlFor="email">Email</label>
-      <input
+      <Label htmlFor="email">Email</Label>
+      <Input
         type="email"
         id="email"
         name="email"
@@ -107,8 +112,8 @@ export default function SignUp() {
         value={isVendor ? signUpStateVendor.email : signUpStateCustomer.email}
       />
 
-      <label htmlFor="password">Password</label>
-      <input
+      <Label htmlFor="password">Password</Label>
+      <Input
         type="password"
         id="password"
         name="password"
@@ -125,8 +130,8 @@ export default function SignUp() {
       {/* THIS IS THE TERNARY */}
       {isVendor ? (
         <>
-          <label htmlFor="mobile">Mobile Number</label>
-          <input
+          <Label htmlFor="mobile">Mobile Number</Label>
+          <Input
             type="tel"
             id="mobile"
             name="mobile"
@@ -135,8 +140,8 @@ export default function SignUp() {
             onChange={(e) => handleOnChangeVendor(e)}
           />
 
-          <label htmlFor="companyName">Company Name</label>
-          <input
+          <Label htmlFor="companyName">Company Name</Label>
+          <Input
             type="text"
             id="companyName"
             name="companyName"
@@ -146,9 +151,9 @@ export default function SignUp() {
           />
 
           <fieldset id="fieldset-vendorAlcohol">
-            <legend>Do you sell alcohol?</legend>
-            <label htmlFor="alcoholYes">Yes</label>
-            <input
+            <Legend>Do you sell alcohol?</Legend>
+            <Label htmlFor="alcoholYes">Yes</Label>
+            <Input
               type="radio"
               id="alcoholYes"
               name="alcohol"
@@ -157,8 +162,8 @@ export default function SignUp() {
               onChange={(e) => handleOnChangeVendor(e)}
             />
 
-            <label htmlFor="alcoholNo">No</label>
-            <input
+            <Label htmlFor="alcoholNo">No</Label>
+            <Input
               type="radio"
               id="alcoholNo"
               name="alcohol"
@@ -169,9 +174,9 @@ export default function SignUp() {
           </fieldset>
 
           <fieldset id="fieldset-vendorVegan">
-            <legend>Do you offer vegan options?</legend>
-            <label htmlFor="veganYes">Yes</label>
-            <input
+            <Legend>Do you offer vegan options?</Legend>
+            <Label htmlFor="veganYes">Yes</Label>
+            <Input
               type="radio"
               id="veganYes"
               name="vegan"
@@ -180,8 +185,8 @@ export default function SignUp() {
               onChange={(e) => handleOnChangeVendor(e)}
             />
 
-            <label htmlFor="veganNo">No</label>
-            <input
+            <Label htmlFor="veganNo">No</Label>
+            <Input
               type="radio"
               id="veganNo"
               name="vegan"
@@ -190,13 +195,16 @@ export default function SignUp() {
               onChange={(e) => handleOnChangeVendor(e)}
             />
           </fieldset>
+          <Link to="/home" onClick={() => setIsVendor(true)}>
+            <PinkButton className="signup-btn-vendors">Sign Up</PinkButton>
+          </Link>
         </>
       ) : (
         <>
           <fieldset id="fieldset-customer-age">
-            <legend>What is your age group?</legend>
-            <label htmlFor="gender-1">14-18</label>
-            <input
+            <Legend>What is your age group?</Legend>
+            <Label htmlFor="gender-1">14-18</Label>
+            <Input
               type="radio"
               id="age1"
               name="age"
@@ -204,8 +212,8 @@ export default function SignUp() {
               checked={signUpStateCustomer.age === "14-18"}
               onChange={(e) => handleOnChangeCustomer(e)}
             />
-            <label htmlFor="gender-2">19-24</label>
-            <input
+            <Label htmlFor="gender-2">19-24</Label>
+            <Input
               type="radio"
               id="age2"
               name="age"
@@ -213,8 +221,8 @@ export default function SignUp() {
               checked={signUpStateCustomer.age === "19-24"}
               onChange={(e) => handleOnChangeCustomer(e)}
             />
-            <label htmlFor="ageGroup3">25-30</label>
-            <input
+            <Label htmlFor="ageGroup3">25-30</Label>
+            <Input
               type="radio"
               id="age3"
               name="age"
@@ -222,8 +230,8 @@ export default function SignUp() {
               checked={signUpStateCustomer.age === "25-30"}
               onChange={(e) => handleOnChangeCustomer(e)}
             />
-            <label htmlFor="ageGroup4">31-40</label>
-            <input
+            <Label htmlFor="ageGroup4">31-40</Label>
+            <Input
               type="radio"
               id="age4"
               name="age"
@@ -234,9 +242,9 @@ export default function SignUp() {
           </fieldset>
 
           <fieldset id="fieldset-gender">
-            <legend>What is your gender?</legend>
-            <label htmlFor="gender-1">Male</label>
-            <input
+            <Legend>What is your gender?</Legend>
+            <Label htmlFor="gender-1">Male</Label>
+            <Input
               type="radio"
               id="gender-1"
               name="gender"
@@ -244,8 +252,8 @@ export default function SignUp() {
               checked={signUpStateCustomer.gender === "Male"}
               onChange={(e) => handleOnChangeCustomer(e)}
             />
-            <label htmlFor="gender-2">Female</label>
-            <input
+            <Label htmlFor="gender-2">Female</Label>
+            <Input
               type="radio"
               id="gender-2"
               name="gender"
@@ -253,8 +261,8 @@ export default function SignUp() {
               checked={signUpStateCustomer.gender === "Female"}
               onChange={(e) => handleOnChangeCustomer(e)}
             />
-            <label htmlFor="gender-3">Nonbinary</label>
-            <input
+            <Label htmlFor="gender-3">Nonbinary</Label>
+            <Input
               type="radio"
               id="gender-3"
               name="gender"
@@ -262,8 +270,8 @@ export default function SignUp() {
               checked={signUpStateCustomer.gender === "Nonbinary"}
               onChange={(e) => handleOnChangeCustomer(e)}
             />
-            <label htmlFor="gender-4">Prefer not to say</label>
-            <input
+            <Label htmlFor="gender-4">Prefer not to say</Label>
+            <Input
               type="radio"
               id="gender-4"
               name="gender"
@@ -273,8 +281,8 @@ export default function SignUp() {
             />
           </fieldset>
 
-          <label htmlFor="icecreamFlavour">Icecream Flavour</label>
-          <input
+          <Label htmlFor="icecreamFlavour">Icecream Flavour</Label>
+          <Input
             type="text"
             id="icecreamFlavour"
             name="icecreamFlavour"
@@ -284,12 +292,12 @@ export default function SignUp() {
           />
 
           <fieldset>
-            <legend>
+            <Legend>
               In order to use this app, I consent to sharing my location
               information
-            </legend>
-            <label htmlFor="consentYes">I consent</label>
-            <input
+            </Legend>
+            <Label htmlFor="consentYes">I consent</Label>
+            <Input
               type="radio"
               id="consentYes"
               name="consent"
@@ -297,8 +305,8 @@ export default function SignUp() {
               checked={signUpStateCustomer.consent === true}
               onChange={(e) => handleOnChangeCustomer(e)}
             />
-            <label htmlFor="consentNo">I do not consent</label>
-            <input
+            <Label htmlFor="consentNo">I do not consent</Label>
+            <Input
               type="radio"
               id="consentNo"
               name="consent"
@@ -307,9 +315,19 @@ export default function SignUp() {
               onChange={(e) => handleOnChangeCustomer(e)}
             />
           </fieldset>
+          <Link to="/map" onClick={() => setIsVendor(false)}>
+            {signUpStateCustomer.consent && (
+              <BlueButton className="signup-btn-customers">Sign Up</BlueButton>
+            )}
+          </Link>
         </>
       )}
+<<<<<<< HEAD
+    </FormContainer>
+  )
+=======
       {signUpStateCustomer.consent && <button type="submit">Signup</button>}
     </form>
   );
+>>>>>>> master
 }

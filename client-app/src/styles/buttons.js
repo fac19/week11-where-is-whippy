@@ -8,12 +8,13 @@ const background = "#F7F4F0";
 const Button = `
   width: 75%;
   max-width: 250px; 
-  border-radius: 5%;
+  border-radius: 5px;
   color: ${navy};
   text-decoration: none;
   font-size: 2rem;
   padding: 0.25em 1em;
   margin-top: 2.5%;
+  display: block;
 `;
 
 const BlueButton = styled.a`
@@ -31,6 +32,7 @@ const PageContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 90vh;
 `;
 /* 
   justify-content: center;
