@@ -2,35 +2,30 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { BlueButton, PinkButton, PageContainer } from "../../styles/buttons.js";
+import {
+  BlueButton,
+  PinkButton,
+  PageContainer,
+  StyledLink,
+} from "../../styles/buttons";
+import { LandingImg, Title2 } from "../../styles/landing";
 
 export default function Landing() {
   const { isVendor, setIsVendor } = useContext(AppContext);
 
-  console.log("landing state: ", isVendor);
-
   return (
     <PageContainer>
-      <h2 className="landing-subtitle">Tired of waiting for the jingle?</h2>
-      <img className="landing-img" src="#" alt="illustation" />
-      <Link to="/user" onClick={() => setIsVendor(true)}>
-        <PinkButton className="landing-btn-vendors">Vendors</PinkButton>
-      </Link>
-      <Link to="/user" onClick={() => setIsVendor(false)}>
-        <BlueButton className="landing-btn-customers">Customers</BlueButton>
-      </Link>
+      <Title2>Tired of waiting for the jingle?</Title2>
+      <LandingImg
+        src="https://image.flaticon.com/icons/svg/346/346178.svg"
+        alt="Ice cream cone"
+      />
+      <StyledLink to="/user" onClick={() => setIsVendor(true)}>
+        <PinkButton>Vendors</PinkButton>
+      </StyledLink>
+      <StyledLink to="/user" onClick={() => setIsVendor(false)}>
+        <BlueButton>Customers</BlueButton>
+      </StyledLink>
     </PageContainer>
   );
-
-  // function handleLoginLinkVendor() {
-  //   alert("Vendor login button clicked")
-  //   setIsVendor(true)
-  // }
-
-  // function handleLoginLinkCustomer() {
-  //   console.log(isVendor)
-  //   setIsVendor(false)
-  //   console.log(isVendor)
-  //   // alert("Customer login button clicked")
-  // }
 }

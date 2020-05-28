@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const lightBlue = "#C3DDED";
 const navy = "#1f4068";
@@ -6,25 +7,34 @@ const lightPink = "#F7DCD5";
 const background = "#F7F4F0";
 
 const Button = `
-  width: 75%;
-  max-width: 250px; 
   border-radius: 5px;
   color: ${navy};
-  text-decoration: none;
   font-size: 2rem;
   padding: 0.25em 1em;
   margin-top: 2.5%;
   display: block;
+  width: 75vw;
+  max-width: 400px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-const BlueButton = styled.a`
-${Button}
-background-color: ${lightBlue}
-`;
-
-const PinkButton = styled.a`
+const BlueButton = styled.button`
   ${Button}
+  background-color: ${lightBlue}
+`;
+
+const PinkButton = styled.button`
+  ${Button};
   background-color: ${lightPink};
+`;
+
+const PinkSmallButton = styled.button`
+  ${Button};
+  background-color: ${lightPink};
+  font-size: 1rem;
 `;
 
 const PageContainer = styled.section`
@@ -34,11 +44,9 @@ const PageContainer = styled.section`
   align-items: center;
   height: 90vh;
 `;
-/* 
-  justify-content: center;
-  position: relative;
-  min-height: 90vh;*/
 
-//fix width of the buttons
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 
-export { BlueButton, PinkButton, PageContainer };
+export { BlueButton, PinkButton, PinkSmallButton, PageContainer, StyledLink };

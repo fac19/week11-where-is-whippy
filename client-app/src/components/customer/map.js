@@ -3,17 +3,17 @@ import React from "react";
 import LondonMap from "../../utils/london-map.js";
 
 export default function CustomerMap() {
-  function signalInterest(e) {
-    e.preventDefault;
-    //API post request to customer location table INSERT INTO customer_location
-  }
+  // function signalInterest(e) {
+  //   e.preventDefault;
+  //   //API post request to customer location table INSERT INTO customer_location
+  // };
 
-  return (
-    <section>
-      <LondonMap />
-      <button onClick={signalInterest}>
-        Let Vendors Know You Would Like Some Ice Cream
-      </button>
-    </section>
-  );
+  return <h1>Customer map</h1>;
 }
+
+/* // <section>
+    //   <LondonMap />
+    //   <button onClick={signalInterest()}>
+    //     Let Vendors Know You Would Like Some Ice Cream
+    //   </button>
+    // </section> */

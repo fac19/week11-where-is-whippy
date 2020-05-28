@@ -1,21 +1,20 @@
-const db = require("../db/connection")
+const db = require("../db/connection");
 
 function getAllCustomers() {
-  return db.query(`SELECT * FROM customers;`).then((results) => results.rows)
+  return db.query(`SELECT * FROM customers;`).then((results) => results.rows);
 }
 
 function getCustomer(email) {
-  console.log("getCustomer -> email", email)
   return db
     .query(`SELECT * FROM customers WHERE email=($1)`, [email])
     .then((user) => user.rows[0])
-    .catch((error) => error)
+    .catch((error) => error);
 }
 
 function getSpecificCustomer(id) {
   return db
     .query(`SELECT * FROM customers WHERE id=($1)`, [id])
-    .then((user) => user.rows[0])
+    .then((user) => user.rows[0]);
 }
 
 function createCustomer(newCustomer) {
@@ -30,7 +29,7 @@ function createCustomer(newCustomer) {
       newCustomer.gender,
       newCustomer.icecreamFlavour,
     ]
-  )
+  );
 }
 
 module.exports = {
@@ -38,4 +37,4 @@ module.exports = {
   getCustomer,
   getSpecificCustomer,
   createCustomer,
-}
+};

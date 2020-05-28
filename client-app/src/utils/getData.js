@@ -17,7 +17,13 @@ const getRequest = () => {
         });
       })
       .catch((err) => console.log(err))
-  );
-};
+  )};
+    // : "https://where-is-whippy.herokuapp.com";
+
+// const getRequest = (endpoint) => {
+//   return fetch(domain + endpoint)
+//     .then((res) => res.json())
+//     .catch(console.log);
+// };
 
 export default getRequest;
