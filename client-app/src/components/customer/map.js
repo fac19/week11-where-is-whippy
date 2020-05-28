@@ -8,7 +8,7 @@ export default function CustomerMap() {
   //   //API post request to customer location table INSERT INTO customer_location
   // };
 
-  return <h1>hello</h1>;
+  return <h1>Customer map</h1>;
 }
 
 /* // <section>

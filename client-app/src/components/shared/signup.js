@@ -119,9 +119,6 @@ export default function SignUp() {
         }
       })
       .then((body) => {
-        console.log(
-          `Signup successful. Customer token set in local storage: ${body.access_token}`
-        );
         window.localStorage.setItem("token", body.access_token);
         setLogInStatus(true);
       })
