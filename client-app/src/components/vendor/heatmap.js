@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, Component } from "react";
 import GoogleMapReact from "google-map-react";
 import { getCustomerCoords } from "../../utils/getData";
 import { AppContext } from "../AppContext";
+import { PinkButton } from "../../styles/buttons";
 
 // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 // const gMAPI = "AIzaSyApyt224I8eHKHjNrZMZUZ6h5nCWm-0qus";
@@ -20,7 +21,7 @@ export default function HeatMapForVendor() {
   ];
 
   const mapStyles = {
-    height: "65vh",
+    height: "60vh",
     width: "100%",
   };
 
@@ -39,6 +40,8 @@ export default function HeatMapForVendor() {
   //   setCustomerCoords((coordsArr) => [...coordsArr]);
   // }, []);
 
+  const handleFetchCoords = () => {};
+
   return (
     <section style={mapStyles}>
       <GoogleMapReact
@@ -49,6 +52,9 @@ export default function HeatMapForVendor() {
         heatmapLibrary={true}
         heatmap={{ positions: customerCoords }}
       ></GoogleMapReact>
+      <PinkButton type="submit" onClick={handleFetchCoords}>
+        Generate Heatmap
+      </PinkButton>
     </section>
   );
 }
