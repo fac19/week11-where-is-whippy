@@ -5,25 +5,27 @@ const domain =
     ? "http://localhost:8080"
     : "https://where-is-whippy.herokuapp.com/customers/coords";
 
-const getRequest = () => {
+const getCustomerCoords = () => {
   return (
     fetch("http://localhost:8080/customers/coords")
       // http://localhost:8080/customers/coords
       // localhosthttp://localhost:8080
       .then((res) => res.json())
       .then((jsonObj) => {
+        console.log("getCustomerCoords -> jsonObj", jsonObj);
         jsonObj.map((coords) => {
           console.log(coords.latitude, coords.longitude);
         });
       })
       .catch((err) => console.log(err))
-  )};
-    // : "https://where-is-whippy.herokuapp.com";
+  );
+};
+// : "https://where-is-whippy.herokuapp.com";
 
-// const getRequest = (endpoint) => {
+// const getCustomerCoords = (endpoint) => {
 //   return fetch(domain + endpoint)
 //     .then((res) => res.json())
 //     .catch(console.log);
 // };
 
-export default getRequest;
+export { getCustomerCoords };

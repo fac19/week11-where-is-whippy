@@ -1,7 +1,7 @@
 /*global google*/
 import React, { useEffect, useState, Component } from "react";
 import GoogleMapReact from "google-map-react";
-import getRequest from "../../utils/getData";
+import { getCustomerCoords } from "../../utils/getData";
 
 // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 // const gMAPI = "AIzaSyApyt224I8eHKHjNrZMZUZ6h5nCWm-0qus";
@@ -32,10 +32,10 @@ export default function HeatMapForVendor() {
     setCurrentPosition(currentPosition);
   };
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(success);
-  //   getRequest();
-  // }, []);
+  useEffect(() => {
+    // navigator.geolocation.getCurrentPosition(success);
+    getCustomerCoords();
+  }, []);
 
   // const heatmap = new Google.maps.visualization.HeatmapLayer({
   //   data: heatMapData,
@@ -50,15 +50,15 @@ export default function HeatMapForVendor() {
         defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
         heatmapLibrary={true}
         heatmap={{ positions: [{ lat: 51.39246, lng: -0.11335 }] }}
-        yesIWantToUseGoogleMapApiInternals
-        onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+        // yesIWantToUseGoogleMapApiInternals
+        // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
       >
-        <Marker
+        {/* <Marker
           key={place.id}
           text={place.name}
           lat={place.geometry.location.lat}
           lng={place.geometry.location.lng}
-        />
+        /> */}
         {/* {currentPosition.lat && <Marker position={currentPosition} />}  */}
       </GoogleMapReact>
     </section>
