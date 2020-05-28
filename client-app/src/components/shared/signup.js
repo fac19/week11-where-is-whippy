@@ -101,7 +101,9 @@ export default function SignUp() {
         }
       })
       .then((body) => {
-        console.log(`Vendor token set in local storage: ${body.access_token}`);
+        console.log(
+          `Signup successful. Vendor token set in local storage: ${body.access_token}`
+        );
         window.localStorage.setItem("token", body.access_token);
         setLogInStatus(true);
       })
@@ -123,7 +125,7 @@ export default function SignUp() {
       })
       .then((body) => {
         console.log(
-          `Customer token set in local storage: ${body.access_token}`
+          `Signup successful. Customer token set in local storage: ${body.access_token}`
         );
         window.localStorage.setItem("token", body.access_token);
         setLogInStatus(true);
@@ -132,7 +134,7 @@ export default function SignUp() {
   };
 
   // When component mounts checks to see if user is logged in
-  function loggedInStatusCheckerandRedirect() {
+  function loggedInStatusCheckerAndRedirect() {
     if (logInStatus && isVendor) {
       return <Redirect to="/home" />;
     }
@@ -156,7 +158,7 @@ export default function SignUp() {
 
   return (
     <FormContainer onSubmit={handleSubmit}>
-      {loggedInStatusCheckerandRedirect()}
+      {loggedInStatusCheckerAndRedirect()}
       <Label htmlFor="name">Name</Label>
       <Input
         type="text"
@@ -255,9 +257,7 @@ export default function SignUp() {
             />
           </fieldset>
 
-          <PinkButton type="submit" className="signup-btn-vendors">
-            Sign Up
-          </PinkButton>
+          <PinkButton type="submit">Sign Up</PinkButton>
         </>
       ) : (
         <>
@@ -386,9 +386,7 @@ export default function SignUp() {
             />
           </fieldset>
 
-          <BlueButton type="submit" className="signup-btn-customers">
-            Sign Up
-          </BlueButton>
+          <BlueButton type="submit">Sign Up</BlueButton>
         </>
       )}
     </FormContainer>

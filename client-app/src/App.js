@@ -15,33 +15,20 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AppContextProvider } from "./components/AppContext";
 
 function App() {
-  // const { logInStatus, isVendor } = useContext(AppContext);
-
-  // Helper function to see if user is logged in and if so redirects them
-  // function loggedInRedirect() {
-  //   if (logInStatus && isVendor) {
-  //     return <Redirect to="/home" />;
-  //   }
-  //   if (logInStatus && !isVendor) {
-  //     return <Redirect to="/map" />;
-  //   }
-  // }
-
   return (
     <AppContextProvider>
       <Router>
         <div className="App">
           <Header />
           <Switch>
-            <Route exact path="/" component={() => <Landing />}>
-              {/* {loggedInRedirect()} */}
-            </Route>
+            <Route exact path="/" component={() => <Landing />} />
             <Route path="/user" component={() => <User />} />
             <Route path="/signup" component={() => <Signup />} />
             <Route path="/login" component={() => <Login />} />
             <Route path="/home" component={() => <Home />} />
             <Route path="/heatmap" component={() => <Heatmap />} />
             <Route path="/map" component={() => <CustomerMap />} />
+            <Route path="/timetable" component={() => <Timetable />} />
           </Switch>
         </div>
       </Router>
