@@ -14,8 +14,8 @@ export default function HeatMapForVendor() {
   // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 
   const mapStyles = {
-    height: 400,
-    width: "100vw",
+    height: "75vh",
+    width: "100%",
   };
 
   // const defaultCenter = {
@@ -42,7 +42,7 @@ export default function HeatMapForVendor() {
   // });
 
   return (
-    <section>
+    <section style={mapStyles}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: gMAPI }}
         mapContainerStyle={mapStyles}
