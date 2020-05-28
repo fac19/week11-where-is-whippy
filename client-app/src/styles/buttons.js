@@ -8,7 +8,6 @@ const background = "#F7F4F0";
 const Button = `
   border-radius: 5px;
   color: ${navy};
-  text-decoration: none;
   font-size: 2rem;
   padding: 0.25em 1em;
   margin-top: 2.5%;
@@ -34,6 +33,7 @@ const PageContainer = styled.section`
   align-items: center;
   height: 90vh;
 `;
+
 /* 
   justify-content: center;
   position: relative;

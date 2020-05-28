@@ -7,7 +7,13 @@ import {
 import { AppContext } from "../AppContext";
 import { Button, BlueButton, PinkButton } from "../../styles/buttons";
 import { textStyle } from "../../styles/text";
-import { Label, Input, Legend, FormContainer } from "../../styles/form";
+import {
+  Label,
+  Input,
+  Legend,
+  FormContainer,
+  FieldSet,
+} from "../../styles/form";
 
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
@@ -211,7 +217,7 @@ export default function SignUp() {
             onChange={handleOnChangeVendor}
           />
 
-          <fieldset id="fieldset-vendorAlcohol">
+          <FieldSet id="fieldset-vendorAlcohol">
             <Legend>Do you sell alcohol?</Legend>
             <Label htmlFor="alcoholYes">Yes</Label>
             <Input
@@ -232,9 +238,9 @@ export default function SignUp() {
               checked={signUpStateVendor.alcohol === false}
               onChange={handleOnChangeVendor}
             />
-          </fieldset>
+          </FieldSet>
 
-          <fieldset id="fieldset-vendorVegan">
+          <FieldSet id="fieldset-vendorVegan">
             <Legend>Do you offer vegan options?</Legend>
             <Label htmlFor="veganYes">Yes</Label>
             <Input
@@ -255,7 +261,7 @@ export default function SignUp() {
               checked={signUpStateVendor.vegan === false}
               onChange={handleOnChangeVendor}
             />
-          </fieldset>
+          </FieldSet>
 
           <PinkButton type="submit">Sign Up</PinkButton>
         </>

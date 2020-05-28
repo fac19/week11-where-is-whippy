@@ -7,9 +7,9 @@ import { BlueButton, PinkButton, PageContainer } from "../../styles/buttons";
 export default function User() {
   const { isVendor, setIsVendor } = useContext(AppContext);
   return (
-    <PageContainer>
+    <section>
       {isVendor ? (
-        <section>
+        <PageContainer>
           <h2 className="user-subtitle">Find ice cream lovers today</h2>
           <img src="#" />
 
@@ -20,9 +20,9 @@ export default function User() {
           <Link to="/login" onClick={() => setIsVendor(true)}>
             <PinkButton className="login-btn-vendors">Log In</PinkButton>
           </Link>
-        </section>
+        </PageContainer>
       ) : (
-        <section>
+        <PageContainer>
           <h2 className="user-subtitle">Find ice cream today</h2>
           <img src="#" />
 
@@ -33,8 +33,8 @@ export default function User() {
           <Link to="/login" onClick={() => setIsVendor(false)}>
             <BlueButton className="login-btn-customers">Log In</BlueButton>
           </Link>
-        </section>
+        </PageContainer>
       )}
-    </PageContainer>
+    </section>
   );
 }
