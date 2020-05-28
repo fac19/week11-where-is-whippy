@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <section>
-      {setLogInStatus(true)}
+      {/* {setLogInStatus(true)} */}
       <h2 className="home-subtitle">
         Welcome back
         <str>
