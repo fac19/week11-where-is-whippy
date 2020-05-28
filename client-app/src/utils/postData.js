@@ -59,9 +59,12 @@ function postCustomerLoginInformation(state) {
   });
 }
 
+function addCustomerCoords() {}
+
 export {
   postVendorSignUpInformation,
   postCustomerSignUpInformation,
   postVendorLoginInformation,
   postCustomerLoginInformation,
+  addCustomerCoords,
 };

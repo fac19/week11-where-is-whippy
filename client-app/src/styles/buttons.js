@@ -15,7 +15,7 @@ const Button = `
   display: block;
   width: 75vw;
   max-width: 400px;
-
+  text-decoration: none;
   &:hover {
     cursor: pointer;
   }
@@ -24,17 +24,21 @@ const Button = `
 const BlueButton = styled.button`
   ${Button}
   background-color: ${lightBlue}
+  text-decoration: none
 `;
 
 const PinkButton = styled.button`
   ${Button};
   background-color: ${lightPink};
+  text-decoration: none;
 `;
 
 const PinkSmallButton = styled.button`
   ${Button};
   background-color: ${lightPink};
   font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 0;
 `;
 
 const PageContainer = styled.section`
