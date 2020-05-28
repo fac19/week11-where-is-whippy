@@ -7,7 +7,6 @@ export default function Header() {
 
   function headerStatus() {
     let token = localStorage.getItem("token");
-    console.log(token);
 
     if (!token) {
       return <LogInOption href="/">Log In or Sign Up Here!</LogInOption>;
