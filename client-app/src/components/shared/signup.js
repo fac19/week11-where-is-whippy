@@ -163,6 +163,7 @@ export default function SignUp() {
         id="name"
         name="name"
         required
+        maxlength="50"
         onChange={handleChange}
         value={inputValueName}
       />
@@ -173,6 +174,7 @@ export default function SignUp() {
         id="email"
         name="email"
         required
+        maxlength="50"
         onChange={handleChange}
         value={inputValueEmail}
       />
@@ -183,6 +185,8 @@ export default function SignUp() {
         id="password"
         name="password"
         required
+        maxlength="50"
+        minlength="8"
         onChange={handleChange}
         value={inputValuePassword}
       />
@@ -195,6 +199,7 @@ export default function SignUp() {
             id="mobile"
             name="mobile"
             required
+            maxlength="15"
             value={signUpStateVendor.mobile}
             onChange={handleOnChangeVendor}
           />
@@ -205,6 +210,7 @@ export default function SignUp() {
             id="companyName"
             name="companyName"
             required
+            maxlength="30"
             value={signUpStateVendor.companyName}
             onChange={handleOnChangeVendor}
           />
@@ -265,11 +271,12 @@ export default function SignUp() {
             id="username"
             name="username"
             required
+            maxlength="40"
             value={signUpStateCustomer.username}
             onChange={handleOnChangeCustomer}
           />
 
-          <fieldset id="fieldset-customer-age">
+          <FieldSet id="fieldset-customer-age">
             <Legend>What is your age group?</Legend>
             <Label htmlFor="gender-1">14-18</Label>
             <Input
@@ -307,9 +314,9 @@ export default function SignUp() {
               checked={signUpStateCustomer.age === "31-40"}
               onChange={handleOnChangeCustomer}
             />
-          </fieldset>
+          </FieldSet>
 
-          <fieldset id="fieldset-gender">
+          <FieldSet id="fieldset-gender">
             <Legend>What is your gender?</Legend>
             <Label htmlFor="gender-1">Male</Label>
             <Input
@@ -347,7 +354,7 @@ export default function SignUp() {
               checked={signUpStateCustomer.gender === "Prefer not to say"}
               onChange={handleOnChangeCustomer}
             />
-          </fieldset>
+          </FieldSet>
 
           <Label htmlFor="icecreamFlavour">Icecream Flavour</Label>
           <Input
@@ -355,11 +362,12 @@ export default function SignUp() {
             id="icecreamFlavour"
             name="icecreamFlavour"
             required
+            maxlength="40"
             value={signUpStateCustomer.icecreamFlavour}
             onChange={handleOnChangeCustomer}
           />
 
-          <fieldset>
+          <FieldSet>
             <Legend>
               In order to use this app, I consent to sharing my location
               information
@@ -382,7 +390,7 @@ export default function SignUp() {
               checked={signUpStateCustomer.consent === false}
               onChange={handleOnChangeCustomer}
             />
-          </fieldset>
+          </FieldSet>
 
           <BlueButton type="submit">Sign Up</BlueButton>
         </>
