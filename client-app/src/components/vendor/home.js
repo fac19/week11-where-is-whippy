@@ -73,16 +73,16 @@ export default function Home() {
 }
 
 //Please ignore
-// function handleSubmit(event) {
-//   //   PRINT THE SELECTED ROUTE
-//   //   event.preventDefault();
-//   //fetch request to the api and 'SELECT * FROM routes where route_name = {routeName}
-//   //.then(data => return data- we want to print the data)
-// }
+function handleSubmit(event) {
+  //   PRINT THE SELECTED ROUTE
+  //   event.preventDefault();
+  //fetch request to the api and 'SELECT * FROM routes where route_name = {routeName}
+  //.then(data => return data- we want to print the data)
+}
 
-// function handleRoute(event) {
-//   setRouteName(event.target.value);
-// }
+function handleRoute(event) {
+  // setRouteName(event.target.value);
+}
 
 // function displayOptions() {
 //   //fetch request to AP `SELECT route_name FROM routes WHERE vendor_id == {vendor_id}

@@ -3,14 +3,25 @@ import React, { useEffect, useState, useContext, Component } from "react";
 import GoogleMapReact from "google-map-react";
 import { getCustomerCoords } from "../../utils/getData";
 import { AppContext } from "../AppContext";
-import { BlueButton } from "../../styles/buttons";
-import addCustomerCoords from "../..utils/postData";
+import { BlueSmallButton } from "../../styles/buttons";
+import { addCustomerCoords } from "../../utils/postData";
 
 require("dotenv").config();
 
-export default function HeatMapForVendor() {
+export default function MapForCustomer() {
   const { customerCoords, setCustomerCoords } = useContext(AppContext);
   const gMAPI = "AIzaSyBlm3QfivNjejFqL3StXdPuRf0-yEsdM9o";
+
+  function getCustomerLocation() {
+    const success = (position) => {
+      console.log(position.coords.latitude, position.coords.longitude);
+    };
+    const error = () => {
+      console.log("error -> error", error);
+    };
+    const geo = navigator.geolocation;
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
 
   const mapStyles = {
     height: "60vh",
@@ -18,19 +29,23 @@ export default function HeatMapForVendor() {
   };
 
   return (
-    <section style={mapStyles}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: gMAPI }}
-        mapContainerStyle={mapStyles}
-        defaultZoom={13}
-        defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
-      ></GoogleMapReact>
-      <BlueButton type="submit" onClick={addCustomerCoords}>
+    <>
+      <section style={mapStyles}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: gMAPI }}
+          mapContainerStyle={mapStyles}
+          defaultZoom={13}
+          defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
+        ></GoogleMapReact>
+      </section>
+      <BlueSmallButton type="submit" onClick={getCustomerLocation}>
         SCREAM 4 ICE CREAM
-      </BlueButton>
-    </section>
+      </BlueSmallButton>
+    </>
   );
 }
+
+// onClick = { addCustomerCoords };
 
 //Please ignore this
 // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
