@@ -29,7 +29,6 @@ const FormContainer = styled.form`
   flex-direction: column;
   background-color: ${background};
   align-items: center;
-  height: 100vh;
   padding: 1rem;
 `;
 

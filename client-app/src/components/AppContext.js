@@ -26,6 +26,10 @@ function AppContextProvider(props) {
     consent: true,
   });
 
+  const [customerCoords, setCustomerCoords] = useState({
+    positions: [{ lat: 51.5646, lng: 0.0047 }],
+  });
+
   const providerValue = {
     logInStatus,
     setLogInStatus,
@@ -35,6 +39,8 @@ function AppContextProvider(props) {
     setSignUpStateVendor,
     signUpStateCustomer,
     setSignUpStateCustomer,
+    customerCoords,
+    setCustomerCoords,
   };
 
   return (

@@ -7,6 +7,7 @@ export default function Header() {
 
   function removeToken() {
     window.localStorage.removeItem("token");
+    setLogInStatus(false);
   }
 
   function headerStatus() {
@@ -17,7 +18,7 @@ export default function Header() {
     } else {
       setLogInStatus(true);
       return (
-        <StyledLogInLink onClick={removeToken} href="/">
+        <StyledLogInLink onClick={removeToken} to="/">
           Log Out
         </StyledLogInLink>
       );

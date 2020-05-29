@@ -1,21 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-// import Montserrat from ‘./fonts/Montserrat-Regular.ttf’
-// injectGlobal`
-//   @font-face {
-//     font-family: Montserrat;
-//     src: url(${Montserrat});
-//   }
-// `
-
-// @font-face {
-//   font-family: 'Changa', sans-serif;
-//   src: url('webfont.eot'); /* IE9 Compat Modes */
-//   src: url('webfont.eot?#iefix')
-//   format('embedded-opentype')
-// }
-
 const navy = "#1f4068";
 const background = "#F7F4F0";
 
@@ -40,3 +25,18 @@ const StyledLogInLink = styled(Link)`
 `;
 
 export { Title, HeaderArea, StyledLogInLink };
+
+// import Montserrat from ‘./fonts/Montserrat-Regular.ttf’
+// injectGlobal`
+//   @font-face {
+//     font-family: Montserrat;
+//     src: url(${Montserrat});
+//   }
+// `
+
+// @font-face {
+//   font-family: 'Changa', sans-serif;
+//   src: url('webfont.eot'); /* IE9 Compat Modes */
+//   src: url('webfont.eot?#iefix')
+//   format('embedded-opentype')
+// }

@@ -35,7 +35,7 @@ CREATE TABLE vendors
         latitude DECIMAL NOT NULL,
         longitude DECIMAL NOT NULL,
         temperature
-        DECIMAL NOT NULL,
+        DECIMAL,
      time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
 

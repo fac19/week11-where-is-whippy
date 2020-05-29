@@ -1,65 +1,59 @@
-// Home page for vendor - includes current route and links to add/ change route + see heatmap
-
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { PinkSmallButton, PageContainer } from "../../styles/buttons";
+import {
+  PinkButton,
+  PinkSmallButton,
+  PageContainer,
+  StyledLink,
+} from "../../styles/buttons";
+import { Title } from "../../styles/text";
+import { Label, Input, FormContainer } from "../../styles/form";
 
 export default function Home() {
   const [routeName, setRouteName] = React.useState("");
 
-  const { logInStatus, setLogInStatus } = useContext(AppContext);
-
-  function handleSubmit(event) {
-    //   PRINT THE SELECTED ROUTE
-    //   event.preventDefault();
-    //fetch request to the api and 'SELECT * FROM routes where route_name = {routeName}
-    //.then(data => return data- we want to print the data)
-  }
-
-  function handleRoute(event) {
-    setRouteName(event.target.value);
-  }
-
-  function displayOptions() {
-    //fetch request to AP `SELECT route_name FROM routes WHERE vendor_id == {vendor_id}
-    //.then(data => data.forEach(print as option))
-  }
+  const {
+    logInStatus,
+    setLogInStatus,
+    isVendor,
+    signUpStateVendor,
+    signUpStateCustomer,
+  } = useContext(AppContext);
 
   return (
     <PageContainer>
-      <h2>
+      <Title>
         Welcome back
-        <str>
-          <i>name</i>
-        </str>
+        {isVendor ? (
+          <i> {signUpStateVendor.email}</i>
+        ) : (
+          <i> {signUpStateCustomer.email}</i>
+        )}
         !
-      </h2>
-      <h2>Today's route is:</h2>
+      </Title>
+      <Title>Today's route is:</Title>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="routes">Select routes</label>
+      <FormContainer onSubmit={handleSubmit}>
+        <Label htmlFor="routes">Select routes</Label>
         <select onChange={handleRoute} id="routes">
           {/* Run displayOptions */}
           <option value="">Route 1</option>
           <option value=""> Route 2</option>
           <option value=""> Route 3</option>
         </select>
-        <button type="submit">Choose</button>
-      </form>
-
-      <section></section>
+        <PinkSmallButton type="submit">Choose</PinkSmallButton>
+      </FormContainer>
 
       <section>
         <p>Turn on alerts for customers</p>
-        <label class="switch">
+        <label>
           <input type="checkbox" />
-          <span class="slider round"></span>
         </label>
       </section>
 
       <section>
-        <Link
+        <StyledLink
           to={{
             pathname: "/timetable",
             state: {
@@ -68,12 +62,29 @@ export default function Home() {
           }}
         >
           <PinkSmallButton>Create a New Schedule</PinkSmallButton>
-        </Link>
+        </StyledLink>
 
-        <Link to="/heatmap">
-          <PinkSmallButton>View Heatmap</PinkSmallButton>
-        </Link>
+        <StyledLink to="/heatmap">
+          <PinkSmallButton>Find customers</PinkSmallButton>
+        </StyledLink>
       </section>
     </PageContainer>
   );
 }
+
+//Please ignore
+function handleSubmit(event) {
+  //   PRINT THE SELECTED ROUTE
+  //   event.preventDefault();
+  //fetch request to the api and 'SELECT * FROM routes where route_name = {routeName}
+  //.then(data => return data- we want to print the data)
+}
+
+function handleRoute(event) {
+  // setRouteName(event.target.value);
+}
+
+// function displayOptions() {
+//   //fetch request to AP `SELECT route_name FROM routes WHERE vendor_id == {vendor_id}
+//   //.then(data => data.forEach(print as option))
+// }

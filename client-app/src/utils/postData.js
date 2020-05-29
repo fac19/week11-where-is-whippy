@@ -59,9 +59,21 @@ function postCustomerLoginInformation(state) {
   });
 }
 
+function addCustomerCoords(coordsObject) {
+  return fetch(domain + "/customers/coords", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(coordsObject),
+  });
+}
+
 export {
   postVendorSignUpInformation,
   postCustomerSignUpInformation,
   postVendorLoginInformation,
   postCustomerLoginInformation,
+  addCustomerCoords,
 };
