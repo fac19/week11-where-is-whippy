@@ -24,6 +24,24 @@ What can we do?
 - Customers not able to see vendor locations on their map (sorry no ice cream today)
 - Vendor heatmap currently showing all customer locations (instead of only in last 30 mintutes and between two dates)
 - No authorization on the API's endpoints
+- **No frontend tests.** Interested in which FE Jest tests you found useful.  
+
+## ***CODE REVIEW***
+1) Aware that currently none of the endpoint require authorization 
+2) What is good practice to persist state incase the user refreshes? 
+3) Can we stop of user navigating to places they shouldn't be e.g. customer going to FE /heatmap endpoint?
+4) Our logic in the header for checking login in status and redirect seems quite messy. Is there a better way to do this?
+5) What is this weird error? Think it is something to do with how we render our components and checking if user is logged in:
+
+```
+index.js:1 Warning: Cannot update a component (`AppContextProvider`) while rendering a different component (`Header`). To locate the bad setState() call inside `Header`, follow the stack trace as described in https://fb.me/setstate-in-render
+    in Header (at App.js:22)
+    in div (at App.js:21)
+    in Router (created by BrowserRouter)
+    in BrowserRouter (at App.js:20)
+    in AppContextProvider (at App.js:19)
+    in App (at src/index.js:6)
+```
 
 ## Set up Instructions
 
