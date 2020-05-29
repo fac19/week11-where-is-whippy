@@ -5,6 +5,13 @@
 
 An ice cream truck and customer finder for all you choc-chip nuts out there
 
+## The team
+
+- [Ina](https://github.com/itsina96) - DevOps
+- [Lizzy](https://github.com/lizzy-j) - User Experience
+- [Joe](https://github.com/joepock123) - Quality assurance
+- [Hettie](https://github.com/HettieM) - Scrum master
+
 ## Description
 
 The project is split into two subfolders. `client-app/` is the React front end and `server-api` is the backend Express REST API.
@@ -126,3 +133,4 @@ Examples of body and example response can be found in the following Postman coll
 ### Dev Dependencies Installed
 
 - Jest - Testing library (API)
+
