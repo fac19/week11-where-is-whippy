@@ -1,14 +1,19 @@
-// consider window.location object in order to assign domain appropriately
-const hostname = window && window.location && window.location.hostname
+const hostname = window && window.location && window.location.hostname;
 const domain =
   hostname === "localhost"
     ? "http://localhost:8080"
-    : "https://where-is-whippy.herokuapp.com"
+    : "https://where-is-whippy.herokuapp.com/customers/coords";
 
-const getRequest = (endpoint) => {
-  return fetch(domain + endpoint)
+const getCustomerCoords = () => {
+  return fetch(domain + "/customers/coords")
     .then((res) => res.json())
-    .catch(console.log)
-}
+    .then((jsonArr) => {
+      const newArr = jsonArr.map((coordsObj) => {
+        return { lat: coordsObj.latitude, lng: coordsObj.longitude };
+      });
+      return newArr;
+    })
+    .catch((err) => console.log(err));
+};
 
-export default getRequest
+export { getCustomerCoords };

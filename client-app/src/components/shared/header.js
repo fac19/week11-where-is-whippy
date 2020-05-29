@@ -1,13 +1,34 @@
-import React, { useContext } from "react"
-import { AppContext } from "../AppContext"
+import React, { useContext } from "react";
+import { AppContext } from "../AppContext";
+import { Title, HeaderArea, StyledLogInLink } from "../../styles/header.js";
 
 export default function Header() {
-  const { logInStatus } = useContext(AppContext)
+  const { logInStatus, setLogInStatus } = useContext(AppContext);
+
+  function removeToken() {
+    window.localStorage.removeItem("token");
+    setLogInStatus(false);
+  }
+
+  function headerStatus() {
+    let token = localStorage.getItem("token");
+    if (!token) {
+      setLogInStatus(false);
+      return <StyledLogInLink to="/">Log In or Sign Up Here!</StyledLogInLink>;
+    } else {
+      setLogInStatus(true);
+      return (
+        <StyledLogInLink onClick={removeToken} to="/">
+          Log Out
+        </StyledLogInLink>
+      );
+    }
+  }
 
   return (
-    <header>
-      <h1>Where's Whippy</h1>
-      {!logInStatus ? <a href="#">Log In</a> : <a href="#">Log Out</a>}
-    </header>
-  )
+    <HeaderArea>
+      <Title>Where's Whippy</Title>
+      {headerStatus()}
+    </HeaderArea>
+  );
 }

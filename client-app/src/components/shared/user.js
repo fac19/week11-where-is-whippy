@@ -1,37 +1,52 @@
 //Second page (have chosen whether customer/vendor) - choice between login + signup
-import React, { useContext } from "react"
-import { Link } from "react-router-dom"
-import { AppContext } from "../AppContext"
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AppContext } from "../AppContext";
+import {
+  BlueButton,
+  PinkButton,
+  PageContainer,
+  StyledLink,
+} from "../../styles/buttons";
+import { LandingImg } from "../../styles/landing";
 
 export default function User() {
-  const { isVendor } = useContext(AppContext)
+  const { isVendor, setIsVendor } = useContext(AppContext);
   return (
     <section>
       {isVendor ? (
-        <section>
-          <h2 className="user-subtitle">Find ice cream lovers today</h2>
-          <img src="#" />
-          <Link to="/signup" className="signup-btn-vendors">
-            SIGNUP HERE
-          </Link>
+        <PageContainer>
+          <h2>Find ice cream lovers today</h2>
+          <LandingImg
+            src="https://image.flaticon.com/icons/svg/346/346178.svg"
+            alt="Ice cream cone"
+          />
 
-          <Link to="login" className="login-btn-vendors">
-            LOGIN HERE
-          </Link>
-        </section>
+          <StyledLink to="/signup" onClick={() => setIsVendor(true)}>
+            <PinkButton>Sign Up</PinkButton>
+          </StyledLink>
+
+          <StyledLink to="/login" onClick={() => setIsVendor(true)}>
+            <PinkButton>Log In</PinkButton>
+          </StyledLink>
+        </PageContainer>
       ) : (
-        <section>
-          <h2 className="user-subtitle">Find ice cream today</h2>
-          <img src="#" />
-          <Link to="/signup" className="signup-btn-customers">
-            Signup Here
-          </Link>
+        <PageContainer>
+          <h2>Find ice cream today</h2>
+          <LandingImg
+            src="https://image.flaticon.com/icons/svg/346/346178.svg"
+            alt="Ice cream cone"
+          />
 
-          <Link to="/login" className="login-btn-customer">
-            Login Here
-          </Link>
-        </section>
+          <StyledLink to="/signup" onClick={() => setIsVendor(false)}>
+            <BlueButton>Sign Up</BlueButton>
+          </StyledLink>
+
+          <StyledLink to="/login" onClick={() => setIsVendor(false)}>
+            <BlueButton>Log In</BlueButton>
+          </StyledLink>
+        </PageContainer>
       )}
     </section>
-  )
+  );
 }

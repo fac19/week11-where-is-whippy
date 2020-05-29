@@ -1,42 +1,68 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import LondonMap from "../../utils/london-map.js"
+import React, { useEffect, useState, useContext, Component } from "react";
+import GoogleMapReact from "google-map-react";
+import { getCustomerCoords } from "../../utils/getData";
+import { AppContext } from "../AppContext";
+import { PinkButton } from "../../styles/buttons";
 
-export default function Heatmap() {
-  //fetch API - retrieve all lat/lng coordinates from
-  //then(data => data.forEach(create new array heatmapData))
+// const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
+// const gMAPI = "AIzaSyApyt224I8eHKHjNrZMZUZ6h5nCWm-0qus";
+require("dotenv").config();
 
-  //   const [customerPosition, getCustomerPositions] = React.useState({})
-  //   const marker = (position) => {
-  //     const position = {
-  //       lat: position.coords.latitude,
-  //       lng: position.coords.longitude,
-  //     } //marker should be an object made up the arrays pulled from the fetch request?
-  //     getCustomerPositions(customerPosition)
-  //   }
+export default function HeatMapForVendor() {
+  const { customerCoords, setCustomerCoords } = useContext(AppContext);
+  const gMAPI = "AIzaSyBlm3QfivNjejFqL3StXdPuRf0-yEsdM9o";
+  // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 
-  //   React.useEffect(() => {
-  //     navigator.geolocation.getCustomerPosition(marker)
-  //   })
+  let coordsArrPure = {
+    positions: [
+      { lat: 51.5646, lng: 0.0047 },
+      { lat: 51.5646, lng: 0.1547 },
+      { lat: 51.8646, lng: 0.1047 },
+      { lat: 51.2646, lng: 0.2047 },
+    ],
+  };
 
-  // where does code for the marker go? to be imported or exported?
+  const mapStyles = {
+    height: "60vh",
+    width: "100%",
+  };
+
+  const [currentPosition, setCurrentPosition] = useState({});
+  const success = (position) => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+  };
+
+  // useEffect(async () => {
+  //   let coordsArr = await getCustomerCoords();
+  //   console.log("HeatMapForVendor -> coordsArr", coordsArr);
+  //   setCustomerCoords((coordsArr) => [...coordsArr]);
+  // }, []);
+
+  const handleFetchCoords = async () => {
+    console.log("FETCH COORDS CALLED");
+    let coordsArr = await getCustomerCoords();
+    console.log("HeatMapForVendor -> coordsArr", coordsArr);
+    let positionsValue = { positions: coordsArr };
+    setCustomerCoords(positionsValue);
+  };
 
   return (
-    <section>
-      <section className="map">
-        <LondonMap />
-      </section>
-      <Link
-        to={{
-          pathname: "/schedule",
-          state: {
-            editSchedule: true,
-          },
-        }}
-        className="home-link__schedule"
-      >
-        Edit schedule
-      </Link>
+    <section style={mapStyles}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: gMAPI }}
+        mapContainerStyle={mapStyles}
+        defaultZoom={13}
+        defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
+        heatmapLibrary={true}
+        heatmap={customerCoords}
+      ></GoogleMapReact>
+      <PinkButton type="submit" onClick={handleFetchCoords}>
+        View customers on map
+      </PinkButton>
     </section>
-  )
+  );
 }

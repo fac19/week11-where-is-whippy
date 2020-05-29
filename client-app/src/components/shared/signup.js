@@ -1,8 +1,23 @@
-import React, { useContext } from "react";
-import postSignUpInformation from "../../utils/postData";
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import {
+  postVendorSignUpInformation,
+  postCustomerSignUpInformation,
+} from "../../utils/postData";
 import { AppContext } from "../AppContext";
+import { Button, BlueButton, PinkButton } from "../../styles/buttons";
+import { textStyle } from "../../styles/text";
+import {
+  Label,
+  Input,
+  Legend,
+  FormContainer,
+  FieldSet,
+} from "../../styles/form";
 
-// ***NOTES***
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
+
+// ***TEAM NOTES***
 // Radio buttons are not much fun
 // The value attribute of a <input/> tag only be a string
 // The checked attribute on a radio button needs to a boolean (for alcohol or veganOption)
@@ -15,15 +30,30 @@ import { AppContext } from "../AppContext";
 
 export default function SignUp() {
   const {
+    logInStatus,
+    setLogInStatus,
     isVendor,
+    setIsVendor,
     signUpStateVendor,
     setSignUpStateVendor,
     signUpStateCustomer,
     setSignUpStateCustomer,
   } = useContext(AppContext);
 
+  // ***NOTES***
+  // name, pasword and email are common to both the vendor and customer
+  // A ternary is user to render the other customer or vendor inputs
+  // JS functions have been extracted from JSX into helper functions
+
+  const handleChange = (e) => {
+    if (isVendor) {
+      handleOnChangeVendor(e);
+    } else {
+      handleOnChangeCustomer(e);
+    }
+  };
+
   const handleOnChangeVendor = (e) => {
-    debugger;
     let property = e.target.name;
     let value = e.target.value;
     if (value === "true") {
@@ -55,261 +85,316 @@ export default function SignUp() {
     setSignUpStateCustomer(newSignUpStateCustomer);
   };
 
+  const handleSubmit = (e) => {
+    if (isVendor) {
+      handleSubmitVendor(e);
+    } else {
+      handleSubmitCustomer(e);
+    }
+  };
+
   const handleSubmitVendor = (e) => {
     e.preventDefault();
-    console.log(`Posting vendor object:`, signUpStateVendor);
-    postSignUpInformation(signUpStateVendor).then((token) => {
-      console.log(token);
-      // window.localStorage.setItem("token", body)
-    });
+    postVendorSignUpInformation(signUpStateVendor)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            `Unable to signup. API responded with status code: ${res.status}`
+          );
+        } else {
+          return res.json();
+        }
+      })
+      .then((body) => {
+        window.localStorage.setItem("token", body.access_token);
+        setLogInStatus(true);
+      })
+      .catch((err) => console.error(err));
   };
 
   const handleSubmitCustomer = (e) => {
     e.preventDefault();
-    console.log(`Posting customer object:`, signUpStateCustomer);
+    postCustomerSignUpInformation(signUpStateCustomer)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            `Unable to signup. API responded with status code: ${res.status}`
+          );
+        } else {
+          return res.json();
+        }
+      })
+      .then((body) => {
+        window.localStorage.setItem("token", body.access_token);
+        setLogInStatus(true);
+      })
+      .catch((err) => console.error(err));
   };
 
-  // ***NOTES***
-  // name, pasword and email are common to both the vendor and customer
-  // A ternary is user to render the other customer or vendor inputs
+  // When component mounts checks to see if user is logged in
+  function loggedInStatusCheckerAndRedirect() {
+    if (logInStatus && isVendor) {
+      return <Redirect to="/home" />;
+    }
+    if (logInStatus && !isVendor) {
+      return <Redirect to="/map" />;
+    }
+  }
+
+  // Input value helper functions
+  const inputValueName = isVendor
+    ? signUpStateVendor.name
+    : signUpStateCustomer.name;
+
+  const inputValueEmail = isVendor
+    ? signUpStateVendor.email
+    : signUpStateCustomer.email;
+
+  const inputValuePassword = isVendor
+    ? signUpStateVendor.password
+    : signUpStateCustomer.password;
 
   return (
-    <form
-      onSubmit={
-        isVendor ? (e) => handleSubmitVendor(e) : (e) => handleSubmitCustomer(e)
-      }
-    >
-      <label htmlFor="name">Name</label>
-      <input
+    <FormContainer onSubmit={handleSubmit}>
+      {loggedInStatusCheckerAndRedirect()}
+      <Label htmlFor="name">Name</Label>
+      <Input
         type="text"
         id="name"
         name="name"
         required
-        onChange={
-          isVendor
-            ? (e) => handleOnChangeVendor(e)
-            : (e) => handleOnChangeCustomer(e)
-        }
-        value={isVendor ? signUpStateVendor.name : signUpStateCustomer.name}
+        maxlength="50"
+        onChange={handleChange}
+        value={inputValueName}
       />
 
-      <label htmlFor="email">Email</label>
-      <input
+      <Label htmlFor="email">Email</Label>
+      <Input
         type="email"
         id="email"
         name="email"
         required
-        onChange={
-          isVendor
-            ? (e) => handleOnChangeVendor(e)
-            : (e) => handleOnChangeCustomer(e)
-        }
-        value={isVendor ? signUpStateVendor.email : signUpStateCustomer.email}
+        maxlength="50"
+        onChange={handleChange}
+        value={inputValueEmail}
       />
 
-      <label htmlFor="password">Password</label>
-      <input
+      <Label htmlFor="password">Password</Label>
+      <Input
         type="password"
         id="password"
         name="password"
         required
-        onChange={
-          isVendor
-            ? (e) => handleOnChangeVendor(e)
-            : (e) => handleOnChangeCustomer(e)
-        }
-        value={
-          isVendor ? signUpStateVendor.password : signUpStateCustomer.password
-        }
+        maxlength="50"
+        minlength="8"
+        onChange={handleChange}
+        value={inputValuePassword}
       />
       {/* THIS IS THE TERNARY */}
       {isVendor ? (
         <>
-          <label htmlFor="mobile">Mobile Number</label>
-          <input
+          <Label htmlFor="mobile">Mobile Number</Label>
+          <Input
             type="tel"
             id="mobile"
             name="mobile"
             required
+            maxlength="15"
             value={signUpStateVendor.mobile}
-            onChange={(e) => handleOnChangeVendor(e)}
+            onChange={handleOnChangeVendor}
           />
 
-          <label htmlFor="companyName">Company Name</label>
-          <input
+          <Label htmlFor="companyName">Company Name</Label>
+          <Input
             type="text"
             id="companyName"
             name="companyName"
             required
+            maxlength="30"
             value={signUpStateVendor.companyName}
-            onChange={(e) => handleOnChangeVendor(e)}
+            onChange={handleOnChangeVendor}
           />
 
-          <fieldset id="fieldset-vendorAlcohol">
-            <legend>Do you sell alcohol?</legend>
-            <label htmlFor="alcoholYes">Yes</label>
-            <input
+          <FieldSet id="fieldset-vendorAlcohol">
+            <Legend>Do you sell alcohol?</Legend>
+            <Label htmlFor="alcoholYes">Yes</Label>
+            <Input
               type="radio"
               id="alcoholYes"
               name="alcohol"
               value="true"
               checked={signUpStateVendor.alcohol === true}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
 
-            <label htmlFor="alcoholNo">No</label>
-            <input
+            <Label htmlFor="alcoholNo">No</Label>
+            <Input
               type="radio"
               id="alcoholNo"
               name="alcohol"
               value="false"
               checked={signUpStateVendor.alcohol === false}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
-          </fieldset>
+          </FieldSet>
 
-          <fieldset id="fieldset-vendorVegan">
-            <legend>Do you offer vegan options?</legend>
-            <label htmlFor="veganYes">Yes</label>
-            <input
+          <FieldSet id="fieldset-vendorVegan">
+            <Legend>Do you offer vegan options?</Legend>
+            <Label htmlFor="veganYes">Yes</Label>
+            <Input
               type="radio"
               id="veganYes"
               name="vegan"
               value="true"
               checked={signUpStateVendor.vegan === true}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
 
-            <label htmlFor="veganNo">No</label>
-            <input
+            <Label htmlFor="veganNo">No</Label>
+            <Input
               type="radio"
               id="veganNo"
               name="vegan"
               value="false"
               checked={signUpStateVendor.vegan === false}
-              onChange={(e) => handleOnChangeVendor(e)}
+              onChange={handleOnChangeVendor}
             />
-          </fieldset>
+          </FieldSet>
+
+          <PinkButton type="submit">Sign Up</PinkButton>
         </>
       ) : (
         <>
-          <fieldset id="fieldset-customer-age">
-            <legend>What is your age group?</legend>
-            <label htmlFor="gender-1">14-18</label>
-            <input
+          <Label htmlFor="username">Username</Label>
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            required
+            maxlength="40"
+            value={signUpStateCustomer.username}
+            onChange={handleOnChangeCustomer}
+          />
+
+          <FieldSet id="fieldset-customer-age">
+            <Legend>What is your age group?</Legend>
+            <Label htmlFor="gender-1">14-18</Label>
+            <Input
               type="radio"
               id="age1"
               name="age"
               value="14-18"
               checked={signUpStateCustomer.age === "14-18"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-            <label htmlFor="gender-2">19-24</label>
-            <input
+            <Label htmlFor="gender-2">19-24</Label>
+            <Input
               type="radio"
               id="age2"
               name="age"
               value="19-24"
               checked={signUpStateCustomer.age === "19-24"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-            <label htmlFor="ageGroup3">25-30</label>
-            <input
+            <Label htmlFor="ageGroup3">25-30</Label>
+            <Input
               type="radio"
               id="age3"
               name="age"
               value="25-30"
               checked={signUpStateCustomer.age === "25-30"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-            <label htmlFor="ageGroup4">31-40</label>
-            <input
+            <Label htmlFor="ageGroup4">31-40</Label>
+            <Input
               type="radio"
               id="age4"
               name="age"
               value="31-40"
               checked={signUpStateCustomer.age === "31-40"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-          </fieldset>
+          </FieldSet>
 
-          <fieldset id="fieldset-gender">
-            <legend>What is your gender?</legend>
-            <label htmlFor="gender-1">Male</label>
-            <input
+          <FieldSet id="fieldset-gender">
+            <Legend>What is your gender?</Legend>
+            <Label htmlFor="gender-1">Male</Label>
+            <Input
               type="radio"
               id="gender-1"
               name="gender"
               value="Male"
               checked={signUpStateCustomer.gender === "Male"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-            <label htmlFor="gender-2">Female</label>
-            <input
+            <Label htmlFor="gender-2">Female</Label>
+            <Input
               type="radio"
               id="gender-2"
               name="gender"
               value="Female"
               checked={signUpStateCustomer.gender === "Female"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-            <label htmlFor="gender-3">Nonbinary</label>
-            <input
+            <Label htmlFor="gender-3">Nonbinary</Label>
+            <Input
               type="radio"
               id="gender-3"
               name="gender"
               value="Nonbinary"
               checked={signUpStateCustomer.gender === "Nonbinary"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-            <label htmlFor="gender-4">Prefer not to say</label>
-            <input
+            <Label htmlFor="gender-4">Prefer not to say</Label>
+            <Input
               type="radio"
               id="gender-4"
               name="gender"
               value="Prefer not to say"
               checked={signUpStateCustomer.gender === "Prefer not to say"}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-          </fieldset>
+          </FieldSet>
 
-          <label htmlFor="icecreamFlavour">Icecream Flavour</label>
-          <input
+          <Label htmlFor="icecreamFlavour">Icecream Flavour</Label>
+          <Input
             type="text"
             id="icecreamFlavour"
             name="icecreamFlavour"
             required
+            maxlength="40"
             value={signUpStateCustomer.icecreamFlavour}
-            onChange={(e) => handleOnChangeCustomer(e)}
+            onChange={handleOnChangeCustomer}
           />
 
-          <fieldset>
-            <legend>
+          <FieldSet>
+            <Legend>
               In order to use this app, I consent to sharing my location
               information
-            </legend>
-            <label htmlFor="consentYes">I consent</label>
-            <input
+            </Legend>
+            <Label htmlFor="consentYes">I consent</Label>
+            <Input
               type="radio"
               id="consentYes"
               name="consent"
               value="true"
               checked={signUpStateCustomer.consent === true}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-            <label htmlFor="consentNo">I do not consent</label>
-            <input
+            <Label htmlFor="consentNo">I do not consent</Label>
+            <Input
               type="radio"
               id="consentNo"
               name="consent"
               value="false"
               checked={signUpStateCustomer.consent === false}
-              onChange={(e) => handleOnChangeCustomer(e)}
+              onChange={handleOnChangeCustomer}
             />
-          </fieldset>
+          </FieldSet>
+
+          <BlueButton type="submit">Sign Up</BlueButton>
         </>
       )}
-      {signUpStateCustomer.consent && <button type="submit">Signup</button>}
-    </form>
+    </FormContainer>
   );
 }
