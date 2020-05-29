@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0e9d253d-58de-49ca-8655-8be52752a91b/deploy-status)](https://app.netlify.com/sites/where-is-whippy/deploys)
 ![Travis](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
 
-# week11-where-is-whippy
+# week11-where-is-whippy :icecream:
 
 An ice cream truck and customer finder for all you choc-chip nuts out there
 
@@ -69,22 +69,32 @@ Hopefuly the project should run!
 
 ### REST API Endpoints
 
-Can check these locally with Postman. Here is a collection for testing endpoints locally.
+Examples of body and example response can be found in the following Postman collection:
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/49b550d2bcb9bb2c74a7)
 
 ### GET
 
-- GET all vendors: `http://localhost:8080/vendors/`
+
+- GET all customers: `http://localhost:8080/customers/`
 - GET all customer coordinates:`http://localhost:8080/customers/coords`
+- GET specific customer:`http://localhost:8080/customers/id:`
+- GET all vendors: `http://localhost:8080/vendors/`
 - GET all vendor coordinates: `http://localhost:8080/vendors/coords`
+- GET specific vendor:`http://localhost:8080/vendors/id:`
+- GET specific route by name:`http://localhost:8080/routes/:name:`
 
 ### POST
-
-- POST new customer coordinates: `http://localhost:8080/customers/coords`
-- POST new vendor coordinates: `http://localhost:8080/vendors/coords`
 - POST signup new vendor `http://localhost:8080/vendors/signup`
 - POST login vendor `http://localhost:8080/vendors/login`
+- POST new vendor coordinates: `http://localhost:8080/vendors/coords`
+- POST new route:`http://localhost:8080/routes`
+- POST signup new customer `http://localhost:8080/customers/signup`
+- POST login customer `http://localhost:8080/customers/login`
+- POST new customer coordinates: `http://localhost:8080/customers/coords`
+
+### Delete
+- DELETE route:`http://localhost:8080/routes/:name`
 
 ## Dependencies Installed
 
