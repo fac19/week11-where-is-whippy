@@ -13,15 +13,6 @@ export default function HeatMapForVendor() {
   const gMAPI = "AIzaSyBlm3QfivNjejFqL3StXdPuRf0-yEsdM9o";
   // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 
-  let coordsArrPure = {
-    positions: [
-      { lat: 51.5646, lng: 0.0047 },
-      { lat: 51.5646, lng: 0.1547 },
-      { lat: 51.8646, lng: 0.1047 },
-      { lat: 51.2646, lng: 0.2047 },
-    ],
-  };
-
   const mapStyles = {
     height: "60vh",
     width: "100%",

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest --coverage PGDATABASE=student_project_test_db tests/*.test.js",
+    "test": "jest PGDATABASE=student_project_test_db tests/*.test.js",
     "test-watch": "jest --watch PGDATABASE=student_project_test_db tests/*.test.js",
     "test-cov": "jest --coverage PGDATABASE=student_project_test_db tests/*.test.js",
     "initdb": "node db/build.js"
