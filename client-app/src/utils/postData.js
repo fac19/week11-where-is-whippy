@@ -59,15 +59,15 @@ function postCustomerLoginInformation(state) {
   });
 }
 
-function addCustomerCoords() {
-  // return fetch(domain + "/customers/coords", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Accept: "application/json",
-  //   },
-  //   body: JSON.stringify(state),
-  // });
+function addCustomerCoords(coordsObject) {
+  return fetch(domain + "/customers/coords", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(coordsObject),
+  });
 }
 
 export {

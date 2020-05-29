@@ -23,9 +23,9 @@ const Button = `
 `;
 
 const BlueButton = styled.button`
-  ${Button}
-  background-color: ${lightBlue}
-  text-decoration: none
+  ${Button};
+  background-color: ${lightBlue};
+  text-decoration: none;
 `;
 
 const PinkButton = styled.button`

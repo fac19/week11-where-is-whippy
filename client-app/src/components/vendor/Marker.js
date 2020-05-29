@@ -13,3 +13,11 @@
 // }
 
 // export default Marker;
+//       <div className="marker"
+//         style={{ backgroundColor: color, cursor: 'pointer'}}
+//         title={name}
+//       />
+//     );
+// }
+
+// export default Marker;
