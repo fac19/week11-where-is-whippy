@@ -9,11 +9,22 @@ import { addCustomerCoords } from "../../utils/postData";
 require("dotenv").config();
 
 export default function MapForCustomer() {
-  const { customerCoords, setCustomerCoords } = useContext(AppContext);
+  const { myCustomerCoords, setMyCustomerCoords } = useContext(AppContext);
   const gMAPI = "AIzaSyBlm3QfivNjejFqL3StXdPuRf0-yEsdM9o";
 
   function getCustomerLocation() {
     const success = (position) => {
+      const coordsObj = {
+        customerId: 3, // hardcoded
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        temperature: 34, // hardcoded
+      };
+      setMyCustomerCoords({
+        lat: position.coords.latitude,
+        lat: position.coords.longitude,
+      });
+      addCustomerCoords(coordsObj); // Add your location to the db
       console.log(position.coords.latitude, position.coords.longitude);
     };
     const error = () => {
@@ -35,7 +46,7 @@ export default function MapForCustomer() {
           bootstrapURLKeys={{ key: gMAPI }}
           mapContainerStyle={mapStyles}
           defaultZoom={13}
-          defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
+          defaultCenter={myCustomerCoords}
         ></GoogleMapReact>
       </section>
       <BlueSmallButton type="submit" onClick={getCustomerLocation}>

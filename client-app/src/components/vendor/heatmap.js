@@ -4,23 +4,11 @@ import { getCustomerCoords } from "../../utils/getData";
 import { AppContext } from "../AppContext";
 import { PinkButton } from "../../styles/buttons";
 
-// const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
-// const gMAPI = "AIzaSyApyt224I8eHKHjNrZMZUZ6h5nCWm-0qus";
 require("dotenv").config();
 
 export default function HeatMapForVendor() {
   const { customerCoords, setCustomerCoords } = useContext(AppContext);
   const gMAPI = "AIzaSyBlm3QfivNjejFqL3StXdPuRf0-yEsdM9o";
-  // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
-
-  let coordsArrPure = {
-    positions: [
-      { lat: 51.5646, lng: 0.0047 },
-      { lat: 51.5646, lng: 0.1547 },
-      { lat: 51.8646, lng: 0.1047 },
-      { lat: 51.2646, lng: 0.2047 },
-    ],
-  };
 
   const mapStyles = {
     height: "60vh",
@@ -36,16 +24,8 @@ export default function HeatMapForVendor() {
     setCurrentPosition(currentPosition);
   };
 
-  // useEffect(async () => {
-  //   let coordsArr = await getCustomerCoords();
-  //   console.log("HeatMapForVendor -> coordsArr", coordsArr);
-  //   setCustomerCoords((coordsArr) => [...coordsArr]);
-  // }, []);
-
   const handleFetchCoords = async () => {
-    console.log("FETCH COORDS CALLED");
     let coordsArr = await getCustomerCoords();
-    console.log("HeatMapForVendor -> coordsArr", coordsArr);
     let positionsValue = { positions: coordsArr };
     setCustomerCoords(positionsValue);
   };
@@ -55,8 +35,8 @@ export default function HeatMapForVendor() {
       <GoogleMapReact
         bootstrapURLKeys={{ key: gMAPI }}
         mapContainerStyle={mapStyles}
-        defaultZoom={13}
-        defaultCenter={{ lat: 51.5646, lng: 0.1047 }}
+        defaultZoom={11}
+        defaultCenter={{ lat: 51.571, lng: -0.1204 }}
         heatmapLibrary={true}
         heatmap={customerCoords}
       ></GoogleMapReact>
@@ -66,3 +46,7 @@ export default function HeatMapForVendor() {
     </section>
   );
 }
+
+// const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
+// const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
+// const gMAPI = "AIzaSyApyt224I8eHKHjNrZMZUZ6h5nCWm-0qus";

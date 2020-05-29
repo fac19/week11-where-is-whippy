@@ -4,6 +4,7 @@ const domain =
     ? "http://localhost:8080"
     : "https://where-is-whippy.herokuapp.com";
 
+// Dont think this is used
 const postObject = (state) => {
   return {
     method: "POST",
