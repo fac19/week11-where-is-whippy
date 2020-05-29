@@ -27,14 +27,14 @@ export default function HeatMapForVendor() {
     width: "100%",
   };
 
-  // const [currentPosition, setCurrentPosition] = useState({});
-  // const success = (position) => {
-  //   const currentPosition = {
-  //     lat: position.coords.latitude,
-  //     lng: position.coords.longitude,
-  //   };
-  //   setCurrentPosition(currentPosition);
-  // };
+  const [currentPosition, setCurrentPosition] = useState({});
+  const success = (position) => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+  };
 
   // useEffect(async () => {
   //   let coordsArr = await getCustomerCoords();
@@ -61,7 +61,7 @@ export default function HeatMapForVendor() {
         heatmap={customerCoords}
       ></GoogleMapReact>
       <PinkButton type="submit" onClick={handleFetchCoords}>
-        Generate Heatmap
+        View customers on map
       </PinkButton>
     </section>
   );
