@@ -30,17 +30,10 @@ letter-spacing: 0.08rem;
 }
 border-radius: 31px;
 background-color: ${background};
-// box-shadow:  13px 13px 20px #cccccc, 
-//              -13px -13px 20px #fcfcfc;
-// box-shadow:  6px 6px 12px #cccccc, 
-//              -6px -6px 12px #ffffff;
-
 box-shadow:  12px 12px 24px #cccfd7, 
              -12px -12px 24px #ffffff;
 outline: none;
 `;
-
-// #d3d6df
 
 const VendorButton = styled.button`
   ${Button};

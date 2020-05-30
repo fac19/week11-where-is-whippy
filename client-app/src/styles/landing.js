@@ -1,8 +1,5 @@
 import styled from "styled-components";
 require("typeface-karla");
-require("typeface-changa");
-require("typeface-poppins");
-require("typeface-ubuntu");
 require("typeface-bowlby-one-sc");
 
 const navy = "#112278";
