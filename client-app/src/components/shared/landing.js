@@ -11,6 +11,7 @@ import {
 import { LandingImg, Title2, GlobalStyle } from "../../styles/landing";
 import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
+import iceCreamVan from "./asset/icecreamvan.png";
 
 export default function Landing() {
   const { isVendor, setIsVendor } = useContext(AppContext);
@@ -19,12 +20,9 @@ export default function Landing() {
 
   return (
     <PageContainer>
-      {/* <Confetti width={width} height={height} /> */}
+      <Confetti width={width} height={height} />
       <Title2>Tired of waiting for the jingle?</Title2>
-      <LandingImg
-        src="https://image.flaticon.com/icons/svg/346/346178.svg"
-        alt="Ice cream cone"
-      />
+      <LandingImg src={iceCreamVan} alt="Ice cream cone" />
       <StyledLink to="/user" onClick={() => setIsVendor(false)}>
         <CustomerButton>customers</CustomerButton>
       </StyledLink>

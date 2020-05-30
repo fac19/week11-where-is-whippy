@@ -12,13 +12,12 @@ const Title2 = styled.h2`
 `;
 
 const Img = `
-max-width: 20vw;
+max-width: 40vw;
 `;
 
 const LandingImg = styled.img`
   ${Img}
-  max-width: 20rem;
-  margin: 2.5rem;
+  min-width: 40rem;
 `;
 
 export { LandingImg, Title2 };

@@ -5,8 +5,12 @@ const lightBlue = "#C3DDED";
 const lightPink = "#F7DCD5";
 const navy = "#012c61";
 const buttonBackground = "#41518D";
-const background = "#f2f3f7";
+// const background = "#f2f3f7";
+// const background = "#f5f5f5";
+const background = "#FBE5E0";
 const red = "#ff6160";
+const pink = "#ffb39f";
+const green = "#32b39f";
 
 const Button = `
 display: block;
@@ -31,7 +35,7 @@ const VendorButton = styled.button`
   ${Button};
   text-decoration: none;
   &:hover {
-    background-image: linear-gradient(to right, #32b39f, #ffb39f);
+    background-image: linear-gradient(to right, #f2d2c9, ${pink});
   }
 `;
 
@@ -39,25 +43,23 @@ const CustomerButton = styled.button`
   ${Button};
   text-decoration: none;
   &:hover {
-    background-image: linear-gradient(to right, #ffb39f, #32b39f);
+    background-image: linear-gradient(to right, #adccc7, ${green});
   }
 `;
 
 const SignUpButtonVendor = styled.button`
   ${Button};
   color: ${buttonBackground};
-  background-color: ${background};
-
   &:hover {
     color: #ffb39f;
   }
+  background-color: none;
 `;
 
 const SignUpButtonCustomer = styled.button`
   ${Button};
   color: ${buttonBackground};
-  background-color: ${background};
-
+  background-color: none;
   &:hover {
     color: #32b39f;
   }
@@ -85,7 +87,6 @@ const PageContainer = styled.section`
   flex-direction: column;
   align-items: center;
   height: 90vh;
-  background-color: ${background};
 `;
 
 const StyledLink = styled(Link)`
