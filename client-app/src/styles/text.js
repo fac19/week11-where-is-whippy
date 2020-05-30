@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-const background = "#F7F4F0";
 const navy = "#1f4068";
 
 const Label = styled.label`
@@ -8,16 +7,16 @@ const Label = styled.label`
   font-size: 1.25rem;
   text-align: left;
   margin-bottom: 0.45rem;
+  font-family: Karla;
 `;
 
 const Title = styled.h2`
-  color: ${navy};
   font-size: 1rem;
   text-align: center;
+  font-family: Karla;
 `;
 
 const Input = styled.input`
-  background-color: ${background};
   color: ${navy};
   border-radius: 5px;
   margin-bottom: 0.2rem;
@@ -33,7 +32,8 @@ const Legend = styled.legend`
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: ${background};
+  font-family: Karla;
+  background-color: #f2f3f7;
 `;
 
 export { Label, Input, Legend, FormContainer, Title };

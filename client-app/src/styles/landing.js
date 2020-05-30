@@ -1,12 +1,14 @@
 import styled from "styled-components";
-
-const lightBlue = "#C3DDED";
-const navy = "#1f4068";
+require("typeface-karla");
+require("typeface-changa");
+require("typeface-poppins");
+require("typeface-ubuntu");
 
 const Title2 = styled.h2`
-  color: ${navy};
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  font-family: poppins;
+  font-weight: 400;
 `;
 
 const Img = `

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
 import { Title, HeaderArea, StyledLogInLink } from "../../styles/header.js";
+import { useWindowSize } from "@react-hook/window-size";
+import Confetti from "react-confetti";
 
 export default function Header() {
   const { logInStatus, setLogInStatus } = useContext(AppContext);
@@ -24,6 +26,8 @@ export default function Header() {
       );
     }
   }
+
+  // const { width, height } = useWindowSize()
 
   return (
     <HeaderArea>

@@ -1,42 +1,29 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const navy = "#1f4068";
-const background = "#F7F4F0";
-
+const navy = "#41518D";
+const background = "#f2f3f7";
 const Title = styled.h1`
   font-style: italic;
-  color: ${navy};
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  font-family: Changa;
+  color: ${navy};
 `;
 
+const okay = styled.span`
+  display: inline;
+`;
 const HeaderArea = styled.header`
-  background-color: ${background};
   display: flex;
   flex-direction: column;
   padding-bottom: 5%;
+  background-color: ${background};
 `;
 
 const StyledLogInLink = styled(Link)`
   font-size: 1rem;
-  color: ${navy};
   text-decoration: none;
 `;
 
-export { Title, HeaderArea, StyledLogInLink };
-
-// import Montserrat from ‘./fonts/Montserrat-Regular.ttf’
-// injectGlobal`
-//   @font-face {
-//     font-family: Montserrat;
-//     src: url(${Montserrat});
-//   }
-// `
-
-// @font-face {
-//   font-family: 'Changa', sans-serif;
-//   src: url('webfont.eot'); /* IE9 Compat Modes */
-//   src: url('webfont.eot?#iefix')
-//   format('embedded-opentype')
-// }
+export { Title, HeaderArea, StyledLogInLink, okay };

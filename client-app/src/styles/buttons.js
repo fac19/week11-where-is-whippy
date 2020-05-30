@@ -2,36 +2,56 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const lightBlue = "#C3DDED";
-const navy = "#1f4068";
 const lightPink = "#F7DCD5";
-const background = "#F7F4F0";
+const navy = "#012c61";
+const buttonBackground = "#41518D";
+const background = "#f2f3f7";
+const red = "#ff6160";
 
 const Button = `
-  border-radius: 5px;
-  text-align: center;
-  color: ${navy};
-  font-size: 2rem;
-  padding: 0.25em 1em;
-  margin-top: 2.5%;
-  display: block;
-  width: 75vw;
-  max-width: 400px;
+display: block;
+margin-top: 4%;
+text-decoration: none;
+width: 75vw;
+height: 8vh;
+max-width: 400px;
+border: none;
+font-size: 2rem;
+font-family: poppins;
+border-radius: 50px;
+background-color: ${buttonBackground};
+color: white;
+text-align: center;
+&:hover {
+  cursor: pointer;
+}
+`;
+
+const PinkButton = styled.button`
+  ${Button};
   text-decoration: none;
   &:hover {
-    cursor: pointer;
+    background-color: ${red};
   }
 `;
 
 const BlueButton = styled.button`
   ${Button};
-  background-color: ${lightBlue};
   text-decoration: none;
+  &:hover {
+    background-color: ${red};
+  }
 `;
 
-const PinkButton = styled.button`
+const SignUpButton = styled.button`
   ${Button};
-  background-color: ${lightPink};
-  text-decoration: none;
+  color: ${buttonBackground};
+  background-color: ${background};
+  border: 2px solid ${buttonBackground};
+  &:hover {
+    color: ${red};
+    border: 2px solid ${red};
+  }
 `;
 
 const PinkSmallButton = styled.button`
@@ -52,11 +72,11 @@ const BlueSmallButton = styled.button`
 `;
 
 const PageContainer = styled.section`
-  background-color: ${background};
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 90vh;
+  background-color: ${background};
 `;
 
 const StyledLink = styled(Link)`
@@ -68,6 +88,7 @@ export {
   BlueSmallButton,
   PinkButton,
   PinkSmallButton,
+  SignUpButton,
   PageContainer,
   StyledLink,
 };

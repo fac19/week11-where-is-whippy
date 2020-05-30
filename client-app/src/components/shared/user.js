@@ -5,6 +5,7 @@ import { AppContext } from "../AppContext";
 import {
   BlueButton,
   PinkButton,
+  SignUpButton,
   PageContainer,
   StyledLink,
 } from "../../styles/buttons";
@@ -22,12 +23,12 @@ export default function User() {
             alt="Ice cream cone"
           />
 
-          <StyledLink to="/signup" onClick={() => setIsVendor(true)}>
-            <PinkButton>Sign Up</PinkButton>
-          </StyledLink>
-
           <StyledLink to="/login" onClick={() => setIsVendor(true)}>
             <PinkButton>Log In</PinkButton>
+          </StyledLink>
+
+          <StyledLink to="/signup" onClick={() => setIsVendor(true)}>
+            <SignUpButton>Sign Up</SignUpButton>
           </StyledLink>
         </PageContainer>
       ) : (
