@@ -19,19 +19,19 @@ border: none;
 font-size: 2rem;
 font-family: poppins;
 border-radius: 50px;
-background-color: ${buttonBackground};
 color: white;
 text-align: center;
 &:hover {
   cursor: pointer;
 }
+background-color: ${buttonBackground};
 `;
 
 const PinkButton = styled.button`
   ${Button};
   text-decoration: none;
   &:hover {
-    background-color: ${red};
+    background-image: linear-gradient(to right, #32b39f, #ffb39f);
   }
 `;
 
@@ -39,18 +39,27 @@ const BlueButton = styled.button`
   ${Button};
   text-decoration: none;
   &:hover {
-    background-color: ${red};
+    background-image: linear-gradient(to right, #ffb39f, #32b39f);
   }
 `;
 
-const SignUpButton = styled.button`
+const SignUpButtonVendor = styled.button`
   ${Button};
   color: ${buttonBackground};
   background-color: ${background};
-  border: 2px solid ${buttonBackground};
+
   &:hover {
-    color: ${red};
-    border: 2px solid ${red};
+    color: #ffb39f;
+  }
+`;
+
+const SignUpButtonCustomer = styled.button`
+  ${Button};
+  color: ${buttonBackground};
+  background-color: ${background};
+
+  &:hover {
+    color: #32b39f;
   }
 `;
 
@@ -88,7 +97,8 @@ export {
   BlueSmallButton,
   PinkButton,
   PinkSmallButton,
-  SignUpButton,
+  SignUpButtonVendor,
+  SignUpButtonCustomer,
   PageContainer,
   StyledLink,
 };

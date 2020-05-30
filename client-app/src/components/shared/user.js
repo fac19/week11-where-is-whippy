@@ -5,7 +5,8 @@ import { AppContext } from "../AppContext";
 import {
   BlueButton,
   PinkButton,
-  SignUpButton,
+  SignUpButtonVendor,
+  SignUpButtonCustomer,
   PageContainer,
   StyledLink,
 } from "../../styles/buttons";
@@ -28,23 +29,23 @@ export default function User() {
           </StyledLink>
 
           <StyledLink to="/signup" onClick={() => setIsVendor(true)}>
-            <SignUpButton>Sign Up</SignUpButton>
+            <SignUpButtonVendor>Sign Up</SignUpButtonVendor>
           </StyledLink>
         </PageContainer>
       ) : (
         <PageContainer>
-          <h2>Find ice cream today</h2>
+          <h2>Fancy an ice cream now? Find your nearby mr.whippy now.</h2>
           <LandingImg
             src="https://image.flaticon.com/icons/svg/346/346178.svg"
             alt="Ice cream cone"
           />
 
-          <StyledLink to="/signup" onClick={() => setIsVendor(false)}>
-            <BlueButton>Sign Up</BlueButton>
-          </StyledLink>
-
           <StyledLink to="/login" onClick={() => setIsVendor(false)}>
             <BlueButton>Log In</BlueButton>
+          </StyledLink>
+
+          <StyledLink to="/signup" onClick={() => setIsVendor(false)}>
+            <SignUpButtonCustomer>Sign Up</SignUpButtonCustomer>
           </StyledLink>
         </PageContainer>
       )}
