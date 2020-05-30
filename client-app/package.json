@@ -15,6 +15,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1",
+    "typeface-bowlby-one-sc": "0.0.72",
     "typeface-changa": "^1.1.4",
     "typeface-karla": "0.0.72",
     "typeface-poppins": "0.0.72",

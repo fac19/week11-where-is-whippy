@@ -14,7 +14,10 @@ export default function Header() {
 
   function headerStatus() {
     let token = localStorage.getItem("token");
-    if (!token) {
+    if (window.location.pathname == "/") {
+      setLogInStatus(false);
+      return;
+    } else if (!token) {
       setLogInStatus(false);
       return <StyledLogInLink to="/">Log In or Sign Up Here!</StyledLogInLink>;
     } else {

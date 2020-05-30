@@ -24,10 +24,10 @@ export default function Landing() {
       <Title2>Tired of waiting for the jingle?</Title2>
       <LandingImg src={iceCreamVan} alt="Ice cream cone" />
       <StyledLink to="/user" onClick={() => setIsVendor(false)}>
-        <CustomerButton>customers</CustomerButton>
+        <CustomerButton>Customer</CustomerButton>
       </StyledLink>
       <StyledLink to="/user" onClick={() => setIsVendor(true)}>
-        <VendorButton>vendors</VendorButton>
+        <VendorButton>Vendor</VendorButton>
       </StyledLink>
     </PageContainer>
   );
