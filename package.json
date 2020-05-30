@@ -6,6 +6,7 @@
     "deploy": "git subtree push --prefix server-api heroku master"
   },
   "devDependencies": {
+    "codecov": "^3.7.0",
     "husky": "^4.2.5"
   },
   "dependencies": {
