@@ -1,4 +1,6 @@
 codecov:
+  ci:
+  https://travis-ci.com/github/fac19/week11-where-is-whippy
   notify:
     require_ci_to_pass: yes
 
