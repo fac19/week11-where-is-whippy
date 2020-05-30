@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import {
   Button,
-  BlueButton,
-  PinkButton,
+  CustomerButton,
+  VendorButton,
   StyledLink,
 } from "../../styles/buttons";
 import { textStyle } from "../../styles/text";
@@ -144,9 +144,9 @@ export default function Login() {
       />
 
       {isVendor ? (
-        <PinkButton type="submit">Login</PinkButton>
+        <VendorButton type="submit">Login</VendorButton>
       ) : (
-        <BlueButton type="submit">Login</BlueButton>
+        <CustomerButton type="submit">Login</CustomerButton>
       )}
     </FormContainer>
   );

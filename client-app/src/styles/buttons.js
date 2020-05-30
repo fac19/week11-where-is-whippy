@@ -27,7 +27,7 @@ text-align: center;
 background-color: ${buttonBackground};
 `;
 
-const PinkButton = styled.button`
+const VendorButton = styled.button`
   ${Button};
   text-decoration: none;
   &:hover {
@@ -35,7 +35,7 @@ const PinkButton = styled.button`
   }
 `;
 
-const BlueButton = styled.button`
+const CustomerButton = styled.button`
   ${Button};
   text-decoration: none;
   &:hover {
@@ -93,9 +93,9 @@ const StyledLink = styled(Link)`
 `;
 
 export {
-  BlueButton,
+  CustomerButton,
   BlueSmallButton,
-  PinkButton,
+  VendorButton,
   PinkSmallButton,
   SignUpButtonVendor,
   SignUpButtonCustomer,

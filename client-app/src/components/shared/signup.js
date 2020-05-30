@@ -5,7 +5,7 @@ import {
   postCustomerSignUpInformation,
 } from "../../utils/postData";
 import { AppContext } from "../AppContext";
-import { Button, BlueButton, PinkButton } from "../../styles/buttons";
+import { Button, CustomerButton, VendorButton } from "../../styles/buttons";
 import { textStyle } from "../../styles/text";
 import {
   Label,
@@ -261,7 +261,7 @@ export default function SignUp() {
             />
           </FieldSet>
 
-          <PinkButton type="submit">Sign Up</PinkButton>
+          <VendorButton type="submit">Sign Up</VendorButton>
         </>
       ) : (
         <>
@@ -392,7 +392,7 @@ export default function SignUp() {
             />
           </FieldSet>
 
-          <BlueButton type="submit">Sign Up</BlueButton>
+          <CustomerButton type="submit">Sign Up</CustomerButton>
         </>
       )}
     </FormContainer>

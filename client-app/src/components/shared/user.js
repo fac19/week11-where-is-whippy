@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import {
-  BlueButton,
-  PinkButton,
+  CustomerButton,
+  VendorButton,
   SignUpButtonVendor,
   SignUpButtonCustomer,
   PageContainer,
@@ -25,7 +25,7 @@ export default function User() {
           />
 
           <StyledLink to="/login" onClick={() => setIsVendor(true)}>
-            <PinkButton>Log In</PinkButton>
+            <VendorButton>Log In</VendorButton>
           </StyledLink>
 
           <StyledLink to="/signup" onClick={() => setIsVendor(true)}>
@@ -41,7 +41,7 @@ export default function User() {
           />
 
           <StyledLink to="/login" onClick={() => setIsVendor(false)}>
-            <BlueButton>Log In</BlueButton>
+            <CustomerButton>Log In</CustomerButton>
           </StyledLink>
 
           <StyledLink to="/signup" onClick={() => setIsVendor(false)}>

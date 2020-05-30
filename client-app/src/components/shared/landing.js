@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import {
-  BlueButton,
-  PinkButton,
+  CustomerButton,
+  VendorButton,
   PageContainer,
   StyledLink,
 } from "../../styles/buttons";
@@ -26,10 +26,10 @@ export default function Landing() {
         alt="Ice cream cone"
       />
       <StyledLink to="/user" onClick={() => setIsVendor(false)}>
-        <BlueButton>customers</BlueButton>
+        <CustomerButton>customers</CustomerButton>
       </StyledLink>
       <StyledLink to="/user" onClick={() => setIsVendor(true)}>
-        <PinkButton>vendors</PinkButton>
+        <VendorButton>vendors</VendorButton>
       </StyledLink>
     </PageContainer>
   );
