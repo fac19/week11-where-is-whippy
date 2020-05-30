@@ -1,3 +1,18 @@
 import React from "react";
-import customermapComponent from ".map.js";
-import ReactTestRender from "react-test-renderer";
+import MapForCustomer from "./map";
+import renderer from "react-test-renderer";
+import GoogleMapReact from "google-map-react";
+
+test("Customer map renders to page", () => {
+  const customerMapComponent = renderer.create(<GoogleMapReact />);
+  const tree = customerMapComponent.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+// describe("Snapshot test", () => {
+//   it("renders the correct ui", () => {
+//     const component = TestRenderer.create(<AddNewStepForm />);
+//     const tree = component.toJSON();
+//     expect(tree).toMatchSnapshot();
+//   });
+// });
