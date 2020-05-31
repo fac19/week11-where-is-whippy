@@ -132,6 +132,7 @@ export default function Login() {
         required
         onChange={handleChange}
         value={inputValueEmail}
+        placeholder="Email Address"
       />
       <Label htmlFor="password">Password</Label>
       <Input
@@ -141,6 +142,7 @@ export default function Login() {
         required
         onChange={handleChange}
         value={inputValuePassword}
+        placeholder="Password"
       />
 
       {isVendor ? (

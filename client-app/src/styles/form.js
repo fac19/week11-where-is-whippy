@@ -1,21 +1,39 @@
 import styled from "styled-components";
 
-const navy = "#1f4068";
+const navy = "#112278";
+const background = "#edf1fa";
 
 const Label = styled.label`
   color: ${navy};
   font-size: 1.25rem;
   text-align: left;
+  display: inline-block;
+  width: 75%;
+  max-width: 480px;
   margin-bottom: 0.45rem;
+  font-weight: 700;
 `;
 
 const Input = styled.input`
   color: ${navy};
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  border-radius: 31px;
+  border: none;
+  margin-bottom: 1.3rem;
   width: 75%;
   max-width: 500px;
-  height: 1.5rem;
+  min-height: 3rem;
+  background-color: ${background};
+  box-shadow: inset 5px 5px 5px #cccccc, inset -5px -5px 10px #ffffff;
+  &:focus {
+    box-shadow: inset 2px 2px 2px #cccccc, inset -2px -2px 2px #ffffff;
+  }
+  ::placeholder {
+    font-family: karla;
+    padding: 0 1.3rem;
+    font-size: 1rem;
+  }
+  transition: all 0.2s ease-in-out;
+  outline: none;
 `;
 
 const Legend = styled.legend`
@@ -28,6 +46,8 @@ const FormContainer = styled.form`
   align-items: center;
   padding: 1rem;
   font-family: Karla;
+  background-color: ${background};
+  min-height: 80vh;
 `;
 
 const radioBtnWrapper = styled.input``;

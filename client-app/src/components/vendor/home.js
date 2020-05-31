@@ -26,9 +26,9 @@ export default function Home() {
       <Title>
         Welcome back
         {isVendor ? (
-          <i> {signUpStateVendor.email}</i>
+          <i> {signUpStateVendor.name}</i>
         ) : (
-          <i> {signUpStateCustomer.email}</i>
+          <i> {signUpStateCustomer.name}</i>
         )}
         !
       </Title>

@@ -7,7 +7,7 @@ const navy = "#112278";
 const Title2 = styled.h2`
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin: 0;
   font-family: karla;
   color: ${navy};
 `;

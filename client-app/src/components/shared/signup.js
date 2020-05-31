@@ -166,6 +166,7 @@ export default function SignUp() {
         maxlength="50"
         onChange={handleChange}
         value={inputValueName}
+        placeholder="Your name"
       />
 
       <Label htmlFor="email">Email</Label>
@@ -177,6 +178,7 @@ export default function SignUp() {
         maxlength="50"
         onChange={handleChange}
         value={inputValueEmail}
+        placeholder="Email Address"
       />
 
       <Label htmlFor="password">Password</Label>
@@ -189,6 +191,7 @@ export default function SignUp() {
         minlength="8"
         onChange={handleChange}
         value={inputValuePassword}
+        placeholder="Password"
       />
       {/* THIS IS THE TERNARY */}
       {isVendor ? (
@@ -202,6 +205,7 @@ export default function SignUp() {
             maxlength="15"
             value={signUpStateVendor.mobile}
             onChange={handleOnChangeVendor}
+            placeholder="Mobile Number"
           />
 
           <Label htmlFor="companyName">Company Name</Label>
@@ -213,6 +217,7 @@ export default function SignUp() {
             maxlength="30"
             value={signUpStateVendor.companyName}
             onChange={handleOnChangeVendor}
+            placeholder="Business Name"
           />
 
           <FieldSet id="fieldset-vendorAlcohol">
@@ -265,14 +270,16 @@ export default function SignUp() {
         </>
       ) : (
         <>
-          <Label htmlFor="username">Username</Label>
+          <Label htmlFor="icecreamFlavour">
+            Your favourite icecream flavour
+          </Label>
           <Input
             type="text"
-            id="username"
-            name="username"
+            id="icecreamFlavour"
+            name="icecreamFlavour"
             required
             maxlength="40"
-            value={signUpStateCustomer.username}
+            value={signUpStateCustomer.icecreamFlavour}
             onChange={handleOnChangeCustomer}
           />
 
@@ -355,17 +362,6 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
           </FieldSet>
-
-          <Label htmlFor="icecreamFlavour">Icecream Flavour</Label>
-          <Input
-            type="text"
-            id="icecreamFlavour"
-            name="icecreamFlavour"
-            required
-            maxlength="40"
-            value={signUpStateCustomer.icecreamFlavour}
-            onChange={handleOnChangeCustomer}
-          />
 
           <FieldSet>
             <Legend>

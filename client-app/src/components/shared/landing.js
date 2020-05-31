@@ -21,7 +21,10 @@ export default function Landing() {
   return (
     <PageContainer>
       <Confetti width={width} height={height} />
-      <Title2>Tired of waiting for the jingle?</Title2>
+      <Title2>
+        Tired of waiting for the jingle? (need more clear explanation on what
+        this app is about, issue #78)
+      </Title2>
       <LandingImg src={iceCreamVan} alt="Ice cream cone" />
       <StyledLink to="/user" onClick={() => setIsVendor(false)}>
         <CustomerButton>Customer</CustomerButton>
