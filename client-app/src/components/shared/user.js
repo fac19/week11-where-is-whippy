@@ -11,6 +11,7 @@ import {
   StyledLink,
 } from "../../styles/buttons";
 import { LandingImg } from "../../styles/landing";
+import iceCreamVan from "./asset/icecreamvan.png";
 
 export default function User() {
   const { isVendor, setIsVendor } = useContext(AppContext);
@@ -19,10 +20,7 @@ export default function User() {
       {isVendor ? (
         <PageContainer>
           <h2>Find ice cream lovers today</h2>
-          <LandingImg
-            src="https://image.flaticon.com/icons/svg/346/346178.svg"
-            alt="Ice cream cone"
-          />
+          <LandingImg src={iceCreamVan} alt="Ice cream van" />
 
           <StyledLink to="/login" onClick={() => setIsVendor(true)}>
             <VendorButton>Log In</VendorButton>
@@ -35,10 +33,7 @@ export default function User() {
       ) : (
         <PageContainer>
           <h2>Fancy an ice cream now? Find your nearby mr.whippy now.</h2>
-          <LandingImg
-            src="https://image.flaticon.com/icons/svg/346/346178.svg"
-            alt="Ice cream cone"
-          />
+          <LandingImg src={iceCreamVan} alt="Ice cream van" />
 
           <StyledLink to="/login" onClick={() => setIsVendor(false)}>
             <CustomerButton>Log In</CustomerButton>

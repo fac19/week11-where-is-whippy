@@ -90,7 +90,7 @@ const PageContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  min-height: 80vh;
   background-color: ${background};
 `;
 

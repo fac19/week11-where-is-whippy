@@ -41,11 +41,17 @@ const Input = styled.input`
 `;
 
 const InputRadio = styled.input`
-  box-shadow: none;
-  color: red;
+  background-color: #eee;
   font-size: 0.4rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: inline;
+`;
+
+const FieldSet = styled.fieldset`
+  font-size: 1.25rem;
+  border: none;
+  max-width: 75%;
+  max-width: 500px;
+  margin-bottom: 1rem;
 `;
 
 const Legend = styled.legend`
@@ -65,13 +71,5 @@ const FormContainer = styled.form`
 `;
 
 const radioBtnWrapper = styled.input``;
-
-const FieldSet = styled.fieldset`
-  font-size: 1.25rem;
-  border: none;
-  width: 75%;
-  max-width: 250px;
-  margin-bottom: 1rem;
-`;
 
 export { Label, Input, InputRadio, Legend, FormContainer, FieldSet };
