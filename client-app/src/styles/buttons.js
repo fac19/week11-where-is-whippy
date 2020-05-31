@@ -30,7 +30,7 @@ letter-spacing: 0.08rem;
 }
 border-radius: 31px;
 background-color: ${background};
-box-shadow: 12px 12px 24px #cccfd7, -12px -12px 24px #ffffff;
+box-shadow: 12px 12px 24px #c4c4c4, -12px -12px 24px #ffffff;
 outline: none;
 `;
 
