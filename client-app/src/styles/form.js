@@ -5,7 +5,7 @@ const background = "#edf1fa";
 
 const Label = styled.label`
   color: ${navy};
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   text-align: left;
   display: inline-block;
   width: 75%;
@@ -15,6 +15,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
+  font-family: Karla;
   color: ${navy};
   border-radius: 31px;
   border: none;
@@ -29,15 +30,28 @@ const Input = styled.input`
   }
   ::placeholder {
     font-family: karla;
-    padding: 0 1.3rem;
     font-size: 1rem;
+    color: #858cab;
   }
   transition: all 0.2s ease-in-out;
   outline: none;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  padding-left: 1.5rem;
+`;
+
+const InputRadio = styled.input`
+  box-shadow: none;
+  color: red;
+  font-size: 0.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
 
 const Legend = styled.legend`
   color: ${navy};
+  font-weight: 700;
+  font-size: 1.15rem;
 `;
 
 const FormContainer = styled.form`
@@ -60,4 +74,4 @@ const FieldSet = styled.fieldset`
   margin-bottom: 1rem;
 `;
 
-export { Label, Input, Legend, FormContainer, FieldSet };
+export { Label, Input, InputRadio, Legend, FormContainer, FieldSet };
