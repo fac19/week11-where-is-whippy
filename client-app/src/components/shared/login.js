@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import {
   Button,
-  BlueButton,
-  PinkButton,
+  CustomerButton,
+  VendorButton,
   StyledLink,
 } from "../../styles/buttons";
 import { textStyle } from "../../styles/text";
@@ -132,6 +132,7 @@ export default function Login() {
         required
         onChange={handleChange}
         value={inputValueEmail}
+        placeholder="Email Address"
       />
       <Label htmlFor="password">Password</Label>
       <Input
@@ -141,12 +142,13 @@ export default function Login() {
         required
         onChange={handleChange}
         value={inputValuePassword}
+        placeholder="Password"
       />
 
       {isVendor ? (
-        <PinkButton type="submit">Login</PinkButton>
+        <VendorButton type="submit">Login</VendorButton>
       ) : (
-        <BlueButton type="submit">Login</BlueButton>
+        <CustomerButton type="submit">Login</CustomerButton>
       )}
     </FormContainer>
   );

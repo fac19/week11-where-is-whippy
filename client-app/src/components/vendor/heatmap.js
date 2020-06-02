@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext, Component } from "react";
 import GoogleMapReact from "google-map-react";
 import { getCustomerCoords } from "../../utils/getData";
 import { AppContext } from "../AppContext";
-import { PinkButton } from "../../styles/buttons";
+import { VendorButton } from "../../styles/buttons";
 
 // const gMAPI = process.env.REACT_APP_GOOGLEAPIKEY;
 // const gMAPI = "AIzaSyApyt224I8eHKHjNrZMZUZ6h5nCWm-0qus";
@@ -51,9 +51,9 @@ export default function HeatMapForVendor() {
         heatmapLibrary={true}
         heatmap={customerCoords}
       ></GoogleMapReact>
-      <PinkButton type="submit" onClick={handleFetchCoords}>
+      <VendorButton type="submit" onClick={handleFetchCoords}>
         View customers on map
-      </PinkButton>
+      </VendorButton>
     </section>
   );
 }

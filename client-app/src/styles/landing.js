@@ -1,22 +1,27 @@
 import styled from "styled-components";
+require("typeface-karla");
+require("typeface-bowlby-one-sc");
 
-const lightBlue = "#C3DDED";
-const navy = "#1f4068";
+const navy = "#112278";
 
 const Title2 = styled.h2`
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: karla;
   color: ${navy};
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
 `;
 
 const Img = `
-max-width: 20vw;
+max-width: 50vw;
 `;
 
 const LandingImg = styled.img`
   ${Img}
-  max-width: 20rem;
-  margin: 2.5rem;
+  max-width: 50rem;
+  @media (max-width: 414px) {
+    max-width: 20rem;
+  }
 `;
 
 export { LandingImg, Title2 };

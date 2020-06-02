@@ -1,45 +1,75 @@
 import styled from "styled-components";
 
-const background = "#F7F4F0";
-const navy = "#1f4068";
+const navy = "#112278";
+const background = "#edf1fa";
 
 const Label = styled.label`
   color: ${navy};
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   text-align: left;
+  display: inline-block;
+  width: 75%;
+  max-width: 480px;
   margin-bottom: 0.45rem;
+  font-weight: 700;
 `;
 
 const Input = styled.input`
-  background-color: ${background};
+  font-family: Karla;
   color: ${navy};
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  border-radius: 31px;
+  border: none;
+  margin-bottom: 1.3rem;
   width: 75%;
   max-width: 500px;
-  height: 1.5rem;
+  min-height: 3rem;
+  background-color: ${background};
+  box-shadow: inset 5px 5px 5px #cccccc, inset -5px -5px 10px #ffffff;
+  &:focus {
+    box-shadow: inset 2px 2px 2px #cccccc, inset -2px -2px 2px #ffffff;
+  }
+  ::placeholder {
+    font-family: karla;
+    font-size: 1rem;
+    color: #858cab;
+  }
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  padding-left: 1.5rem;
+`;
+
+const InputRadio = styled.input`
+  background-color: #eee;
+  font-size: 0.4rem;
+  display: inline;
+`;
+
+const FieldSet = styled.fieldset`
+  font-size: 1.25rem;
+  border: none;
+  max-width: 75%;
+  max-width: 500px;
+  margin-bottom: 1rem;
 `;
 
 const Legend = styled.legend`
   color: ${navy};
+  font-weight: 700;
+  font-size: 1.15rem;
 `;
 
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: ${background};
   align-items: center;
   padding: 1rem;
+  font-family: Karla;
+  background-color: ${background};
+  min-height: 80vh;
 `;
 
 const radioBtnWrapper = styled.input``;
 
-const FieldSet = styled.fieldset`
-  font-size: 1.25rem;
-  border-radius: 5px;
-  width: 75%;
-  max-width: 250px;
-  margin-bottom: 1rem;
-`;
-
-export { Label, Input, Legend, FormContainer, FieldSet };
+export { Label, Input, InputRadio, Legend, FormContainer, FieldSet };

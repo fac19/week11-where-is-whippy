@@ -2,36 +2,71 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const lightBlue = "#C3DDED";
-const navy = "#1f4068";
 const lightPink = "#F7DCD5";
-const background = "#F7F4F0";
+const navy = "#112278";
+const buttonBackground = "#41518D";
+const background = "#edf1fa";
+
+const red = "#ff6160";
+const pink = "#ffb39f";
+const green = "#32b39f";
 
 const Button = `
-  border-radius: 5px;
-  text-align: center;
-  color: ${navy};
-  font-size: 2rem;
-  padding: 0.25em 1em;
-  margin-top: 2.5%;
-  display: block;
-  width: 75vw;
-  max-width: 400px;
+display: block;
+margin-top: 5%;
+text-decoration: none;
+width: 75vw;
+height: 8vh;
+max-width: 400px;
+border: none;
+font-size: 2rem;
+font-family: karla;
+border-radius: 50px;
+color: ${navy};
+text-align: center;
+letter-spacing: 0.08rem;
+&:hover {
+  cursor: pointer;
+}
+border-radius: 31px;
+background-color: ${background};
+box-shadow: 12px 12px 24px #c4c4c4, -12px -12px 24px #ffffff;
+outline: none;
+`;
+
+const VendorButton = styled.button`
+  ${Button};
   text-decoration: none;
   &:hover {
-    cursor: pointer;
+    background: #edf1fa;
+    box-shadow: inset 13px 13px 14px #d8dbe4, inset -13px -13px 14px #ffffff;
   }
 `;
 
-const BlueButton = styled.button`
+const CustomerButton = styled.button`
   ${Button};
-  background-color: ${lightBlue};
   text-decoration: none;
+  &:hover {
+    background: #edf1fa;
+    box-shadow: inset 13px 13px 14px #d8dbe4, inset -13px -13px 14px #ffffff;
+  }
 `;
 
-const PinkButton = styled.button`
+const SignUpButtonVendor = styled.button`
   ${Button};
-  background-color: ${lightPink};
-  text-decoration: none;
+  &:hover {
+    color: #ffb39f;
+  }
+  background-color: none;
+`;
+
+const SignUpButtonCustomer = styled.button`
+  ${Button};
+  color: ${buttonBackground};
+  background-color: none;
+  &:hover {
+    color: #32b39f;
+  }
 `;
 
 const PinkSmallButton = styled.button`
@@ -52,11 +87,11 @@ const BlueSmallButton = styled.button`
 `;
 
 const PageContainer = styled.section`
-  background-color: ${background};
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  min-height: 80vh;
+  background-color: ${background};
 `;
 
 const StyledLink = styled(Link)`
@@ -64,10 +99,12 @@ const StyledLink = styled(Link)`
 `;
 
 export {
-  BlueButton,
+  CustomerButton,
   BlueSmallButton,
-  PinkButton,
+  VendorButton,
   PinkSmallButton,
+  SignUpButtonVendor,
+  SignUpButtonCustomer,
   PageContainer,
   StyledLink,
 };
