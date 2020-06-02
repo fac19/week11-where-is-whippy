@@ -1,8 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0e9d253d-58de-49ca-8655-8be52752a91b/deploy-status)](https://app.netlify.com/sites/where-is-whippy/deploys)
 ![Travis](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
 
-^ For our code review team: ignore the failed status, our FE deployment on netlify works fine. Latest failed deployment does not affect our production.
-
 # week11-where-is-whippy :icecream:
 
 An ice cream truck and customer finder for all you choc-chip nuts out there
