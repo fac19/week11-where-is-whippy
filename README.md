@@ -7,10 +7,10 @@ An ice cream truck and customer finder for all you choc-chip nuts out there
 
 ## The team
 
-- [Ina](https://github.com/itsina96) - DevOps
-- [Lizzy](https://github.com/lizzy-j) - User Experience
-- [Joe](https://github.com/joepock123) - Quality assurance
-- [Hettie](https://github.com/HettieM) - Scrum master
+- [Ina](https://github.com/itsina96) - DevOps / Developer
+- [Lizzy](https://github.com/lizzy-j) - User Experience / Developer
+- [Joe](https://github.com/joepock123) - Quality assurance / Developer
+- [Hettie](https://github.com/HettieM) - Scrum master / Developer
 
 ## Description
 
