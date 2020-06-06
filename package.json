@@ -3,7 +3,8 @@
     "start": "node server.js",
     "test": "JWT_SECRET=mysecret PGDATABASE=travis_ci_test jest --coverage=true",
     "initdb": "node server-api/db/build.js",
-    "deploy": "git subtree push --prefix server-api heroku master"
+    "deploy": "git subtree push --prefix server-api heroku master",
+    "gap": "npm i && cd client-app && npm i && cd ../server-api && npm i"
   },
   "devDependencies": {
     "husky": "^4.2.5"
