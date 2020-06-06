@@ -8,11 +8,3 @@ test("Customer map renders to page", () => {
   const tree = customerMapComponent.toJSON();
   expect(tree).toMatchSnapshot();
 });
-
-// describe("Snapshot test", () => {
-//   it("renders the correct ui", () => {
-//     const component = TestRenderer.create(<AddNewStepForm />);
-//     const tree = component.toJSON();
-//     expect(tree).toMatchSnapshot();
-//   });
-// });

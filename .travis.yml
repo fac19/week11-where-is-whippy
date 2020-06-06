@@ -7,16 +7,19 @@ install:
   - cd ../client-app
   - npm ci
   - cd ..
-  - npm install -g codecov
 before_script:
   - psql -c "create database travis_ci_test;" -U postgres
 
 script:
   - npm run initdb && npm run test
-  - codecov
+  - npm install -g codecov
+
+env:
+  - CODECOV_TOKEN=023edbc7-41d1-4422-a121-6ad6554bcc55
+
 services:
   - postgresql
 
 after_success:
   - npm run coverage
-  - bash <(curl -s https://codecov.io/bash)
+  # - bash <(curl -s https://codecov.io/bash)
