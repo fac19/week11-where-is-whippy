@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
 import { Title, HeaderArea, StyledLogInLink } from "../../styles/header.js";
+import { useWindowSize } from "@react-hook/window-size";
+import Confetti from "react-confetti";
 
 export default function Header() {
   const { logInStatus, setLogInStatus } = useContext(AppContext);
@@ -12,7 +14,10 @@ export default function Header() {
 
   function headerStatus() {
     let token = localStorage.getItem("token");
-    if (!token) {
+    if (window.location.pathname == "/") {
+      setLogInStatus(false);
+      return;
+    } else if (!token) {
       setLogInStatus(false);
       return <StyledLogInLink to="/">Log In or Sign Up Here!</StyledLogInLink>;
     } else {
@@ -24,6 +29,8 @@ export default function Header() {
       );
     }
   }
+
+  // const { width, height } = useWindowSize()
 
   return (
     <HeaderArea>

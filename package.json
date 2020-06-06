@@ -4,13 +4,15 @@
     "test": "JWT_SECRET=mysecret PGDATABASE=travis_ci_test jest --coverage=true",
     "test-all": "cd client-app && npm test && cd .. && cd server-api && npm test",
     "initdb": "node server-api/db/build.js",
-    "deploy": "git subtree push --prefix server-api heroku master"
+    "deploy": "git subtree push --prefix server-api heroku master",
+    "gap": "npm i && cd client-app && npm i && cd ../server-api && npm i"
   },
   "devDependencies": {
     "codecov": "^3.7.0",
     "husky": "^4.2.5"
   },
   "dependencies": {
+    "jest": "^26.0.1",
     "lint-staged": "^10.2.6",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"

@@ -5,11 +5,12 @@ import {
   postCustomerSignUpInformation,
 } from "../../utils/postData";
 import { AppContext } from "../AppContext";
-import { Button, BlueButton, PinkButton } from "../../styles/buttons";
+import { Button, CustomerButton, VendorButton } from "../../styles/buttons";
 import { textStyle } from "../../styles/text";
 import {
   Label,
   Input,
+  InputRadio,
   Legend,
   FormContainer,
   FieldSet,
@@ -166,6 +167,7 @@ export default function SignUp() {
         maxlength="50"
         onChange={handleChange}
         value={inputValueName}
+        placeholder="Lizzy"
       />
 
       <Label htmlFor="email">Email</Label>
@@ -177,6 +179,7 @@ export default function SignUp() {
         maxlength="50"
         onChange={handleChange}
         value={inputValueEmail}
+        placeholder="whippy@example.com"
       />
 
       <Label htmlFor="password">Password</Label>
@@ -189,6 +192,7 @@ export default function SignUp() {
         minlength="8"
         onChange={handleChange}
         value={inputValuePassword}
+        placeholder="99flakes"
       />
       {/* THIS IS THE TERNARY */}
       {isVendor ? (
@@ -202,9 +206,10 @@ export default function SignUp() {
             maxlength="15"
             value={signUpStateVendor.mobile}
             onChange={handleOnChangeVendor}
+            placeholder="07123456789"
           />
 
-          <Label htmlFor="companyName">Company Name</Label>
+          <Label htmlFor="companyName">Business Name</Label>
           <Input
             type="text"
             id="companyName"
@@ -213,12 +218,13 @@ export default function SignUp() {
             maxlength="30"
             value={signUpStateVendor.companyName}
             onChange={handleOnChangeVendor}
+            placeholder="Sundae Funday"
           />
 
           <FieldSet id="fieldset-vendorAlcohol">
             <Legend>Do you sell alcohol?</Legend>
             <Label htmlFor="alcoholYes">Yes</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="alcoholYes"
               name="alcohol"
@@ -228,7 +234,7 @@ export default function SignUp() {
             />
 
             <Label htmlFor="alcoholNo">No</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="alcoholNo"
               name="alcohol"
@@ -241,7 +247,7 @@ export default function SignUp() {
           <FieldSet id="fieldset-vendorVegan">
             <Legend>Do you offer vegan options?</Legend>
             <Label htmlFor="veganYes">Yes</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="veganYes"
               name="vegan"
@@ -251,7 +257,7 @@ export default function SignUp() {
             />
 
             <Label htmlFor="veganNo">No</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="veganNo"
               name="vegan"
@@ -261,25 +267,26 @@ export default function SignUp() {
             />
           </FieldSet>
 
-          <PinkButton type="submit">Sign Up</PinkButton>
+          <VendorButton type="submit">Sign Up</VendorButton>
         </>
       ) : (
         <>
-          <Label htmlFor="username">Username</Label>
+          <Label htmlFor="icecreamFlavour">Favourite icecream flavour</Label>
           <Input
             type="text"
-            id="username"
-            name="username"
+            id="icecreamFlavour"
+            name="icecreamFlavour"
             required
             maxlength="40"
-            value={signUpStateCustomer.username}
+            value={signUpStateCustomer.icecreamFlavour}
             onChange={handleOnChangeCustomer}
+            placeholder="mint chocolate"
           />
 
           <FieldSet id="fieldset-customer-age">
             <Legend>What is your age group?</Legend>
             <Label htmlFor="gender-1">14-18</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="age1"
               name="age"
@@ -288,7 +295,7 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-2">19-24</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="age2"
               name="age"
@@ -297,7 +304,7 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="ageGroup3">25-30</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="age3"
               name="age"
@@ -306,7 +313,7 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="ageGroup4">31-40</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="age4"
               name="age"
@@ -319,7 +326,7 @@ export default function SignUp() {
           <FieldSet id="fieldset-gender">
             <Legend>What is your gender?</Legend>
             <Label htmlFor="gender-1">Male</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="gender-1"
               name="gender"
@@ -328,7 +335,7 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-2">Female</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="gender-2"
               name="gender"
@@ -337,7 +344,7 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-3">Nonbinary</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="gender-3"
               name="gender"
@@ -346,7 +353,7 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="gender-4">Prefer not to say</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="gender-4"
               name="gender"
@@ -356,24 +363,13 @@ export default function SignUp() {
             />
           </FieldSet>
 
-          <Label htmlFor="icecreamFlavour">Icecream Flavour</Label>
-          <Input
-            type="text"
-            id="icecreamFlavour"
-            name="icecreamFlavour"
-            required
-            maxlength="40"
-            value={signUpStateCustomer.icecreamFlavour}
-            onChange={handleOnChangeCustomer}
-          />
-
           <FieldSet>
             <Legend>
               In order to use this app, I consent to sharing my location
               information
             </Legend>
             <Label htmlFor="consentYes">I consent</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="consentYes"
               name="consent"
@@ -382,7 +378,7 @@ export default function SignUp() {
               onChange={handleOnChangeCustomer}
             />
             <Label htmlFor="consentNo">I do not consent</Label>
-            <Input
+            <InputRadio
               type="radio"
               id="consentNo"
               name="consent"
@@ -392,7 +388,7 @@ export default function SignUp() {
             />
           </FieldSet>
 
-          <BlueButton type="submit">Sign Up</BlueButton>
+          <CustomerButton type="submit">Sign Up</CustomerButton>
         </>
       )}
     </FormContainer>

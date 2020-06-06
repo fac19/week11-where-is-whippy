@@ -9,6 +9,7 @@ import Home from "./components/vendor/home.js";
 import Heatmap from "./components/vendor/heatmap.js";
 import Timetable from "./components/vendor/timetable.js";
 import CustomerMap from "./components/customer/map.js";
+import Footer from "./components/shared/footer.js";
 // For react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // For React context management
@@ -30,6 +31,7 @@ function App() {
             <Route path="/map" component={() => <CustomerMap />} />
             <Route path="/timetable" component={() => <Timetable />} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     </AppContextProvider>

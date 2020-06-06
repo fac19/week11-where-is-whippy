@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PinkButton, PageContainer } from "../../styles/buttons";
+import { VendorButton, PageContainer } from "../../styles/buttons";
 import { Label, Input, FormContainer } from "../../styles/form";
 
 export default function Timetable() {
@@ -46,7 +46,7 @@ export default function Timetable() {
 
         <button onClick={generateNewRow}>Add another row</button>
 
-        <PinkButton>Submit</PinkButton>
+        <VendorButton>Submit</VendorButton>
       </FormContainer>
     </section>
   );

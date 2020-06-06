@@ -1,18 +1,16 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0e9d253d-58de-49ca-8655-8be52752a91b/deploy-status)](https://app.netlify.com/sites/where-is-whippy/deploys)
 ![Travis](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
 
-^ For our code review team: ignore the failed status, our FE deployment on netlify works fine. Latest failed deployment does not affect our production.
-
 # week11-where-is-whippy :icecream:
 
 An ice cream truck and customer finder for all you choc-chip nuts out there
 
 ## The team
 
-- [Ina](https://github.com/itsina96) - DevOps
-- [Lizzy](https://github.com/lizzy-j) - User Experience
-- [Joe](https://github.com/joepock123) - Quality assurance
-- [Hettie](https://github.com/HettieM) - Scrum master
+- [Ina](https://github.com/itsina96) - DevOps / Developer
+- [Lizzy](https://github.com/lizzy-j) - User Experience / Developer
+- [Joe](https://github.com/joepock123) - Quality assurance / Developer
+- [Hettie](https://github.com/HettieM) - Scrum master / Developer
 
 ## Description
 
@@ -23,6 +21,7 @@ The project is split into two subfolders. `client-app/` is the React front end a
 The FE and BE are deployed on Nelify and Heroku but there is no real functionality. Please code review locally to see the features and refer to the API endpoints section for guidance on CRUD functions.
 
 ## Features
+
 What can we do?
 
 - You can sign up as either a vendor or customer.
@@ -30,17 +29,19 @@ What can we do?
 - As a customer you can signal you want ice cream. Then when generating the heatmap as a vendor that location should show.
 
 ### Missing features
+
 - Customers not able to see vendor locations on their map (sorry no ice cream today)
 - Vendor heatmap currently showing all customer locations (instead of only in last 30 mintutes and between two dates)
 - No authorization on the API's endpoints
-- **No frontend tests.** Interested in which FE Jest tests you found useful.  
+- **No frontend tests.** Interested in which FE Jest tests you found useful.
 
-## ***CODE REVIEW***
-1) Aware that currently none of the endpoint require authorization 
-2) What is good practice to persist state incase the user refreshes? 
-3) Can we stop of user navigating to places they shouldn't be e.g. customer going to FE /heatmap endpoint?
-4) Our logic in the header for checking login in status and redirect seems quite messy. Is there a better way to do this?
-5) What is this weird error? Think it is something to do with how we render our components and checking if user is logged in:
+## **_CODE REVIEW_**
+
+1. Aware that currently none of the endpoint require authorization
+2. What is good practice to persist state incase the user refreshes?
+3. Can we stop of user navigating to places they shouldn't be e.g. customer going to FE /heatmap endpoint?
+4. Our logic in the header for checking login in status and redirect seems quite messy. Is there a better way to do this?
+5. What is this weird error? Think it is something to do with how we render our components and checking if user is logged in:
 
 ```
 index.js:1 Warning: Cannot update a component (`AppContextProvider`) while rendering a different component (`Header`). To locate the bad setState() call inside `Header`, follow the stack trace as described in https://fb.me/setstate-in-render
@@ -59,7 +60,7 @@ index.js:1 Warning: Cannot update a component (`AppContextProvider`) while rende
 
 - client-app/
 - server-api/
-- Root folder 
+- Root folder
 
 Make sure you use `npm start` in the client-app/ and server-api/ folders respectively when running the project.
 
@@ -102,7 +103,6 @@ Examples of body and example response can be found in the following Postman coll
 
 ### GET
 
-
 - GET all customers: `http://localhost:8080/customers/`
 - GET all customer coordinates:`http://localhost:8080/customers/coords`
 - GET specific customer:`http://localhost:8080/customers/id:`
@@ -112,6 +112,7 @@ Examples of body and example response can be found in the following Postman coll
 - GET specific route by name:`http://localhost:8080/routes/:name:`
 
 ### POST
+
 - POST signup new vendor `http://localhost:8080/vendors/signup`
 - POST login vendor `http://localhost:8080/vendors/login`
 - POST new vendor coordinates: `http://localhost:8080/vendors/coords`
@@ -121,6 +122,7 @@ Examples of body and example response can be found in the following Postman coll
 - POST new customer coordinates: `http://localhost:8080/customers/coords`
 
 ### Delete
+
 - DELETE route:`http://localhost:8080/routes/:name`
 
 ## Dependencies Installed
@@ -135,4 +137,3 @@ Examples of body and example response can be found in the following Postman coll
 ### Dev Dependencies Installed
 
 - Jest - Testing library (API)
-

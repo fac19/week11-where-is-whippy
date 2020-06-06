@@ -4,16 +4,23 @@
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^1.9.1",
+    "@react-hook/window-size": "^2.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "google-map-react": "^1.1.7",
     "react": "^16.13.1",
+    "react-confetti": "^5.0.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "typeface-bowlby-one-sc": "0.0.72",
+    "typeface-changa": "^1.1.4",
+    "typeface-karla": "0.0.72",
+    "typeface-poppins": "0.0.72",
+    "typeface-ubuntu": "0.0.65"
   },
   "scripts": {
     "start": "react-scripts start",
