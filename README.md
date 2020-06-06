@@ -1,67 +1,58 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0e9d253d-58de-49ca-8655-8be52752a91b/deploy-status)](https://app.netlify.com/sites/where-is-whippy/deploys)
 ![Travis](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
 
-# week11-where-is-whippy :icecream:
+# week11-where-is-whippy :icecream: :truck: 
 
-An ice cream truck and customer finder for all you choc-chip nuts out there
+## Project overview
+
+An app created to connect local ice cream vendors with customers. Where's Whippy was created to support local businesses and ice cream lovers alike.
 
 ## The team
 
-- [Ina](https://github.com/itsina96) - DevOps / Developer
-- [Lizzy](https://github.com/lizzy-j) - User Experience / Developer
-- [Joe](https://github.com/joepock123) - Quality assurance / Developer
-- [Hettie](https://github.com/HettieM) - Scrum master / Developer
+- [Ina](https://github.com/itsina96) - DevOps / Developer :desktop_computer: 
+- [Lizzy](https://github.com/lizzy-j) - User Experience / Developer :lower_left_paintbrush: 
+- [Joe](https://github.com/joepock123) - Quality assurance / Developer :heavy_check_mark: 
+- [Hettie](https://github.com/HettieM) - Scrum master / Developer :clipboard: 
 
-## Description
+## Tech Stack
+![tech-stack](https://i.imgur.com/Iw9D8vT.png)
 
-The project is split into two subfolders. `client-app/` is the React front end and `server-api` is the backend Express REST API.
+#### Dependencies
+- pg - Non-blocking postgres client for Node (API)
+- dotenv - Allows private variables to be added (API)
+- nodemon - Restarts the server automatically when you make a change to the code
+- bcrypt - Hashes the passwords
+- jsonwebtoken - Used to create a jwt for the users to sign in and out
+- Prettier - Ensures we all have same formatting as a team
 
-## Deployment
+#### Dev Dependencies
 
-The FE and BE are deployed on Nelify and Heroku but there is no real functionality. Please code review locally to see the features and refer to the API endpoints section for guidance on CRUD functions.
+- Husky - Prevents bad code from being committed automatically
+
+## 🗄️ Database schema
+
+![database-schema](https://i.imgur.com/8sCeOdk.png)
 
 ## Features
 What can we do?
 
 - You can sign up as either a vendor or customer.
-- As a vendor you will be able to generate a heatmap of customers that have signalled they want icecream.
+- As a vendor you will be able to generate a heatmap of customers that have signalled they want ice cream.
 - As a customer you can signal you want ice cream. Then when generating the heatmap as a vendor that location should show.
 
-### Missing features
-- Customers not able to see vendor locations on their map (sorry no ice cream today)
-- Vendor heatmap currently showing all customer locations (instead of only in last 30 mintutes and between two dates)
-- No authorization on the API's endpoints
-- **No frontend tests.** Interested in which FE Jest tests you found useful.  
 
-## ***CODE REVIEW***
-1) Aware that currently none of the endpoint require authorization 
-2) What is good practice to persist state incase the user refreshes? 
-3) Can we stop of user navigating to places they shouldn't be e.g. customer going to FE /heatmap endpoint?
-4) Our logic in the header for checking login in status and redirect seems quite messy. Is there a better way to do this?
-5) What is this weird error? Think it is something to do with how we render our components and checking if user is logged in:
 
-```
-index.js:1 Warning: Cannot update a component (`AppContextProvider`) while rendering a different component (`Header`). To locate the bad setState() call inside `Header`, follow the stack trace as described in https://fb.me/setstate-in-render
-    in Header (at App.js:22)
-    in div (at App.js:21)
-    in Router (created by BrowserRouter)
-    in BrowserRouter (at App.js:20)
-    in AppContextProvider (at App.js:19)
-    in App (at src/index.js:6)
-```
-
-## Set up Instructions
-
-1. Clone this repo
-2. Run npm i on your terminal to install dependencies in the
+## 🏁 Getting started
+1. Clone this repo locally
+2. Run `npm run gap` → this will npm i the three package.jsons in
 
 - client-app/
 - server-api/
 - Root folder 
 
-Make sure you use `npm start` in the client-app/ and server-api/ folders respectively when running the project.
+Make sure you do `npm start` in the client-app/ and server-api/ folders respectively when running the project.
 
-### Set up database for backend
+### Database setup
 
 3. Enter postgres and set up a superuser for local database
 
@@ -90,7 +81,9 @@ PGPASSWORD=mypassword
 JWT_SECRET=mysecret
 ```
 
-Hopefuly the project should run!
+---
+
+
 
 ### REST API Endpoints
 
@@ -121,16 +114,53 @@ Examples of body and example response can be found in the following Postman coll
 ### Delete
 - DELETE route:`http://localhost:8080/routes/:name`
 
-## Dependencies Installed
 
-- pg - Non-blocking postgres client for Node (API)
-- dotenv - Allows private variables to be added (API)
-- nodemon - Restarts the server automatically when you make a change to the code
-- bcrypt - hashes the passwords
-- jsonwebtoken - used to create a jwt for the users to sign in and out
-- Styled components - for CSS
+---
 
-### Dev Dependencies Installed
+## 📆 Project Timeline
+### 🎨 Week 1: Design 
+This week was spent identifying key design heuristics we wanted to incorporate into our prototype and conducting user research. See our [style guide](https://github.com/fac19/week11-where-is-whippy/issues/1) here for a full breakdown.
 
-- Jest - Testing library (API)
+For an overview of the project's user stories, check out the [User stories](https://github.com/fac19/week11-where-is-whippy/issues/3) here
 
+The initial prototype can be viewed here on [Figma](https://www.figma.com/file/f0sE0BrQhChujnQJwxKpAz/Ice-Cream?node-id=0%3A1)
+
+![figma prototype](https://i.imgur.com/E0INPni.png)
+
+
+Through our initial user research, we learnt that ice cream vendors are not keen to have their location shared constantly with customers, so would like to have full control of how visible they are on the map, and this impacted our final MVP design.
+
+
+
+### 🔧 Week 2: First Build Sprint
+By the end of the first build sprint, we had accomplished the following:
+* Initial set up of PostgresQL database
+* Set up Travis CI and Husky as part of initial setup
+* Deployment of frontend and backend from a monorepo
+* Finalized style guide
+* Set up React router for for the front-end to serve different pages
+
+
+### 🔨 Week 3: Second Build Sprint
+By the end of the second build sprint, we were able to :
+* Create the heatmap for ice cream vendors to view nearby customers who are interested in icecream
+* Set up codecov to monitor test coverage on the project
+* Add functionality for customers to let ice cream vendors know they would like ice cream
+* Include geolocation api tracking for customers
+
+
+### ⏳ Unmet goals
+Unfortunately, there were a few features we were unable to incorporate into the MVP due to time constraints. These included:
+* The map customers where they could see their nearest ice cream vendor
+* The routes feature for vendors which allows them to upload, edit and store their routes
+* Style the heatmap based on the prototype
+* Add an emergency exit for users
+* No authorization on the API's endpoints
+* Minimal frontend tests
+
+### 👨‍🏫 Key takeaways
+* React router to serve different pages for diferent users
+* Using React context to make state management more streamlined in your React app
+* Implementing and customising Google Map and Geocoding APIs in React
+* How to scope a MVP properly and prototype in Figma
+* Most importantly, everyone loves icecream :icecream: 
