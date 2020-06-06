@@ -10,7 +10,7 @@ An app created to connect local ice cream vendors with customers. Where's Whippy
 ## The team
 
 - [Ina](https://github.com/itsina96) - DevOps / Developer :desktop_computer: 
-- [Lizzy](https://github.com/lizzy-j) - User Experience / Developer :lower_left_paintbrush: 
+- [Lizzy](https://github.com/lizzy-j) - User Experience / Developer 🖌️
 - [Joe](https://github.com/joepock123) - Quality assurance / Developer :heavy_check_mark: 
 - [Hettie](https://github.com/HettieM) - Scrum master / Developer :clipboard: 
 
