@@ -33,7 +33,7 @@ An app created to connect local ice cream vendors with customers. Where's Whippy
 ![database-schema](https://i.imgur.com/8sCeOdk.png)
 
 ## Features
-What can we do?
+What can you do?
 
 - You can sign up as either a vendor or customer.
 - As a vendor you will be able to generate a heatmap of customers that have signalled they want ice cream.
