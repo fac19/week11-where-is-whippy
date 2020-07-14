@@ -148,7 +148,15 @@ By the end of the second build sprint, we were able to :
 * Include geolocation api tracking for customers
 
 
-### ⏳ Unmet goals
+## Reflections & What Next
+### 👨‍🏫 Key takeaways
+* React router to serve different pages for diferent users
+* Using React context to make state management more streamlined in your React app
+* Implementing and customising Google Map and Geocoding APIs in React
+* How to scope a MVP properly and prototype in Figma
+* Most importantly, everyone loves icecream :icecream: 
+
+### ⏳ Additional Features
 Unfortunately, there were a few features we were unable to incorporate into the MVP due to time constraints. These included:
 * The map customers where they could see their nearest ice cream vendor
 * The routes feature for vendors which allows them to upload, edit and store their routes
@@ -156,10 +164,3 @@ Unfortunately, there were a few features we were unable to incorporate into the 
 * Add an emergency exit for users
 * No authorization on the API's endpoints
 * Minimal frontend tests
-
-### 👨‍🏫 Key takeaways
-* React router to serve different pages for diferent users
-* Using React context to make state management more streamlined in your React app
-* Implementing and customising Google Map and Geocoding APIs in React
-* How to scope a MVP properly and prototype in Figma
-* Most importantly, everyone loves icecream :icecream: 
