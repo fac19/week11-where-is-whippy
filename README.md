@@ -1,10 +1,26 @@
 ![Travis](https://travis-ci.com/fac19/week11-where-is-whippy.svg?branch=master)
 
-# week11-where-is-whippy :icecream: :truck: 
+# week11-where-is-whippy :icecream: :truck:
+
+## Contents
+- [Project overview](#Project-overview)
+- [The team](#The-team)
+- [Tech Stack](#Tech-Stack)
+- [🗄️ Database schema](#🗄️-Database-schema)
+- [Features](#Features)
+- [🏁 Getting started](#🏁-Getting-started)
+	- [Database setup](#Database-setup)
+	- [REST API Endpoints](#REST-API-Endpoints)
+- [📆 Project Timeline](#📆-Project-Timeline)
+- [Reflections & What Next](#Reflections-&-What-Next)
+- [👨‍🏫 Key takeaways](#👨‍🏫-Key-takeaways)
+- [⏳ Additional Features](#⏳-Additional-Features)
 
 ## Project overview
 
 An app created to connect local ice cream vendors with customers. Where's Whippy was created to support local businesses and ice cream lovers alike.
+
+Where's Whippy is a full stack web application with JWT authentication that serves geolocation and user data from a postgres database using an RESTful API built in Express.
 
 ## The team
 
