@@ -2,20 +2,6 @@
 
 # week11-where-is-whippy :icecream: :truck:
 
-## Contents
-- [Project overview](#Project-overview)
-- [The team](#The-team)
-- [Tech Stack](#Tech-Stack)
-- [🗄️ Database schema](#🗄️-Database-schema)
-- [Features](#Features)
-- [🏁 Getting started](#🏁-Getting-started)
-	- [Database setup](#Database-setup)
-	- [REST API Endpoints](#REST-API-Endpoints)
-- [📆 Project Timeline](#📆-Project-Timeline)
-- [Reflections & What Next](#Reflections-&-What-Next)
-- [👨‍🏫 Key takeaways](#👨‍🏫-Key-takeaways)
-- [⏳ Additional Features](#⏳-Additional-Features)
-
 ## Project overview
 
 An app created to connect local ice cream vendors with customers. Where's Whippy was created to support local businesses and ice cream lovers alike.
@@ -28,6 +14,20 @@ Where's Whippy is a full stack web application with JWT authentication that serv
 - [Lizzy](https://github.com/lizzy-j) - User Experience / Developer 🖌️
 - [Joe](https://github.com/joepock123) - Quality assurance / Developer :heavy_check_mark: 
 - [Hettie](https://github.com/HettieM) - Scrum master / Developer :clipboard: 
+
+## Contents
+- [Project overview](#Project-overview)
+- [The team](#The-team)
+- [Tech Stack](#Tech-Stack)
+- [🗄️ Database schema](#🗄️-Database-schema)
+- [Features](#Features)
+- [🏁 Getting started](#🏁-Getting-started)
+	- [Database setup](#Database-setup)
+	- [REST API Endpoints](#REST-API-Endpoints)
+- [📆 Project Timeline](#📆-Project-Timeline)
+- [Reflections and What Next](#Reflections-and-what-next)
+- [👨‍🏫 Key takeaways](#👨‍🏫-Key-takeaways)
+- [⏳ Additional Features](#⏳-Additional-Features)
 
 ## Tech Stack
 ![tech-stack](https://i.imgur.com/Iw9D8vT.png)
@@ -164,7 +164,7 @@ By the end of the second build sprint, we were able to :
 * Include geolocation api tracking for customers
 
 
-## Reflections & What Next
+## Reflections and what next
 ### 👨‍🏫 Key takeaways
 * React router to serve different pages for diferent users
 * Using React context to make state management more streamlined in your React app
